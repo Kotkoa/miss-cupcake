@@ -4,7 +4,7 @@ Pixel-accurate website build from a Figma design.
 
 ## Stack
 
-React + Vite + TypeScript + React Router + CSS Modules.
+React + Vite + TypeScript + React Router + CSS Modules + Jotai (cart state).
 
 Screens (each in Desktop / Tablet / Mobile): Homepage (+ Registered completed), Our Story, Why Miss Cupcake, Cart, Check out, Payment, Payment confirmed.
 
@@ -55,12 +55,13 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Background in CSS instead of images (see [tasks/04.1-homepage-css-background.md](tasks/04.1-homepage-css-background.md))
 
 ### 5. Remaining screens (simple to complex)
-- [ ] Our Story (video & map)
-- [ ] Why Miss Cupcake
-- [ ] Cart
-- [ ] Check out
-- [ ] Payment
-- [ ] Payment confirmed
+- [ ] Architecture decisions: cart state, routes, modals, forms (see [tasks/05.0-architecture.md](tasks/05.0-architecture.md))
+- [ ] Our Story (video & map) ([tasks/05.1-our-story.md](tasks/05.1-our-story.md))
+- [ ] Why Miss Cupcake ([tasks/05.2-why-miss-cupcake.md](tasks/05.2-why-miss-cupcake.md))
+- [ ] Cart / My Bag ([tasks/05.3-cart.md](tasks/05.3-cart.md))
+- [ ] Check out ([tasks/05.4-checkout.md](tasks/05.4-checkout.md))
+- [ ] Payment ([tasks/05.5-payment.md](tasks/05.5-payment.md))
+- [ ] Payment confirmed ([tasks/05.6-payment-confirmed.md](tasks/05.6-payment-confirmed.md))
 
 ### 6. States and polish
 - [ ] Registered completed state
