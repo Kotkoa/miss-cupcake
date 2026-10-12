@@ -12,3 +12,15 @@
   margin-top: 54px;
   padding-bottom: var(--space-64);
 }
+
+@media (min-width: 960px) {
+  .page {
+    background-image: url('../../assets/images/home/bg-t.webp');
+  }
+
+  .footerWrap {
+    margin-top: 95px;
+    /* Figma: footer block starts at x = 71, i.e. 31px inside the 40px side padding. */
+    padding-inline-start: calc(var(--container-padding-x) + 31px);
+  }
+}

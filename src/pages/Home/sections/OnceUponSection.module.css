@@ -36,5 +36,40 @@
 }
 
 /* Tablet (944:20): text at x = 71 (31px inside the side padding), image 364 x 500 at the right. */
+@media (min-width: 960px) {
+  .once {
+    padding-top: 337px;
+  }
+
+  .content {
+    min-height: 747px; /* Figma: title top to image bottom. */
+  }
+
+  .text {
+    margin-left: 31px;
+  }
+
+  .title {
+    max-width: 367px;
+  }
+
+  .lead {
+    max-width: 472px;
+    margin-top: 42px;
+    text-align: left;
+  }
+
+  .picture {
+    position: absolute;
+    top: 247px; /* Figma: image top is 247px below the title top. */
+    right: 62px; /* Figma: image right edge at x = 858 of 960, content ends at 920. */
+    margin: 0;
+  }
+
+  .image {
+    width: 364px;
+    height: 500px;
+  }
+}
 
 /* Desktop (940:7): text at the container edge, image 494 x 679. */

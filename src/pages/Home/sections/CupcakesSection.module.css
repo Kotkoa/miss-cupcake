@@ -20,5 +20,22 @@
 }
 
 /* Tablet (944:22): 2 columns of 336px, 146px apart, centered; cards ~96px apart. */
+@media (min-width: 960px) {
+  .cupcakes {
+    padding-top: 340px; /* Figma: gap between "Simple Life" and this title (background wave). */
+  }
+
+  .title {
+    max-width: 533px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 336px);
+    justify-content: center;
+    justify-items: stretch;
+    gap: var(--space-96) 146px;
+    margin-top: 100px;
+  }
+}
 
 /* Desktop (2:78 + cards): 3 columns of 336px, 90px apart, 176px between rows. */

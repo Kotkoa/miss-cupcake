@@ -36,5 +36,38 @@
 }
 
 /* Tablet (944:19): image 322 x 399 on the left, text column starts at x = 420. */
+@media (min-width: 960px) {
+  .simple {
+    grid-template-columns: 322px 1fr;
+    grid-template-areas: 'picture text';
+    column-gap: 56px; /* Figma: 420 - 42 - 322. */
+    padding-top: 0;
+  }
+
+  .text {
+    grid-area: text;
+    margin-top: 25px; /* Figma: title top is 25px below the image top. */
+  }
+
+  .title {
+    max-width: 510px;
+  }
+
+  .lead {
+    max-width: 459px;
+    margin-top: var(--space-32);
+    text-align: left;
+  }
+
+  .picture {
+    grid-area: picture;
+    margin: 0;
+  }
+
+  .image {
+    width: 322px;
+    height: 399px;
+  }
+}
 
 /* Desktop (940:4): two stacked images (430 x 240, 396 x 253), text column at x = 733. */

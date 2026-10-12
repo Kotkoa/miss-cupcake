@@ -32,5 +32,33 @@
 }
 
 /* Tablet (9:434): 908px tall from the header to the "Simple Life" row. Text 519px wide. */
+@media (min-width: 960px) {
+  .hero {
+    min-height: 908px;
+    padding-top: calc(var(--space-120) + var(--space-32));
+  }
+
+  .title {
+    max-width: 510px;
+  }
+
+  .lead {
+    max-width: 519px;
+    margin-top: var(--space-32);
+    text-align: left;
+  }
+
+  .picture {
+    position: absolute;
+    top: 62px; /* Figma: image top at y = 126, header is 64px. */
+    right: 92px; /* Figma: image right edge at x = 868 of 960. */
+    margin: 0;
+  }
+
+  .image {
+    width: 365px;
+    height: 716px;
+  }
+}
 
 /* Desktop (1:2). */
