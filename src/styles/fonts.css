@@ -1,0 +1,7 @@
+/* Self-hosted via Fontsource, Latin subset only. font-display: swap is set by the packages.
+   Wendy One: Regular. Lato: Regular, Bold, Black (--font-weight-* in tokens.css).
+   Avenir has no web files: --font-numeric falls back to system Avenir / Lato. */
+@import '@fontsource/wendy-one/latin-400.css';
+@import '@fontsource/lato/latin-400.css';
+@import '@fontsource/lato/latin-700.css';
+@import '@fontsource/lato/latin-900.css';

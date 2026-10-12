@@ -212,6 +212,16 @@
     "@eslint/core" "^1.2.1"
     levn "^0.4.1"
 
+"@fontsource/lato@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-5.3.0.tgz#c1c8c66aca07c4cd9299bdfe1ba679683465d1c3"
+  integrity sha512-0WhF/4rhrw+ErIyneKvhHn2YAl+xf8GDtllgOgOzDmeaSlLQtjpChXaQOpWhG2BchQW0WJy2zLV12Hdg0ndOMw==
+
+"@fontsource/wendy-one@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/wendy-one/-/wendy-one-5.3.0.tgz#cc89557b0b7a321ad02d8944bc3e6be8a6ad4c9f"
+  integrity sha512-JuN55LnmN4dp1Q/x99KtvPDurZt24Yrnqf/JUEw73uMLYnNfWMrMYdYI1pINsiATAjWGbT0xPEPuvXpUfFTB6g==
+
 "@humanfs/core@^0.19.2":
   version "0.19.2"
   resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.2.tgz#a8272ca03b2acf492670222b2320b6c421bfde60"
