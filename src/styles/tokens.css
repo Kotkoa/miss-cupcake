@@ -18,8 +18,8 @@
  *   #5D3394 (Our Story rectangles x3)                                 -> #642C99  --color-primary
  *   #FDE0CE (Our Story ellipses x2)                                   -> #FAE0CF  --color-bg
  *   Overlay on screen 7: #7C59A0@70% (Tablet), #5D3394@70% (Mobile),
- *     #FAE0CF@70% (Desktop, under a baked screenshot) -> #5D3394 at 100% opacity
- *     (decision: 70% is not confirmed by the design)  --color-overlay
+ *     #FAE0CF@70% (Desktop, under a baked screenshot) -> #5D3394 at 70% opacity
+ *     --color-overlay
  *   Line height "auto" in Figma -> `normal`.
  *
  * SINGLE-USE VALUES (deliberately NOT tokenized):

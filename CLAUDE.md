@@ -35,12 +35,13 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Add the Figma link to this file
 
 ### 2. Styles foundation
-- [ ] Extract tokens from Figma into `src/styles/tokens.css` (see [tasks/02-tokens.md](tasks/02-tokens.md))
+- [x] Extract tokens from Figma into `src/styles/tokens.css` (see [tasks/02-tokens.md](tasks/02-tokens.md))
 - [ ] Add reset and global typography
-- [ ] Define breakpoints from the Tablet/Desktop frames
+- [x] Define breakpoints from the Tablet/Desktop frames
 
-### 3. Shared components
+### 3. Shared components (see [tasks/03-shared-components.md](tasks/03-shared-components.md))
 - [ ] Button
+- [ ] Quantity stepper
 - [ ] Input
 - [ ] Header
 - [ ] Footer
