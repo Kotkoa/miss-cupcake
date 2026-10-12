@@ -1,0 +1,99 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-64);
+  padding: var(--space-32) var(--container-padding-x);
+}
+
+.pageTitle {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.blockTitle {
+  padding-bottom: var(--space-8);
+  border-bottom: var(--border-width-md) solid var(--color-primary);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+}
+
+.node {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.rowLabel {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+}
+
+.rowBody {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-16);
+}
+
+.onPurple {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  padding: var(--space-16);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-md);
+}
+
+.frame {
+  width: 100%;
+  background-color: var(--color-bg-home);
+}
+
+/* Figma field widths: checkout 334, footer signup 394. */
+.fieldDefault {
+  width: 334px;
+  max-width: 100%;
+}
+
+.fieldLight {
+  width: 394px;
+  max-width: 100%;
+}
+
+.footerSurface {
+  padding: var(--space-32) var(--space-16);
+  background-color: var(--color-primary);
+}
+
+@media (min-width: 1440px) {
+  /* Figma footer block is 1173 wide: give it the full 1198 container. */
+  .footerSurface {
+    padding-inline: 0;
+  }
+}
+
+/* Figma checkout field width: Tablet 417, Desktop 449. */
+@media (min-width: 960px) {
+  .fieldDefault {
+    width: 417px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .fieldDefault {
+    width: 449px;
+  }
+}

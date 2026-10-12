@@ -1,0 +1,39 @@
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Figma tab: 100 x 43. */
+  width: 100px;
+  height: 43px;
+  padding: 0 var(--space-4);
+  border: var(--border-width-md) solid var(--color-primary);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Icon is 9px wide; 32px gives a usable hit area and centres it where Figma does. */
+  width: 32px;
+  height: 100%;
+  border-radius: var(--radius-md);
+}
+
+.control:hover:not(:disabled) {
+  opacity: 0.6; /* Hover is not drawn in Figma. */
+}
+
+.control:disabled {
+  opacity: 0.35; /* Disabled is not drawn in Figma. */
+  cursor: not-allowed;
+}
+
+.count {
+  font-family: var(--font-numeric);
+  font-size: var(--font-size-qty);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-qty);
+  text-transform: uppercase;
+}

@@ -1,0 +1,42 @@
+/* Figma card (7:278): 336 wide; image 223 x 235, name, 3-line description, actions row 43 high. */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 336px;
+  max-width: 100%;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.image {
+  /* Image is decorative: the name below carries the meaning. */
+  width: auto;
+  max-width: 100%;
+}
+
+/* Raw gaps below are the measured Figma distances (46 / 34 / 6), not on the spacing scale. */
+.name {
+  margin-top: 46px;
+}
+
+.description {
+  width: 309px; /* Figma text box width: keeps the same 3-line wrap. */
+  max-width: 100%;
+  margin-top: 34px;
+  min-height: calc(3 * var(--line-height-body));
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: 30px; /* Figma: 30px between tab and CTA (not on the spacing scale). */
+  margin-top: 6px;
+}
+
+.add {
+  flex: 1;
+}

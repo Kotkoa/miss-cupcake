@@ -40,12 +40,12 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Define breakpoints from the Tablet/Desktop frames
 
 ### 3. Shared components (see [tasks/03-shared-components.md](tasks/03-shared-components.md))
-- [ ] Button
-- [ ] Quantity stepper
-- [ ] Input
-- [ ] Header
-- [ ] Footer
-- [ ] Product card
+- [x] Button
+- [x] Quantity stepper
+- [x] Input
+- [x] Header
+- [x] Footer
+- [x] Product card
 
 ### 4. Homepage (mobile-first)
 - [ ] Mobile

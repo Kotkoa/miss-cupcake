@@ -1,0 +1,208 @@
+/* Text is cream: the parent must provide the purple surface (Figma draws it behind the footer).
+   Measurements below come from Figma nodes 944:54 (Mobile), 944:21 (Tablet), 940:8 (Desktop). */
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  color: var(--color-surface);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Base focus ring is purple: invisible on the purple footer surface. */
+.footer :focus-visible {
+  outline-color: var(--color-surface);
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+}
+
+.title {
+  font-family: var(--font-body); /* An h2 would otherwise inherit Wendy One from base.css. */
+  font-size: var(--font-size-subtitle);
+  line-height: var(--line-height-subtitle);
+  font-weight: var(--font-weight-bold);
+}
+
+.link {
+  font-size: var(--font-size-footer-link);
+  line-height: var(--line-height-footer-link);
+  font-weight: var(--font-weight-bold);
+}
+
+.nav a,
+.bottom a {
+  color: inherit;
+}
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 27px; /* Figma: 27px from the title to the field. */
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+}
+
+/* Mobile: the link list continues straight into the legal list (Figma y 357 ... 607). */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  margin-top: var(--space-16);
+}
+
+.links,
+.legal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--space-4);
+}
+
+.copyright,
+.legal a {
+  white-space: nowrap;
+}
+
+.copyright {
+  font-size: var(--font-size-copyright);
+  line-height: var(--line-height-footer-link);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+/* Tablet (944:21): 804 wide, two columns at x = 0 / 272, three rows. */
+@media (min-width: 960px) {
+  .footer {
+    display: grid;
+    grid-template-columns: 272px 1fr;
+    grid-template-areas:
+      'brand newsletter'
+      'nav legal'
+      'copyright copyright';
+    max-width: 804px;
+    gap: 0;
+  }
+
+  .top,
+  .bottom {
+    display: contents;
+  }
+
+  .brand {
+    grid-area: brand;
+  }
+
+  .newsletter {
+    grid-area: newsletter;
+    gap: 27px;
+  }
+
+  .signup {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-32);
+  }
+
+  .email {
+    flex: 1;
+  }
+
+  /* Figma: row 2 starts 59px below the input; "Shop" heading sits 7px lower than the legal list. */
+  .nav {
+    grid-area: nav;
+    margin-top: 66px;
+  }
+
+  .legal {
+    grid-area: legal;
+    margin-top: 59px;
+    gap: 0; /* Figma pitch is 46-51px, i.e. rows touch. */
+  }
+
+  .copyright {
+    grid-area: copyright;
+    margin-top: 60px; /* Figma: © row top at y = 363. */
+  }
+}
+
+/* Desktop (940:8): 1173 wide block, columns start at x = 0 / 321 / 641. */
+@media (min-width: 1440px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-64);
+    max-width: none;
+  }
+
+  .brand,
+  .newsletter,
+  .nav,
+  .legal,
+  .copyright {
+    grid-area: auto;
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: 321px 320px 1fr;
+    align-items: start;
+    gap: 0;
+  }
+
+  .email {
+    flex: 0 0 394px; /* Figma Desktop field width. */
+  }
+
+  .newsletter {
+    order: 3;
+    gap: 30px; /* Figma Desktop: 30px from the title to the field. */
+  }
+
+  .nav {
+    order: 2;
+    margin-top: 0;
+  }
+
+  .legal {
+    margin-top: 0;
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 72px; /* Figma: © text to first link and between links is ~72px. */
+    /* Figma: the © row starts at x = 256 of the 1173px block. */
+    padding-inline-start: 256px;
+  }
+
+  .legal {
+    flex-direction: row;
+    gap: 72px;
+  }
+
+  .copyright {
+    margin-top: 0;
+  }
+}

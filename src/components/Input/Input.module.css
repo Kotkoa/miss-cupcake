@@ -1,0 +1,87 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: var(--font-size-label);
+  line-height: var(--line-height-label);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.control {
+  width: 100%;
+  background: transparent;
+  border-radius: var(--radius-md);
+}
+
+.control::placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+/* Checkout form field. Figma: Mobile 334 x 39 with 1px outline; Tablet/Desktop 417-449 x 60 with 2px outline.
+   Label to field: 24px on Mobile, 20px on Tablet/Desktop. */
+.default {
+  gap: var(--space-24);
+}
+
+.default .control {
+  height: 39px;
+  padding: 0 17px; /* Figma: text starts 17px inside the box (not on the scale). */
+  border: var(--border-width-sm) solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+}
+
+@media (min-width: 960px) {
+  .default {
+    gap: var(--space-20);
+  }
+
+  .default .control {
+    height: 60px;
+    padding: 0 var(--space-24);
+    border-width: var(--border-width-md);
+  }
+}
+
+/* Footer signup field: Figma 394 x 43, 2px cream outline, Lato Bold 16. */
+.light {
+  color: var(--color-surface);
+}
+
+.light .control {
+  height: 43px;
+  padding: 0 var(--space-32);
+  border: var(--border-width-md) solid var(--color-surface);
+  color: var(--color-surface);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-field-label);
+  line-height: var(--line-height-field-label);
+}
+
+.light .control:focus-visible {
+  outline-color: var(--color-surface);
+}
+
+/* Error styling is not drawn in Figma: thicker outline + note text, no new colors. */
+.control[aria-invalid='true'] {
+  border-width: var(--border-width-md);
+}
+
+.error {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+}

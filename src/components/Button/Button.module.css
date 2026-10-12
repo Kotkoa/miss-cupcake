@@ -1,0 +1,53 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Figma CTA height: 43px (not on the spacing scale). */
+  min-height: 43px;
+  padding: 0 var(--space-32);
+  border: 0;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-button);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.button:hover {
+  /* Hover is not drawn in Figma; opacity change is the minimal affordance. */
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.button:disabled {
+  opacity: 0.5; /* Disabled is not drawn in Figma. */
+  cursor: not-allowed;
+}
+
+.filled {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.light {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+/* Default outline is purple: invisible on the purple fill, so offset it outward. */
+.filled:focus-visible {
+  outline-color: var(--color-primary);
+}
+
+.light:focus-visible {
+  outline-color: var(--color-surface);
+}
+
+.fullWidth {
+  display: flex;
+  width: 100%;
+}

@@ -18,9 +18,11 @@
  *   #5D3394 (Our Story rectangles x3)                                 -> #642C99  --color-primary
  *   #FDE0CE (Our Story ellipses x2)                                   -> #FAE0CF  --color-bg
  *   Overlay on screen 7: #7C59A0@70% (Tablet), #5D3394@70% (Mobile),
- *     #FAE0CF@70% (Desktop, under a baked screenshot) -> #5D3394 at 70% opacity
- *     --color-overlay
- *   Line height "auto" in Figma -> `normal`.
+ *     #FAE0CF@70% (Desktop, under a baked screenshot) -> #5D3394 at 100% opacity
+ *     (project decision: the 70% alpha is not confirmed by the design)  --color-overlay
+ *   Line height "auto" in Figma is the font's intrinsic height, measured via the REST API:
+ *     Wendy One 1.055, Avenir 1.366, Lato 1.2 (= browser `normal`). Browsers render Wendy One
+ *     `normal` at ~1.5, so Wendy tokens use the unitless 1.055 instead of `normal`.
  *
  * SINGLE-USE VALUES (deliberately NOT tokenized):
  *   #F7CDBF   Mobile Our Story decorative ellipse
@@ -90,7 +92,7 @@
   /* Wendy One -------------------------------------------------------- */
   /* Page title "Check out", "Roasted with happiness", "once upon a time" (s1-s6). */
   --font-size-display: 60px;
-  --line-height-display: normal;
+  --line-height-display: 1.055;
   /* Hero title "Make your day a…", "The Simple, Sweet…" (s1,s2). */
   --font-size-h1: 52px;
   --line-height-h1: 65px;
@@ -103,17 +105,17 @@
   /* Section titles "Delivery type", "To be delivered", "Address", "Payment"
      (s5,s6); Mobile also uses it for totals such as "$27.92" (s6). */
   --font-size-h2: 26px;
-  --line-height-h2: normal;
+  --line-height-h2: 1.055;
   /* Product / package names, "Miss cupcake" footer brand (s1-s6). */
   --font-size-h3: 32px;
-  --line-height-h3: normal;
+  --line-height-h3: 1.055;
   /* Form field labels "First name", "Street", "Credit card No." (s6),
      Mobile package names "Regular Package" (s6). */
   --font-size-label: 18px;
-  --line-height-label: normal;
+  --line-height-label: 1.055;
   /* Package prices "$0", "$9.90", order total (s5,s6). */
   --font-size-price: 36px;
-  --line-height-price: normal;
+  --line-height-price: 1.055;
 
   /* Lato ------------------------------------------------------------- */
   /* Regular. Body copy: descriptions, "Back to My cart", names (s1-s7). */
@@ -152,7 +154,7 @@
   --line-height-total-label: 26px;
   /* Avenir Black UPPERCASE. Quantity digit between − and + (s1,s3,s4,s5). */
   --font-size-qty: 20px;
-  --line-height-qty: normal;
+  --line-height-qty: 1.366;
   /* Bold. Mini-cart item name "Carrot x 1" (s4). */
   --font-size-cart-item-name: 10px;
   --line-height-cart-item-name: normal;
@@ -211,9 +213,9 @@
   :root {
     --font-size-display: 100px;
     --font-size-h1: 70px;
-    --line-height-h1: normal;
+    --line-height-h1: 1.055;
     --font-size-h1-story: 70px;
-    --line-height-h1-story: normal;
+    --line-height-h1-story: 1.055;
     --font-size-confirm-title: 60px;
     --line-height-confirm-title: 70px;
     --font-size-h2: 48px;

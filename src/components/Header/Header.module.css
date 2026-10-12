@@ -1,0 +1,143 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-12) var(--space-16) 0 var(--space-20);
+  color: var(--color-primary);
+}
+
+.menuButton {
+  display: flex;
+  order: 1;
+}
+
+.cart {
+  order: 2;
+}
+
+/* Mobile: nav drops below the bar when the menu is open. */
+.nav {
+  display: none;
+}
+
+.navOpen {
+  order: 3;
+  flex-basis: 100%;
+  padding: var(--space-16) 0;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.link,
+.current {
+  font-size: var(--font-size-nav);
+  line-height: var(--line-height-nav);
+  text-decoration: none;
+}
+
+.link {
+  font-weight: var(--font-weight-regular);
+}
+
+.current {
+  font-weight: var(--font-weight-black);
+}
+
+.link:hover,
+.current:hover,
+.cart:hover {
+  text-decoration: none;
+  opacity: 0.7; /* Hover is not drawn in Figma; a fade is the minimal affordance. */
+}
+
+/* Figma cart: Mobile 34.45 x 35, Tablet/Desktop 52 x 44.5 (icon + badge).
+   Icon and badge offsets and sizes below are the exported Figma geometry (nodes 940:2, 944:55). */
+.cart {
+  position: relative;
+  display: block;
+  width: 34.45px;
+  height: 35px;
+  flex-shrink: 0;
+}
+
+.cartIcon {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 29.9px;
+  height: 31.07px;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  display: grid;
+  place-items: center;
+  width: 20.45px;
+  height: 20.45px;
+}
+
+.badgeCircle,
+.count {
+  grid-area: 1 / 1;
+}
+
+.badgeCircle {
+  width: 100%;
+  height: 100%;
+}
+
+.count {
+  font-size: var(--font-size-badge);
+  line-height: var(--line-height-badge);
+}
+
+@media (min-width: 960px) {
+  .header {
+    align-items: center;
+    justify-content: space-between;
+    height: 64px; /* Figma header bar height. */
+    /* Figma: links start at x = 39-43, cart ends 38px from the right edge, content sits ~6px low. */
+    padding: var(--space-12) var(--space-40) 0 var(--space-40);
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .nav,
+  .navOpen {
+    display: block;
+    order: 0;
+    flex-basis: auto;
+    padding: 0;
+  }
+
+  .links {
+    flex-direction: row;
+    gap: var(--space-32);
+  }
+
+  .cart {
+    width: 52px;
+    height: 44.5px;
+  }
+
+  .cartIcon {
+    top: 5px;
+    width: 38px;
+    height: 39.5px;
+  }
+
+  .badge {
+    left: 26px;
+    width: 26px;
+    height: 26px;
+  }
+}
