@@ -1,0 +1,44 @@
+/* Our Story is laid out on its own side padding: text starts at x = 18 / 40 / 109 in the frames
+   (Home uses 20 / 40 / 121), so every Container below picks the values up from here. */
+.page {
+  --container-padding-x: 18px;
+  background-color: var(--color-surface);
+}
+
+/* Overlaps the map section by 1px: both are purple, and an edge at a fractional y would show a hairline. */
+.footerBand {
+  margin-top: -1px;
+}
+
+/* Footer block: top = map bottom + the "Open in Google Maps" link row; Figma footer top
+   3065 / 3642 / 4481 and page end 3846 / 4161 / 4833. */
+.footerWrap {
+  padding-top: 78px;
+  padding-bottom: 68px;
+}
+
+@media (min-width: 960px) {
+  .page {
+    --container-padding-x: 40px;
+  }
+
+  .footerWrap {
+    padding-top: 59px;
+    padding-bottom: 107px; /* Figma: the footer frame is 4px taller than the rendered footer. */
+    /* Figma: footer block starts at x = 78, i.e. 38px inside the side padding. */
+    padding-inline-start: calc(var(--container-padding-x) + 38px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .page {
+    --container-padding-x: 109px;
+  }
+
+  .footerWrap {
+    padding-top: 107px;
+    /* Figma: footer block starts at x = 134, i.e. 25px inside the side padding. */
+    padding-inline-start: calc(var(--container-padding-x) + 25px);
+    padding-bottom: 102px;
+  }
+}

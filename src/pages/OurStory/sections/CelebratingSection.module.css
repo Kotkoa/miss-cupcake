@@ -1,0 +1,95 @@
+/* Wave above the purple band: 57 / 123 / 118px high (peak to trough, measured). */
+.band {
+  --wave-height: 57px;
+}
+
+/* The video hangs into the next band on Tablet and Desktop, so this container has to stack above the
+   next band's container (same z-index 1 from Band, later in the DOM), or that one would cover the controls. */
+.band > .celebrating {
+  z-index: 2;
+}
+
+/* Mobile (148:124): band top 790, title top 916, video 117px below the text, band end 1691. */
+.celebrating {
+  padding-top: 126px;
+  padding-bottom: 95px; /* Figma: video bottom 1597, next band 1691. */
+  color: var(--color-surface);
+}
+
+.title {
+  max-width: 309px; /* Figma text box: wraps to "Celebrating the / little things". */
+  font-size: var(--font-size-h1-story);
+  line-height: var(--line-height-h1-story);
+}
+
+.lead {
+  max-width: 333px;
+  margin-top: 31px; /* Figma: title bottom 1020, text top 1051. */
+  text-align: justify;
+}
+
+.lead p + p {
+  margin-top: var(--line-height-body-lg); /* Figma: one blank line between the paragraphs. */
+}
+
+.video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Figma: 340 x 191 / 882 x 496 / 1220 x 687. */
+  margin-top: 121px; /* Figma: text bottom 1289, video top 1406 (the text renders 4px shorter). */
+  border-radius: var(--radius-md);
+  background-color: var(--color-placeholder); /* shows until the first frame is decoded */
+  object-fit: cover;
+}
+
+/* Tablet (148:75): band top 896, title top 969, video 88px below the text. */
+@media (min-width: 960px) {
+  .band {
+    --wave-height: 123px;
+  }
+
+  .celebrating {
+    padding-top: 73px;
+    padding-bottom: 0;
+  }
+
+  .title {
+    max-width: 529px;
+  }
+
+  .lead {
+    max-width: 593px;
+    margin-top: 41px; /* Figma: title bottom 1117, text top 1158. */
+    text-align: left;
+  }
+
+  .video {
+    margin-top: 92px; /* Figma: text bottom 1318, video top 1406 (the text renders 4px shorter). */
+    margin-bottom: -97px; /* Figma: video bottom 1902 hangs 98px into the cream band (starts 1804). */
+  }
+}
+
+/* Desktop (148:27): band top 750, title top 1028, video 109px below the text. */
+@media (min-width: 1440px) {
+  .band {
+    --wave-height: 118px;
+  }
+
+  .celebrating {
+    padding-top: 278px;
+  }
+
+  .title {
+    max-width: 725px;
+  }
+
+  .lead {
+    max-width: 737px;
+    margin-top: 43px; /* Figma: title bottom 1218, text top 1261. */
+  }
+
+  .video {
+    margin-top: 114px; /* Figma: text bottom 1396, video top 1505 (the text renders 5px shorter). */
+    margin-bottom: -492px; /* Figma: video bottom 2192 hangs 492px into the cream band (starts 1700). */
+  }
+}

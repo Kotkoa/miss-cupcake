@@ -1,0 +1,57 @@
+/* Wave above the purple band: 68 / 129 / 108px high (peak to trough, measured). */
+.band {
+  --wave-height: 68px;
+}
+
+/* Mobile (148:124): band top 2345, title top 2596, map 50px below the title. */
+.visit {
+  padding-top: 251px;
+  color: var(--color-surface);
+}
+
+.title {
+  font-size: var(--font-size-h1-story);
+  line-height: var(--line-height-h1-story);
+}
+
+.map {
+  margin-top: 50px; /* Figma: title bottom 2700, map top 2750. */
+}
+
+/* Tablet (148:75): band top 2663, title top 2819, map 80px below the title. */
+@media (min-width: 960px) {
+  .band {
+    --wave-height: 129px;
+  }
+
+  .visit {
+    padding-top: 156px;
+  }
+
+  .title {
+    max-width: 644px;
+  }
+
+  .map {
+    margin-top: 80px; /* Figma: title bottom 2967, map top 3047. */
+  }
+}
+
+/* Desktop (148:27): band top 3010, title top 3390, map 64px below the title. */
+@media (min-width: 1440px) {
+  .band {
+    --wave-height: 108px;
+  }
+
+  .visit {
+    padding-top: 380px;
+  }
+
+  .title {
+    max-width: 959px;
+  }
+
+  .map {
+    margin-top: var(--space-64); /* Figma: title bottom 3580, map top 3644. */
+  }
+}

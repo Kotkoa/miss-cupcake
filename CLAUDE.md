@@ -56,7 +56,7 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 
 ### 5. Remaining screens (simple to complex)
 - [ ] Architecture decisions: cart state, routes, modals, forms (see [tasks/05.0-architecture.md](tasks/05.0-architecture.md))
-- [ ] Our Story (video & map) ([tasks/05.1-our-story.md](tasks/05.1-our-story.md))
+- [x] Our Story (video & map) ([tasks/05.1-our-story.md](tasks/05.1-our-story.md))
 - [ ] Why Miss Cupcake ([tasks/05.2-why-miss-cupcake.md](tasks/05.2-why-miss-cupcake.md))
 - [ ] Cart / My Bag ([tasks/05.3-cart.md](tasks/05.3-cart.md))
 - [ ] Check out ([tasks/05.4-checkout.md](tasks/05.4-checkout.md))

@@ -4,29 +4,12 @@ import { Container } from '../../components/Container/Container'
 import { Footer } from '../../components/Footer/Footer'
 import { Header } from '../../components/Header/Header'
 import { cupcakes } from '../../data/cupcakes'
+import { footerNavLinks, footerText, getNavLinks, legalLinks } from '../../data/navigation'
 import styles from './Home.module.css'
 import { CupcakesSection } from './sections/CupcakesSection'
 import { HeroSection } from './sections/HeroSection'
 import { OnceUponSection } from './sections/OnceUponSection'
 import { SimpleLifeSection } from './sections/SimpleLifeSection'
-
-const navLinks = [
-  { label: 'Shop', href: '/', current: true },
-  { label: 'Our story', href: '/our-story' },
-  { label: 'Why Miss cupcake', href: '/why-miss-cupcake' },
-]
-
-const footerNavLinks = [
-  { label: 'Shop', href: '/' },
-  { label: 'Our story', href: '/our-story' },
-  { label: 'Why Miss cupcake', href: '/why-miss-cupcake' },
-]
-
-const legalLinks = [
-  { label: 'Privacy policy', href: '/privacy-policy' },
-  { label: 'Cookies policy', href: '/cookies-policy' },
-  { label: 'Terms of use', href: '/terms-of-use' },
-]
 
 export function Home() {
   const [quantities, setQuantities] = useState<Record<string, number>>(() =>
@@ -46,7 +29,7 @@ export function Home() {
 
   return (
     <div className={styles.page}>
-      <Header navLinks={navLinks} cartCount={cartCount} cartHref="/cart" />
+      <Header navLinks={getNavLinks('/')} cartCount={cartCount} cartHref="/cart" />
       <main>
         <HeroSection />
         <SimpleLifeSection />
@@ -55,15 +38,7 @@ export function Home() {
       </main>
       <Band color="purple" wave flip className={styles.footerBand}>
         <Container className={styles.footerWrap}>
-          <Footer
-            brand={['Miss', 'cupcake']}
-            navLinks={footerNavLinks}
-            newsletterTitle="Suger up your Inbox"
-            emailLabel="Email address"
-            submitLabel="send"
-            legalLinks={legalLinks}
-            copyright="Miss cupcakes 2020"
-          />
+          <Footer {...footerText} navLinks={footerNavLinks} legalLinks={legalLinks} />
         </Container>
       </Band>
     </div>

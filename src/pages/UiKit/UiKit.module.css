@@ -47,6 +47,11 @@
   gap: var(--space-16);
 }
 
+.mapDemo {
+  flex: 1 1 100%;
+  color: var(--color-surface); /* the map link inherits its color from the band it sits on */
+}
+
 .onPurple {
   max-width: 100%;
   display: flex;

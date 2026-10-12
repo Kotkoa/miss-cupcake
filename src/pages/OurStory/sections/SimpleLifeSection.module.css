@@ -1,0 +1,135 @@
+/* Wave above the cream band: 74 / 147 / 150px high (peak to trough, measured). */
+.band {
+  --wave-height: 74px;
+}
+
+/* Mobile (148:124): band top 1691, title top 1790, image 51px below the CTA, band end 2345. */
+.simple {
+  padding-top: 99px;
+}
+
+.content {
+  position: relative;
+}
+
+.title {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+}
+
+.lead {
+  max-width: 334px;
+  margin-top: 23px; /* Figma: two title lines end at 1920, text top 1943. */
+  text-align: justify;
+}
+
+.cta {
+  margin-top: var(--space-40);
+  width: 206px; /* Figma CTA width. */
+}
+
+.picture {
+  display: block;
+  margin-top: 51px; /* Figma: CTA bottom 2104, image top 2155. */
+  margin-bottom: -133px; /* Figma: the image hangs 133px into the purple band (image bottom 2478, band 2345). */
+  margin-left: 131px; /* Figma: image starts at x = 149, container at 18. */
+  max-width: calc(100% - 131px); /* shrinks on 320px screens */
+}
+
+.image {
+  display: block;
+  width: 186px;
+  height: auto;
+}
+
+.desktopImages {
+  display: none;
+}
+
+/* Tablet (148:75): band top 1804, image top 1956, band end 2663. Text column on the left,
+   one 283 x 699 image on the right. */
+@media (min-width: 960px) {
+  .band {
+    --wave-height: 147px;
+  }
+
+  .simple {
+    padding-top: 152px;
+  }
+
+  .content {
+    min-height: 707px; /* Figma: band height 859 minus the padding. */
+  }
+
+  .text {
+    padding-top: 83px; /* Figma: title top 2039, image top 1956. */
+  }
+
+  .title {
+    max-width: 510px;
+    font-size: 90px; /* Figma Tablet: 90 / 95, not the Tablet h1 size of 70 (single use, see tokens.css). */
+    line-height: 1.055;
+  }
+
+  .lead {
+    max-width: 519px;
+    margin-top: 30px; /* Figma: title bottom 2229, text top 2259. */
+    text-align: left;
+  }
+
+  .picture {
+    position: absolute;
+    top: 0;
+    right: 52px; /* Figma: image right edge 868, content ends at 920. */
+    margin: 0;
+    max-width: none;
+  }
+
+  .image {
+    width: 283px;
+    height: 699px;
+  }
+}
+
+/* Desktop (148:27): band top 1700, small image top 2419, band end 3010. Two separate images. */
+@media (min-width: 1440px) {
+  .band {
+    --wave-height: 150px;
+  }
+
+  .simple {
+    padding-top: 719px; /* Figma: small image top 2419; the video above hangs into this space. */
+  }
+
+  .content {
+    min-height: 591px; /* Figma: band height 1310 minus the padding; the big image hangs 117px into the purple band. */
+  }
+
+  .text {
+    padding-top: 25px; /* Figma: title top 2444. */
+  }
+
+  .picture {
+    display: none;
+  }
+
+  .desktopImages {
+    display: block;
+  }
+
+  .desktopSmall {
+    position: absolute;
+    top: 0;
+    left: 692px; /* Figma: x = 801, content starts at 109. */
+    width: 189px;
+    height: 194px;
+  }
+
+  .desktopMain {
+    position: absolute;
+    top: 172px; /* Figma: y = 2591. */
+    left: 765px; /* Figma: x = 874. */
+    width: 353px;
+    height: 536px;
+  }
+}

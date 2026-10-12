@@ -33,12 +33,15 @@
   content: '';
   position: absolute;
   inset-inline: 0;
-  bottom: 100%;
+  /* The layer reaches 3px into the band; the SVG is solid to ~2px below the band top and has a
+     transparent last row. A band at a fractional y would otherwise show a hairline: two anti-aliased
+     edges at the same spot do not add up to full coverage. */
+  bottom: calc(100% - 3px);
   z-index: 0;
-  height: var(--wave-height, 110px);
+  height: calc(var(--wave-height, 110px) + 3px);
   background-color: var(--band-color);
   pointer-events: none;
-  /* One 1440 x 110 shape, scaled to --wave-height and tiled: its ends meet at the same height,
+  /* One 1440 x 111 shape, scaled to --wave-height and tiled: its ends meet at the same height,
      so wide screens repeat the wave instead of stretching it. */
   --wave-width: calc(var(--wave-height, 110px) * 1440 / 110);
   -webkit-mask: url('../../assets/waves/wave.svg') center bottom / var(--wave-width) 100% repeat-x;

@@ -5,8 +5,10 @@ import { Button } from '../../components/Button/Button'
 import { Footer } from '../../components/Footer/Footer'
 import { Header } from '../../components/Header/Header'
 import { Input } from '../../components/Input/Input'
+import { MapFacade } from '../../components/MapFacade/MapFacade'
 import { ProductCard } from '../../components/ProductCard/ProductCard'
 import { QuantityStepper } from '../../components/QuantityStepper/QuantityStepper'
+import { storeMap } from '../../data/store'
 import styles from './UiKit.module.css'
 
 function Block({ title, nodeId, children }: { title: string; nodeId: string; children: ReactNode }) {
@@ -125,6 +127,12 @@ export function UiKit() {
           addToCartLabel="add to cart"
           onAddToCart={() => {}}
         />
+      </Block>
+
+      <Block title="MapFacade" nodeId="148:301">
+        <div className={styles.onPurple}>
+          <MapFacade className={styles.mapDemo} {...storeMap} />
+        </div>
       </Block>
 
       <Block title="Footer" nodeId="940:8">

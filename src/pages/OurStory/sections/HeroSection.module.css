@@ -1,0 +1,102 @@
+/* Cream is the page color, so this band has no wave. It ends where the purple band's wave bottoms
+   out: Figma y = 790 / 896 / 750 (header is 47 / 64 / 64 high). */
+.hero {
+  padding-top: 81px; /* Figma: title top 128. */
+}
+
+.content {
+  position: relative;
+}
+
+.title {
+  max-width: 300px; /* Figma text box 291: wraps to "once upon / a time..". */
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+}
+
+.lead {
+  max-width: 334px;
+  margin-top: 28px; /* Figma: title bottom 254, text top 282. */
+  text-align: justify;
+}
+
+.picture {
+  display: block;
+  margin-top: 51px; /* Figma: text bottom 440, image top 490. */
+  margin-bottom: -40px; /* Figma: the image hangs 40px into the purple band (image bottom 830, band 790). */
+  margin-left: 81px; /* Figma: image starts at x = 99, container at 18. */
+  max-width: calc(100% - 81px); /* shrinks on 320px screens */
+}
+
+.image {
+  display: block;
+  width: 248px;
+  height: auto; /* keeps the ratio when the picture shrinks */
+}
+
+/* Tablet (148:75): text at x = 40, image 375 x 515 at the right. */
+@media (min-width: 960px) {
+  .hero {
+    padding-top: 154px; /* Figma: title top 218. */
+  }
+
+  .content {
+    min-height: 678px; /* Figma: band end 896 minus the header and padding. */
+  }
+
+  .title {
+    max-width: 485px;
+    font-size: var(--font-size-display);
+    line-height: var(--line-height-display);
+  }
+
+  .lead {
+    max-width: 408px;
+    margin-top: var(--space-32); /* Figma: title bottom 428, text top 460. */
+  }
+
+  .picture {
+    position: absolute;
+    top: 125px; /* Figma: image top 343, title top 218. */
+    right: 21px; /* Figma: image right edge 899, content ends at 920. */
+    margin: 0;
+    max-width: none;
+  }
+
+  .image {
+    width: 375px;
+    height: 515px;
+  }
+}
+
+/* Desktop (148:27): text at x = 109, image 494 x 679. */
+@media (min-width: 1440px) {
+  .hero {
+    padding-top: 118px; /* Figma: title top 182. */
+  }
+
+  .content {
+    min-height: 568px;
+  }
+
+  .title {
+    max-width: 630px;
+  }
+
+  .lead {
+    max-width: 519px;
+    margin-top: 41px; /* Figma: title bottom 436, text top 477. */
+    line-height: 24px; /* Figma Our Story subtitle on Desktop is Lato 18/24 (single use, see tokens.css). */
+    text-align: left;
+  }
+
+  .picture {
+    top: 77px; /* Figma: image top 259, title top 182. */
+    right: 3px; /* Figma: image right edge 1328, content ends at 1331. */
+  }
+
+  .image {
+    width: 494px;
+    height: 679px;
+  }
+}
