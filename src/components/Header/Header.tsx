@@ -21,18 +21,19 @@ type HeaderProps = {
   /** `id` of the panel the cart button controls. */
   cartPanelId: string
   cartButtonRef?: Ref<HTMLButtonElement>
+  headerRef?: Ref<HTMLElement>
   /** The open panel; it is placed under the cart button. */
   cartPanel?: ReactNode
 }
 
-export function Header({ navLinks, cartCount, cartOpen, onCartToggle, cartPanelId, cartButtonRef, cartPanel }: HeaderProps) {
+export function Header({ navLinks, cartCount, cartOpen, onCartToggle, cartPanelId, cartButtonRef, headerRef, cartPanel }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const navId = useId()
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const cartLabel = cartCount > 0 ? `Cart, ${cartCount} ${cartCount === 1 ? 'item' : 'items'}` : 'Cart, empty'
 
   return (
-    <header className={styles.header} onKeyDown={(event) => {
+    <header ref={headerRef} className={styles.header} onKeyDown={(event) => {
         if (event.key === 'Escape' && menuOpen) {
           setMenuOpen(false)
           menuButtonRef.current?.focus() // the focused link is about to be hidden

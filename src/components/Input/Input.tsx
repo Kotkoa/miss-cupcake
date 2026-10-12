@@ -1,5 +1,5 @@
 import { useId } from 'react'
-import type { InputHTMLAttributes } from 'react'
+import type { InputHTMLAttributes, Ref } from 'react'
 import styles from './Input.module.css'
 
 type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & {
@@ -11,6 +11,7 @@ type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & {
   tone?: 'default' | 'light'
   /** Keep the label for assistive tech but hide it visually (footer: the label is the placeholder). */
   hideLabel?: boolean
+  ref?: Ref<HTMLInputElement>
 }
 
 export function Input({

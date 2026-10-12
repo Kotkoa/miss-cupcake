@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
@@ -12,7 +13,8 @@ type FooterProps = {
   newsletterTitle: string
   emailLabel: string
   submitLabel: string
-  onSubmit?: (email: string) => void
+  /** Returns the error text to show under the field, or '' when the signup went through (the field is then cleared). */
+  onSubmit: (email: string) => string
   legalLinks: FooterLink[]
   copyright: string
 }
@@ -29,10 +31,15 @@ export function Footer({
 }: FooterProps) {
   const [primaryLink, ...otherLinks] = navLinks
 
+  const [error, setError] = useState('')
+  const emailRef = useRef<HTMLInputElement>(null)
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    const email = new FormData(event.currentTarget).get('email')
-    onSubmit?.(typeof email === 'string' ? email : '')
+    const message = onSubmit(emailRef.current?.value ?? '')
+    setError(message)
+    if (message) emailRef.current?.focus() // the "send" button took focus: put it back in the field
+    else event.currentTarget.reset()
   }
 
   return (
@@ -44,7 +51,7 @@ export function Footer({
           ))}
         </p>
 
-        <form className={styles.newsletter} onSubmit={handleSubmit}>
+        <form className={styles.newsletter} onSubmit={handleSubmit} noValidate>
           <h2 className={styles.title}>{newsletterTitle}</h2>
           <div className={styles.signup}>
             <Input
@@ -54,8 +61,11 @@ export function Footer({
               label={emailLabel}
               placeholder={emailLabel}
               hideLabel
+              ref={emailRef}
               required
               autoComplete="email"
+              error={error}
+              onChange={() => setError('')}
               className={styles.email}
             />
             <Button type="submit" variant="light" className={styles.send}>

@@ -177,6 +177,9 @@
   /* Bold. Mini-cart item price "$3.49" (s4). */
   --font-size-cart-item-price: 13px;
   --line-height-cart-item-price: normal;
+  /* Regular. Message in the "Registered completed" bar (s1 registered). 14/16.8 Mobile, 18/21.6 Tablet and Desktop. */
+  --font-size-notice: 14px;
+  --line-height-notice: 1.2;
   /* Regular. Cart badge count "6", "8" (s1-s6). */
   --font-size-badge: 10px;
   --line-height-badge: normal;
@@ -239,6 +242,7 @@
     --font-size-cart-item-name: 20px;
     --font-size-cart-item-price: 26px;
     --font-size-badge: 14px;
+    --font-size-notice: 18px;
 
     --container-padding-x: 40px;
   }

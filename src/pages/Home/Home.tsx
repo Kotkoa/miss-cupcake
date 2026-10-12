@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Band } from '../../components/Band/Band'
 import { Container } from '../../components/Container/Container'
-import { Footer } from '../../components/Footer/Footer'
+import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
 import { cupcakes } from '../../data/cupcakes'
-import { footerNavLinks, footerText, legalLinks } from '../../data/navigation'
 import { useCartActions } from '../../features/cart'
 import styles from './Home.module.css'
 import { CupcakesSection } from './sections/CupcakesSection'
@@ -62,7 +61,7 @@ export function Home() {
       </main>
       <Band color="purple" wave flip className={styles.footerBand}>
         <Container className={styles.footerWrap}>
-          <Footer {...footerText} navLinks={footerNavLinks} legalLinks={legalLinks} />
+          <SiteFooter />
         </Container>
       </Band>
     </div>

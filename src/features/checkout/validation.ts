@@ -63,6 +63,13 @@ function expiryIsPast(values: CheckoutValues, now: Date): boolean {
     || (Number(year) === now.getFullYear() && Number(month) < now.getMonth() + 1)
 }
 
+/** The one email rule: Payment (through `validateField`) and the footer signup both use it. */
+export function validateEmail(email: string): string {
+  const value = email.trim()
+  if (!value) return 'This field is required.'
+  return emailPattern.test(value) ? '' : 'Enter a valid email address.'
+}
+
 export function validateField(field: FieldName, values: CheckoutValues, now = new Date()): string {
   const value = values[field].trim()
   if (field === 'entrance') {
@@ -82,7 +89,7 @@ export function validateField(field: FieldName, values: CheckoutValues, now = ne
         : 'Enter a name of 2–50 letters, spaces, apostrophes or hyphens.'
     }
     case 'email':
-      return emailPattern.test(value) ? '' : 'Enter a valid email address.'
+      return validateEmail(value)
     case 'passcode':
       return values.passcode.length >= 10 ? '' : 'Passcode must be 10 or more characters.'
     case 'street':

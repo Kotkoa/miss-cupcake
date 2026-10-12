@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { emptyValues, validateField, validateForm } from './validation'
+import { emptyValues, validateEmail, validateField, validateForm } from './validation'
 import type { CheckoutValues, FieldName } from './validation'
 
 const now = new Date(2026, 9, 12, 12)
@@ -176,5 +176,20 @@ describe('expiration date', () => {
     expect(validateField('expiryYear', { ...validValues, expiryMonth: '' }, now)).toBe('')
     expect(validateField('expiryMonth', { ...validValues, expiryYear: 'bad' }, now)).toBe('')
     expect(validateField('expiryYear', { ...validValues, expiryMonth: 'bad' }, now)).toBe('')
+  })
+})
+
+describe('validateEmail', () => {
+  it('is the rule Payment applies to its email field', () => {
+    const inputs = ['', '   ', 'a', 'a@example', ' a@example.com ', 'first.last+tag@sub.example.co.uk', 'a..b@example.com']
+    for (const email of inputs) {
+      expect(validateField('email', { ...validValues, email }, now)).toBe(validateEmail(email))
+    }
+  })
+
+  it('asks for a value first, then for a valid address', () => {
+    expect(validateEmail('  ')).toBe('This field is required.')
+    expect(validateEmail('nope')).toBe('Enter a valid email address.')
+    expect(validateEmail('josh@example.com')).toBe('')
   })
 })

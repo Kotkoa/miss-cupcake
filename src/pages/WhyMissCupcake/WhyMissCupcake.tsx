@@ -1,8 +1,7 @@
 import { Band } from '../../components/Band/Band'
 import { Container } from '../../components/Container/Container'
-import { Footer } from '../../components/Footer/Footer'
+import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
-import { footerNavLinks, footerText, legalLinks } from '../../data/navigation'
 import styles from './WhyMissCupcake.module.css'
 import { FeaturesSection } from './sections/FeaturesSection'
 import { HeroSection } from './sections/HeroSection'
@@ -22,7 +21,7 @@ export function WhyMissCupcake() {
       </main>
       <Band color="purple" wave flip className={styles.footerBand}>
         <Container className={styles.footerWrap}>
-          <Footer {...footerText} navLinks={footerNavLinks} legalLinks={legalLinks} />
+          <SiteFooter />
         </Container>
       </Band>
     </div>

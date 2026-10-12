@@ -4,12 +4,11 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Band } from '../../components/Band/Band'
 import { Button } from '../../components/Button/Button'
 import { Container } from '../../components/Container/Container'
-import { Footer } from '../../components/Footer/Footer'
 import { Input } from '../../components/Input/Input'
 import { PaymentConfirmed } from '../../components/PaymentConfirmed/PaymentConfirmed'
+import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
 import { deliveryOptions } from '../../data/delivery'
-import { footerNavLinks, footerText, legalLinks } from '../../data/navigation'
 import { formatPrice, useCartActions, useCartCount, useCartSubtotal } from '../../features/cart'
 import { clearCheckout, loadCheckout, saveCheckout } from '../../features/checkout/storage'
 import { emptyValues, validateField, validateForm } from '../../features/checkout/validation'
@@ -171,7 +170,7 @@ export function Payment() {
         </Container>
       </main>
       <Band color="purple" wave flip className={styles.footerBand}>
-        <Container className={styles.footerWrap}><Footer {...footerText} navLinks={footerNavLinks} legalLinks={legalLinks} /></Container>
+        <Container className={styles.footerWrap}><SiteFooter /></Container>
       </Band>
       {confirmed ? <PaymentConfirmed onClose={() => navigate('/', { replace: true })} /> : null}
     </div>

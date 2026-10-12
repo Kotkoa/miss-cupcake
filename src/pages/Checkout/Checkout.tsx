@@ -2,9 +2,8 @@ import { useEffect, useRef } from 'react'
 import { Band } from '../../components/Band/Band'
 import { Button } from '../../components/Button/Button'
 import { Container } from '../../components/Container/Container'
-import { Footer } from '../../components/Footer/Footer'
+import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
-import { footerNavLinks, footerText, legalLinks } from '../../data/navigation'
 import { formatPrice, useCartActions, useCartLines, useCartSubtotal } from '../../features/cart'
 import decorDesktop from '../../assets/images/checkout/decor-d.webp'
 import decorMobile from '../../assets/images/checkout/decor-m.webp'
@@ -92,7 +91,7 @@ export function Checkout() {
 
       <Band color="purple" wave flip className={styles.footerBand}>
         <Container className={styles.footerWrap}>
-          <Footer {...footerText} navLinks={footerNavLinks} legalLinks={legalLinks} />
+          <SiteFooter />
         </Container>
       </Band>
     </div>

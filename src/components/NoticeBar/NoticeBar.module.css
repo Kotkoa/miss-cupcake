@@ -1,0 +1,48 @@
+/* Figma "Registered completed" bar (839:201, 964:1, 164:446): 64px high purple, message centred,
+   25px close circle 30px from the right edge (30px is not on the spacing scale). */
+.bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--space-64);
+  /* Equal room on both sides keeps the message centred in the bar, as in the frames. */
+  padding: 0 calc(30px + 25px + var(--space-8));
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* Mobile: 14px on two lines, 213px wide; the break falls between the two sentences. */
+.message {
+  max-width: 213px;
+  font-size: var(--font-size-notice);
+  line-height: var(--line-height-notice);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Figma: cream circle at 20% opacity, a 1px pale-yellow cross inside. */
+.close {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background-color: color-mix(in srgb, var(--color-surface) 20%, transparent);
+}
+
+/* The base focus ring is purple, invisible on this bar. */
+.close:focus-visible {
+  outline-color: var(--color-surface);
+}
+
+@media (min-width: 960px) {
+  .message {
+    max-width: none;
+  }
+}
