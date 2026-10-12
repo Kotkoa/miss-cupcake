@@ -1,0 +1,240 @@
+/*
+ * Design tokens, collected by hand from raw values in the Figma frames
+ * (the file has no variables or styles: get_variable_defs returns {}).
+ * Audited: all 26 screen frames (Desktop 1440 / Tablet 960 / Mobile 375).
+ *
+ * Screens: 1 Homepage (+ Registered completed), 2 Our Story, 3 Why Miss Cupcake,
+ *          4 Why Miss Cupcake - Cart, 5 Check out, 6 Check out - Payment,
+ *          7 Payment confirmed.
+ *
+ * BREAKPOINTS (@media cannot read variables, so repeat these literals):
+ *   tablet  @media (min-width: 960px)    <- Tablet frame width
+ *   desktop @media (min-width: 1440px)   <- Desktop frame width
+ *   Below 960px = Mobile (375 frame). Mobile-first: base values are Mobile.
+ *
+ * MERGED VALUES (raw -> token):
+ *   #FCEFD2 (cart badge ellipses x21, Our Story bg x3), #FEEFD0 (Our Story text x9) -> #FDEFD1  --color-surface
+ *   #FBFACA (Homepage subtitle text x3, stroke x3)                    -> #FBFAC9  --color-on-primary
+ *   #5D3394 (Our Story rectangles x3)                                 -> #642C99  --color-primary
+ *   #FDE0CE (Our Story ellipses x2)                                   -> #FAE0CF  --color-bg
+ *   Overlay on screen 7: #7C59A0@70% (Tablet), #5D3394@70% (Mobile),
+ *     #FAE0CF@70% (Desktop, under a baked screenshot) -> #5D3394 at 100% opacity
+ *     (decision: 70% is not confirmed by the design)  --color-overlay
+ *   Line height "auto" in Figma -> `normal`.
+ *
+ * SINGLE-USE VALUES (deliberately NOT tokenized):
+ *   #F7CDBF   Mobile Our Story decorative ellipse
+ *   #1E1427@50%  Homepage Registered completed: modal scrim rectangle (Desktop)
+ *   Wendy One 16        "My Bag" (Mobile s4)
+ *   Wendy One 36        "$27.92" (Mobile s5; Mobile s6 uses 26 = --font-size-h2)
+ *   Wendy One 90        "The Simple, Sweet…" (Tablet s2; Tablet h1 is 70)
+ *   Lato Regular 15/26  order-confirmed subtitle (Mobile s7)
+ *   Lato Regular 14 UPPER  "done" button label (Mobile s7)
+ *   Lato Regular 18/24  Our Story subtitle (Desktop s2)
+ *   Lato Regular 36/26 and 26/26  "\" glyph (Payment s6, all breakpoints)
+ *
+ * NOT IN THE DESIGN: shadows and effects (no node in any frame has one),
+ *   auto-layout paddings/gaps (all frames are absolutely positioned),
+ *   letter-spacing (always 0). Popup corner rounding is baked into images.
+ *
+ * Off-scale gaps that recur between neighbouring elements (hand-placed
+ * layout, not design values): 10, 34, 38, 46, 90. Not tokenized.
+ */
+
+:root {
+  /* ---------- Colors ---------- */
+
+  /* Brand purple. Text on every screen (~670 nodes), CTA / qty-tab / input
+     fills and borders (Rectangle 1, s1-s7), minus/plus + radio icon strokes,
+     progress bars (s6 Mobile), Our Story banner rectangles (s2). */
+  --color-primary: #642c99;
+
+  /* Cream. Footer text and headings on purple (s1-s6), cart badge ellipse
+     (s1,s3-s6), input and tab fills + 2px strokes (s1-s6), Our Story page bg (s2). */
+  --color-surface: #fdefd1;
+
+  /* Pale yellow. Label on filled CTAs: "add to cart" (s3,s4), "SHOP NOW" (s1,s3,s4),
+     "Place order" (s5,s6), "send", "done" (s7), nav-banner text on Homepage. */
+  --color-on-primary: #fbfac9;
+
+  /* Peach page background: Why Miss Cupcake, Cart, Check out, Payment
+     (s3-s6, all breakpoints), Our Story ellipses (s2), confirmed bg (s7). */
+  --color-bg: #fae0cf;
+
+  /* Pink Homepage background (s1 + Registered completed, all breakpoints). */
+  --color-bg-home: #f7cfda;
+
+  /* Grey placeholders for video and map on Our Story Mobile (Rectangle 27/28). */
+  --color-placeholder: #c4c4c4;
+
+  /* Modal scrim behind the order-confirmed popup (s7, all breakpoints). */
+  --color-overlay: #5d3394;
+
+  /* ---------- Font families ---------- */
+
+  /* Headings, prices, form labels, brand. Weight 400 only. */
+  --font-display: "Wendy One", system-ui, sans-serif;
+  /* Body, nav, buttons, footer. */
+  --font-body: "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Quantity digits in the +/- tabs (s1,s3,s4,s5) and cart counters. Avenir Black.
+     Not a web font: system Avenir on Apple devices, Lato Black elsewhere. */
+  --font-numeric: "Avenir", "Avenir Next", "Lato", system-ui, sans-serif;
+
+  --font-weight-regular: 400; /* Lato Regular; Wendy One is Regular only */
+  --font-weight-bold: 700; /* Lato Bold */
+  --font-weight-black: 900; /* Lato Black (active nav link), Avenir Black (qty) */
+
+  /* ---------- Typography: Mobile base (375) ----------
+     Each role = font-size + line-height. Tablet/Desktop overrides are below. */
+
+  /* Wendy One -------------------------------------------------------- */
+  /* Page title "Check out", "Roasted with happiness", "once upon a time" (s1-s6). */
+  --font-size-display: 60px;
+  --line-height-display: normal;
+  /* Hero title "Make your day a…", "The Simple, Sweet…" (s1,s2). */
+  --font-size-h1: 52px;
+  --line-height-h1: 65px;
+  /* Our Story title "Celebrating the…" (s2). */
+  --font-size-h1-story: 42px;
+  --line-height-h1-story: 52px;
+  /* "Your order is Confirmed!" popup title (s7). */
+  --font-size-confirm-title: 30px;
+  --line-height-confirm-title: 31px;
+  /* Section titles "Delivery type", "To be delivered", "Address", "Payment"
+     (s5,s6); Mobile also uses it for totals such as "$27.92" (s6). */
+  --font-size-h2: 26px;
+  --line-height-h2: normal;
+  /* Product / package names, "Miss cupcake" footer brand (s1-s6). */
+  --font-size-h3: 32px;
+  --line-height-h3: normal;
+  /* Form field labels "First name", "Street", "Credit card No." (s6),
+     Mobile package names "Regular Package" (s6). */
+  --font-size-label: 18px;
+  --line-height-label: normal;
+  /* Package prices "$0", "$9.90", order total (s5,s6). */
+  --font-size-price: 36px;
+  --line-height-price: normal;
+
+  /* Lato ------------------------------------------------------------- */
+  /* Regular. Body copy: descriptions, "Back to My cart", names (s1-s7). */
+  --font-size-body-lg: 18px;
+  --line-height-body-lg: 26px;
+  /* Regular. Product descriptions (s1), card text (s1,s6). */
+  --font-size-body: 16px;
+  --line-height-body: 24px;
+  /* Regular. Validation note "* Most be 10 or…" (s6). */
+  --font-size-body-sm: 14px;
+  --line-height-body-sm: 26px;
+  /* Bold. Footer / intro subtitles "Sugar up your Inbox", "Shop" (s1-s6). */
+  --font-size-subtitle: 18px;
+  --line-height-subtitle: 30px;
+  /* Bold. Why Miss Cupcake paragraphs (s3,s4). */
+  --font-size-body-lg-bold: 18px;
+  --line-height-body-lg-bold: 26px;
+  /* Bold. Footer field label "Email address" (s1-s6). */
+  --font-size-field-label: 16px;
+  --line-height-field-label: 30px;
+  /* Bold. Footer links "Our story", "Privacy policy" (s1-s6). */
+  --font-size-footer-link: 18px;
+  --line-height-footer-link: 48px;
+  /* Bold UPPERCASE. "©" mark in footer (s1-s6). */
+  --font-size-copyright: 18px;
+  --line-height-copyright: normal;
+  /* Regular UPPERCASE. Button labels "send", "Place order", "add to cart" (s1-s7).
+     "SHOP NOW" (s1,s3,s4) is Regular 16 in original case. */
+  --font-size-button: 16px;
+  --line-height-button: normal;
+  /* Regular. Header links "Shop", "Our story", "Why Miss cupcake" (Tablet/Desktop). */
+  --font-size-nav: 18px;
+  --line-height-nav: normal;
+  /* Bold. "Total to pay" label (s5,s6). */
+  --font-size-total-label: 20px;
+  --line-height-total-label: 26px;
+  /* Avenir Black UPPERCASE. Quantity digit between − and + (s1,s3,s4,s5). */
+  --font-size-qty: 20px;
+  --line-height-qty: normal;
+  /* Bold. Mini-cart item name "Carrot x 1" (s4). */
+  --font-size-cart-item-name: 10px;
+  --line-height-cart-item-name: normal;
+  /* Bold. Mini-cart item price "$3.49" (s4). */
+  --font-size-cart-item-price: 13px;
+  --line-height-cart-item-price: normal;
+  /* Regular. Cart badge count "6", "8" (s1-s6). */
+  --font-size-badge: 10px;
+  --line-height-badge: normal;
+  /* Regular UPPERCASE. Mini-cart buttons "Check out", "view cart" (s4, Mobile only). */
+  --font-size-micro: 8px;
+  --line-height-micro: normal;
+
+  /* ---------- Spacing scale ----------
+     Every step recurs as a gap between neighbouring elements on at least
+     one breakpoint (measured over all frames, +-1px). */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
+  --space-96: 96px;
+  --space-120: 120px;
+
+  /* ---------- Radii ---------- */
+
+  /* CTAs, qty tabs, inputs, cards, image masks (302 nodes, s1-s7). */
+  --radius-md: 8px;
+  /* Progress-bar segments, 4px high (s6 Mobile). Figma says 10px = fully rounded. */
+  --radius-pill: 999px;
+
+  /* ---------- Borders ---------- */
+
+  /* Input outlines (s6). */
+  --border-width-sm: 1px;
+  /* CTA / qty-tab outlines, minus/plus icon strokes (s1-s6). */
+  --border-width-md: 2px;
+  /* Icon strokes of 1.5px (cart, radio, arrows) live inside the SVG assets. */
+
+  /* ---------- Layout: Mobile base (375) ---------- */
+
+  /* Side padding: Mobile content starts at x=20 (335 wide footer, CTAs). */
+  --container-padding-x: 20px;
+  /* Mobile and Tablet content is fluid. */
+  --container-max-width: none;
+}
+
+/* Tablet frame (960). Side padding 40: left edge of 32 blocks at x=40. */
+@media (min-width: 960px) {
+  :root {
+    --font-size-display: 100px;
+    --font-size-h1: 70px;
+    --line-height-h1: normal;
+    --font-size-h1-story: 70px;
+    --line-height-h1-story: normal;
+    --font-size-confirm-title: 60px;
+    --line-height-confirm-title: 70px;
+    --font-size-h2: 48px;
+    --font-size-label: 24px;
+    --font-size-cart-item-name: 20px;
+    --font-size-cart-item-price: 26px;
+    --font-size-badge: 14px;
+
+    --container-padding-x: 40px;
+  }
+}
+
+/* Desktop frame (1440). Side padding 121: left edge of hero and footer
+   (footer 121-1294, 9 blocks start at x=121). */
+@media (min-width: 1440px) {
+  :root {
+    --font-size-display: 120px;
+    --font-size-h1: 90px;
+    --font-size-h1-story: 90px;
+
+    --container-padding-x: 121px;
+    --container-max-width: 1440px;
+  }
+}

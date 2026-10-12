@@ -33,10 +33,9 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 ### 1. Setup (see [tasks/01-setup.md](tasks/01-setup.md))
 - [x] Create project: `yarn create vite . --template react-ts`, add `react-router-dom`
 - [x] Add the Figma link to this file
-- [ ] Decide split: you write the CSS, Claude reviews against the design
 
 ### 2. Styles foundation
-- [ ] Extract tokens from Figma into `src/styles/tokens.css`
+- [ ] Extract tokens from Figma into `src/styles/tokens.css` (see [tasks/02-tokens.md](tasks/02-tokens.md))
 - [ ] Add reset and global typography
 - [ ] Define breakpoints from the Tablet/Desktop frames
 
