@@ -1,3 +1,5 @@
+/* Figma 31:846: 300×371 at y20; 30:235 / 9:917: 545×674 at y36 / y64.
+   Off-scale sizes below come from the popup, artwork and text bounds in those frames. */
 .dialog {
   position: fixed;
   inset: var(--space-20) 0 auto;

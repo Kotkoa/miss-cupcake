@@ -1,4 +1,4 @@
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode, Ref } from 'react'
 import styles from './Button.module.css'
 
 type ButtonVariant = 'filled' | 'light' | 'text'
@@ -11,7 +11,7 @@ type CommonProps = {
 }
 
 type ButtonAsButton = CommonProps &
-  Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof CommonProps> & { href?: undefined }
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof CommonProps> & { href?: undefined; ref?: Ref<HTMLButtonElement> }
 
 type ButtonAsLink = CommonProps &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof CommonProps> & { href: string }
@@ -26,13 +26,13 @@ export function Button(props: ButtonProps) {
 
   if (rest.href !== undefined) {
     return (
-      <a {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)} className={classes}>
+      <a {...rest} className={classes}>
         {children}
       </a>
     )
   }
 
-  const { type = 'button', ...buttonRest } = rest as ButtonHTMLAttributes<HTMLButtonElement>
+  const { type = 'button', ...buttonRest } = rest
   return (
     <button {...buttonRest} type={type} className={classes}>
       {children}

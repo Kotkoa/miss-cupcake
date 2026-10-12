@@ -11,6 +11,7 @@ type PaymentConfirmedProps = {
 
 export function PaymentConfirmed({ onClose }: PaymentConfirmedProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
+  const doneRef = useRef<HTMLButtonElement>(null)
   const titleId = useId()
   const descriptionId = useId()
 
@@ -23,15 +24,12 @@ export function PaymentConfirmed({ onClose }: PaymentConfirmedProps) {
     const previousPriority = bodyStyle.getPropertyPriority('overflow')
     bodyStyle.setProperty('overflow', 'hidden')
     dialog.showModal()
-    dialog.querySelector<HTMLButtonElement>('[data-confirmation-done]')?.focus()
+    // React autoFocus runs while the dialog is hidden; focus only after entering modal mode.
+    doneRef.current?.focus()
 
     return () => {
       dialog.close()
-      if (previousOverflow) {
-        bodyStyle.setProperty('overflow', previousOverflow, previousPriority)
-      } else {
-        bodyStyle.removeProperty('overflow')
-      }
+      bodyStyle.setProperty('overflow', previousOverflow, previousPriority)
     }
   }, [])
 
@@ -53,7 +51,7 @@ export function PaymentConfirmed({ onClose }: PaymentConfirmedProps) {
         <div className={styles.content}>
           <h2 id={titleId} className={styles.title}>Your order is Confirmed!</h2>
           <p id={descriptionId} className={styles.description}>Your order will be delivered within an hour.</p>
-          <Button autoFocus data-confirmation-done className={styles.done} onClick={onClose}>Done</Button>
+          <Button ref={doneRef} className={styles.done} onClick={onClose}>Done</Button>
         </div>
         <Band color="pink" wave className={styles.illustrationBand} aria-hidden="true">
           <img src={confirmedImage} alt="" width={229} height={229} className={styles.illustration} />
