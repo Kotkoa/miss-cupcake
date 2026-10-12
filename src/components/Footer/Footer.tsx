@@ -15,6 +15,8 @@ type FooterProps = {
   submitLabel: string
   /** Returns the error text to show under the field, or '' when the signup went through (the field is then cleared). */
   onSubmit: (email: string) => string
+  /** The email rule, run on blur and, once an error has shown, on every change. Returns the error text or ''. */
+  validate: (email: string) => string
   legalLinks: FooterLink[]
   copyright: string
 }
@@ -26,6 +28,7 @@ export function Footer({
   emailLabel,
   submitLabel,
   onSubmit,
+  validate,
   legalLinks,
   copyright,
 }: FooterProps) {
@@ -33,13 +36,26 @@ export function Footer({
 
   const [error, setError] = useState('')
   const emailRef = useRef<HTMLInputElement>(null)
+  // Once the field has shown an error it is checked on every change, also after the error went away.
+  const errorShown = useRef(false)
+
+  function showError(message: string) {
+    setError(message)
+    if (message) errorShown.current = true
+  }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const message = onSubmit(emailRef.current?.value ?? '')
-    setError(message)
-    if (message) emailRef.current?.focus() // the "send" button took focus: put it back in the field
-    else event.currentTarget.reset()
+    showError(message)
+    if (message) {
+      emailRef.current?.focus() // the "send" button took focus: put it back in the field
+      return
+    }
+    errorShown.current = false
+    // Blur first: leaving an empty field later would otherwise validate it and flag the signup that just worked.
+    emailRef.current?.blur()
+    event.currentTarget.reset()
   }
 
   return (
@@ -65,7 +81,10 @@ export function Footer({
               required
               autoComplete="email"
               error={error}
-              onChange={() => setError('')}
+              onChange={(event) => {
+                if (errorShown.current) showError(validate(event.currentTarget.value))
+              }}
+              onBlur={(event) => showError(validate(event.currentTarget.value))}
               className={styles.email}
             />
             <Button type="submit" variant="light" className={styles.send}>

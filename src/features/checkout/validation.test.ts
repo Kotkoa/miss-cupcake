@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { emptyValues, validateEmail, validateField, validateForm } from './validation'
+import { attentionMessage, emptyValues, revalidateChanged, validateEmail, validateField, validateForm } from './validation'
 import type { CheckoutValues, FieldName } from './validation'
 
 const now = new Date(2026, 9, 12, 12)
@@ -188,8 +188,59 @@ describe('validateEmail', () => {
   })
 
   it('asks for a value first, then for a valid address', () => {
-    expect(validateEmail('  ')).toBe('This field is required.')
-    expect(validateEmail('nope')).toBe('Enter a valid email address.')
+    expect(validateEmail('  ')).toBe('Enter your email address.')
+    expect(validateEmail('nope')).toBe('Enter an email address like name@example.com.')
     expect(validateEmail('josh@example.com')).toBe('')
+  })
+})
+
+describe('error messages', () => {
+  it('tell the visitor what to enter for every empty required field, and only for those', () => {
+    const errors = validateForm(emptyValues, now)
+    expect(Object.keys(errors)).toHaveLength(14)
+    expect(errors.entrance).toBeUndefined()
+    expect(errors.firstName).toBe('Enter your first name.')
+    expect(errors.expiryMonth).toBe('Enter the expiration month (MM).')
+    expect(new Set(Object.values(errors)).size).toBe(14)
+  })
+
+  it('name the allowed range for the expiration year from the current date', () => {
+    expect(validateField('expiryYear', { ...validValues, expiryYear: '2020' }, now)).toBe('Use a year from 2026 to 2041.')
+  })
+})
+
+describe('revalidateChanged', () => {
+  const shown = new Set<FieldName>(['email', 'expiryMonth'])
+
+  it('clears the error of a field that showed one as soon as its value is fixed', () => {
+    const errors = { email: 'Enter an email address like name@example.com.' }
+    expect(revalidateChanged(errors, shown, 'email', { ...validValues, email: 'a@example.com' }, now).email).toBe('')
+  })
+
+  it('keeps checking a shown field on every change, also when it turns invalid again', () => {
+    const next = revalidateChanged({ email: '' }, shown, 'email', { ...validValues, email: 'a@' }, now)
+    expect(next.email).toBe('Enter an email address like name@example.com.')
+  })
+
+  it('stays quiet for a field that never showed an error', () => {
+    const errors = {}
+    expect(revalidateChanged(errors, shown, 'city', { ...validValues, city: '' }, now)).toEqual({})
+    expect(revalidateChanged(errors, shown, 'phone', { ...validValues, phone: 'x' }, now)).toEqual({})
+  })
+
+  it('checks the expiration month and year together, but only the one that showed an error', () => {
+    const errors = { expiryMonth: 'Use a date that is not in the past.' }
+    const fixed = revalidateChanged(errors, shown, 'expiryYear', { ...validValues, expiryMonth: '10', expiryYear: '2026' }, now)
+    expect(fixed.expiryMonth).toBe('')
+    expect(fixed.expiryYear).toBeUndefined()
+  })
+})
+
+describe('attentionMessage', () => {
+  it('counts the fields with an error', () => {
+    expect(attentionMessage({})).toBe('')
+    expect(attentionMessage({ email: '', cvv: '' })).toBe('')
+    expect(attentionMessage({ email: 'x', cvv: '' })).toBe('1 field needs attention')
+    expect(attentionMessage({ email: 'x', cvv: 'y', city: 'z' })).toBe('3 fields need attention')
   })
 })

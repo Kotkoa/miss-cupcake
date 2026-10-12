@@ -110,6 +110,12 @@
   /* Pressed button: moves down by this much. */
   --press-offset: 1px;
 
+  /* Error text, field outline and icon. Not drawn in Figma. No single color reaches 4.5:1 on both a light
+     and the purple surface, so there is one per surface (like the focus ring): --color-error on cream /
+     peach / pink (6.4 / 5.8 / 5.2), --color-error-on-dark on the purple band and bar (5.2). */
+  --color-error: #b00020;
+  --color-error-on-dark: #ffb4ab;
+
   /* Disabled and aria-disabled controls. */
   --opacity-disabled: 0.5;
 

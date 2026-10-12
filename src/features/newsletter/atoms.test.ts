@@ -16,9 +16,9 @@ describe('newsletter signup', () => {
   it('rejects an invalid email with the shared rule: no notice, nothing stored', () => {
     const data = stubLocalStorage()
     const store = createStore()
-    expect(store.set(subscribeAtom, '')).toBe('This field is required.')
+    expect(store.set(subscribeAtom, '')).toBe('Enter your email address.')
     for (const email of ['nope', 'a@example']) {
-      expect(store.set(subscribeAtom, email)).toBe('Enter a valid email address.')
+      expect(store.set(subscribeAtom, email)).toBe('Enter an email address like name@example.com.')
       expect(store.set(subscribeAtom, email)).toBe(validateEmail(email))
     }
     expect(store.get(newsletterNoticeAtom)).toBe(false)

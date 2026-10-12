@@ -67,7 +67,7 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [ ] Clean-up from the 5.x code review ([tasks/06.0-review-cleanup.md](tasks/06.0-review-cleanup.md))
 - [x] Registered completed state: newsletter banner ([tasks/06.1-registered-banner.md](tasks/06.1-registered-banner.md))
 - [x] Hover and focus states ([tasks/06.2-hover-focus.md](tasks/06.2-hover-focus.md))
-- [ ] Form errors ([tasks/06.3-form-errors.md](tasks/06.3-form-errors.md))
+- [x] Form errors ([tasks/06.3-form-errors.md](tasks/06.3-form-errors.md))
 - [ ] Accessibility check ([tasks/06.4-accessibility.md](tasks/06.4-accessibility.md))
 - [ ] Lighthouse check ([tasks/06.5-lighthouse.md](tasks/06.5-lighthouse.md))
 

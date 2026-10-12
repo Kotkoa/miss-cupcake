@@ -4,8 +4,9 @@ import styles from './Input.module.css'
 
 type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & {
   label: string
-  /** Error message; sets aria-invalid and is linked with aria-describedby. */
+  /** Error message; sets aria-invalid and is linked with aria-describedby, with an icon so color is not the only signal. */
   error?: string
+  /** Always-visible note ("* Must be 10 or more characters"). While there is an error it is hidden but still announced. */
   hint?: string
   /** default: purple outline (checkout form). light: cream outline on a purple surface (footer signup). */
   tone?: 'default' | 'light'
@@ -26,7 +27,7 @@ export function Input({
   const id = useId()
   const errorId = `${id}-error`
   const hintId = `${id}-hint`
-  const describedBy = [inputProps['aria-describedby'], hint && hintId, error && errorId].filter(Boolean).join(' ') || undefined
+  const describedBy = [inputProps['aria-describedby'], error && errorId, hint && hintId].filter(Boolean).join(' ') || undefined
 
   return (
     <div className={[styles.field, styles[tone], className].filter(Boolean).join(' ')}>
@@ -40,9 +41,10 @@ export function Input({
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy}
       />
-      {hint ? <p id={hintId} className={styles.error}>{hint}</p> : null}
+      {hint ? <p id={hintId} className={error ? styles.visuallyHidden : styles.note}>{hint}</p> : null}
       {error ? (
-        <p id={errorId} className={styles.error}>
+        <p id={errorId} className={`${styles.note} ${styles.error}`}>
+          <span className={styles.errorIcon} aria-hidden="true" />
           {error}
         </p>
       ) : null}

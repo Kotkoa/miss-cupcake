@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useReducer, useRef, useState } from 'react'
 import type { FormEvent, InputHTMLAttributes } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Band } from '../../components/Band/Band'
@@ -11,7 +11,8 @@ import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
 import { deliveryOptions } from '../../data/delivery'
 import { formatPrice, useCartActions, useCartCount, useCartSubtotal } from '../../features/cart'
 import { clearCheckout, loadCheckout, saveCheckout } from '../../features/checkout/storage'
-import { emptyValues, validateField, validateForm } from '../../features/checkout/validation'
+import { errorReducer, initialErrorState } from '../../features/checkout/errorState'
+import { attentionMessage, emptyValues, validateForm } from '../../features/checkout/validation'
 import type { FieldName } from '../../features/checkout/validation'
 import { formatCardNumber } from './cardNumber'
 import decorDesktop from '../../assets/images/payment/decor-d.webp'
@@ -26,7 +27,7 @@ export function Payment() {
   const { clear } = useCartActions()
   const navigate = useNavigate()
   const [draft, setDraft] = useState(loadCheckout)
-  const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({})
+  const [{ errors, attention }, dispatchErrors] = useReducer(errorReducer, initialErrorState)
   const [confirmed, setConfirmed] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
   const cardSelection = useRef<{ start: number; end: number } | null>(null)
@@ -49,18 +50,12 @@ export function Payment() {
     cardSelection.current = cardNumber?.selection ?? null
     const next = { ...draft, values: { ...draft.values, [name]: formatted } }
     setDraft(next)
+    dispatchErrors({ type: 'change', name, values: next.values })
     saveCheckout(next.values, next.delivery)
   }
 
   function blurField(name: FieldName) {
-    setErrors((previous) => {
-      const next = { ...previous, [name]: validateField(name, draft.values) }
-      if (name === 'expiryMonth' || name === 'expiryYear') {
-        next.expiryMonth = validateField('expiryMonth', draft.values)
-        next.expiryYear = validateField('expiryYear', draft.values)
-      }
-      return next
-    })
+    dispatchErrors({ type: 'blur', name, values: draft.values })
   }
 
   function field(name: FieldName, label: string, autoComplete: string, props: InputHTMLAttributes<HTMLInputElement> & { hint?: string } = {}) {
@@ -72,12 +67,13 @@ export function Payment() {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const nextErrors = validateForm(draft.values)
-    setErrors(nextErrors)
+    dispatchErrors({ type: 'submit', values: draft.values })
     const firstInvalid = Object.keys(nextErrors)[0]
     if (firstInvalid) {
       formRef.current?.querySelector<HTMLInputElement>(`[name="${firstInvalid}"]`)?.focus()
       return
     }
+    dispatchErrors({ type: 'reset' })
     setConfirmed(true)
     clear()
     clearCheckout()
@@ -163,6 +159,10 @@ export function Payment() {
             <div className={styles.summary}>
               <div className={styles.summaryInner}>
                 <span>Total to pay</span><output aria-live="polite">{formatPrice(total)}</output>
+                {/* The visible count follows the fixes; the live region says it once, on submit, and not again as fields are fixed. */}
+                <p className={styles.attention} aria-hidden="true">{attention ? attentionMessage(errors) : ''}</p>
+                {/* Same text on a second submit is not announced again; the focus move to the first invalid field answers it. */}
+                <p role="status" className={styles.srOnly}>{attention}</p>
                 <Button type="submit" fullWidth className={styles.placeOrder}>Place order</Button>
               </div>
             </div>

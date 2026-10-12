@@ -38,6 +38,10 @@
 .cvv { max-width: 150px; /* Figma Mobile CVV is narrower than the other fields. */ }
 .summary { margin-top: 61px; }
 .placeOrder { grid-column: 1 / -1; min-height: 59px; margin-top: 77px; }
+/* The count above the button: no height until it has text. The announcement is the .srOnly status next to it. */
+.attention { grid-column: 1 / -1; margin-top: var(--space-24); color: var(--color-error); font-weight: var(--font-weight-bold); }
+.attention:empty { margin-top: 0; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .footerBand { --wave-height: 66px; }
 .footerWrap { padding-top: 47px; padding-bottom: 68px; }
 

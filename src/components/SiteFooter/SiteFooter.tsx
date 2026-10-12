@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { footerNavLinks, footerText, legalLinks } from '../../data/navigation'
+import { validateEmail } from '../../features/checkout/validation'
 import { useNewsletterSignup } from '../../features/newsletter'
 import { Footer } from '../Footer/Footer'
 
@@ -18,5 +19,5 @@ export function SiteFooter() {
     return ''
   }
 
-  return <Footer {...footerText} navLinks={footerNavLinks} legalLinks={legalLinks} onSubmit={handleSubmit} />
+  return <Footer {...footerText} navLinks={footerNavLinks} legalLinks={legalLinks} onSubmit={handleSubmit} validate={validateEmail} />
 }

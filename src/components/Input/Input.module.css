@@ -33,6 +33,7 @@
 /* Checkout form field. Figma: Mobile 334 x 39 with 1px outline; Tablet/Desktop 417-449 x 60 with 2px outline.
    Label to field: 24px on Mobile, 20px on Tablet/Desktop. */
 .default {
+  --error-color: var(--color-error);
   gap: var(--space-24);
 }
 
@@ -59,6 +60,7 @@
 
 /* Footer signup field: Figma 394 x 43, 2px cream outline, Lato Bold 16. */
 .light {
+  --error-color: var(--color-error-on-dark);
   color: var(--color-surface);
 }
 
@@ -72,13 +74,32 @@
   line-height: var(--line-height-field-label);
 }
 
-/* The error note is drawn in Figma (screen 6), the field error state is not: an extra inner ring
-   in the text color, visible at every breakpoint and tone, plus the note text. No new colors. */
+/* Hint and error share the note position drawn in Figma (screen 6, under Passcode). The invalid field is
+   outlined in the error color (border plus an inner ring, so it also reads at the 1px Mobile border). */
 .control[aria-invalid='true'] {
-  box-shadow: inset 0 0 0 var(--border-width-md) currentColor;
+  border-color: var(--error-color);
+  box-shadow: inset 0 0 0 var(--border-width-md) var(--error-color);
 }
 
-.error {
+.note {
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-body-sm);
+}
+
+/* The icon and the bold weight carry the error without color (WCAG 1.4.1). */
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  color: var(--error-color);
+  font-weight: var(--font-weight-bold);
+}
+
+.errorIcon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 5px; /* centres the icon on the first 26px line */
+  background-color: currentColor;
+  mask: url('../../assets/icons/error.svg') center / contain no-repeat;
 }
