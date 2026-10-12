@@ -1,0 +1,22 @@
+/*
+ * Icon buttons (cart, burger, the × buttons, stepper − / +): a soft background on hover, a 1px nudge
+ * when pressed. Add the class next to the component's own: `interaction.iconButton`.
+ * `--hover-halo` grows the background past the box for small targets (0 by default).
+ * The nudge uses `translate`, so it never fights a `transform` the button already has.
+ */
+.iconButton {
+  transition:
+    background-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease;
+}
+
+.iconButton:active:not([aria-disabled='true']) {
+  translate: 0 var(--press-offset);
+}
+
+@media (hover: hover) {
+  .iconButton:hover:not([aria-disabled='true']) {
+    background-color: var(--color-hover-surface);
+    box-shadow: 0 0 0 var(--hover-halo, 0) var(--color-hover-surface);
+  }
+}

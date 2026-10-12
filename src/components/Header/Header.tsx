@@ -3,6 +3,7 @@ import type { ReactNode, Ref } from 'react'
 import cartIcon from '../../assets/icons/cart.svg'
 import cartBadge from '../../assets/icons/cart-badge.svg'
 import menuIcon from '../../assets/icons/menu.svg'
+import interaction from '../../styles/interaction.module.css'
 import styles from './Header.module.css'
 
 export type NavLink = {
@@ -43,7 +44,7 @@ export function Header({ navLinks, cartCount, cartOpen, onCartToggle, cartPanelI
       <button
         ref={menuButtonRef}
         type="button"
-        className={styles.menuButton}
+        className={`${styles.menuButton} ${interaction.iconButton}`}
         aria-label="Menu"
         aria-expanded={menuOpen}
         aria-controls={navId}
@@ -70,7 +71,7 @@ export function Header({ navLinks, cartCount, cartOpen, onCartToggle, cartPanelI
         <button
           ref={cartButtonRef}
           type="button"
-          className={styles.cart}
+          className={`${styles.cart} ${interaction.iconButton}`}
           aria-label={cartLabel}
           aria-haspopup="dialog"
           aria-expanded={cartOpen}

@@ -35,13 +35,23 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
+/* Hover only where a pointer can hover, so touch screens do not keep a link underlined after a tap. */
+@media (hover: hover) {
+  a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
 }
 
+/* Keyboard focus only: a mouse click leaves no ring. The color comes from the surface (--focus-color). */
 :focus-visible {
-  outline: var(--border-width-md) solid var(--color-primary);
-  outline-offset: var(--space-4);
+  outline: var(--focus-width) solid var(--focus-color);
+  outline-offset: var(--focus-offset);
+}
+
+/* Links have no radius of their own; buttons and inputs bring theirs. */
+a:focus-visible {
   border-radius: var(--radius-md);
 }
 

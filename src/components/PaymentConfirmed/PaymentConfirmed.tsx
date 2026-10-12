@@ -3,6 +3,7 @@ import closeIcon from '../../assets/icons/close.svg'
 import confirmedImage from '../../assets/images/payment/confirmed.webp'
 import { Band } from '../Band/Band'
 import { Button } from '../Button/Button'
+import interaction from '../../styles/interaction.module.css'
 import styles from './PaymentConfirmed.module.css'
 
 type PaymentConfirmedProps = {
@@ -45,7 +46,7 @@ export function PaymentConfirmed({ onClose }: PaymentConfirmedProps) {
       }}
     >
       <div className={styles.panel}>
-        <button type="button" className={styles.close} aria-label="Close order confirmation" onClick={onClose}>
+        <button type="button" className={`${styles.close} ${interaction.iconButton}`} aria-label="Close order confirmation" onClick={onClose}>
           <img src={closeIcon} alt="" width={17} height={17} />
         </button>
         <div className={styles.content}>

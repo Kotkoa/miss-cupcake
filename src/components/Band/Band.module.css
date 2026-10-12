@@ -29,6 +29,7 @@
 
 .purple {
   --band-color: var(--color-band-purple);
+  --focus-color: var(--color-focus-on-dark); /* the ring of everything on this band is cream */
 }
 
 /* Content sits above the wave layers (its own and the next band's, which overlaps this band). */

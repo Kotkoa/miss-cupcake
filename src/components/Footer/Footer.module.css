@@ -8,11 +8,6 @@
   font-weight: var(--font-weight-bold);
 }
 
-/* Base focus ring is purple: invisible on the purple footer surface. */
-.footer :focus-visible {
-  outline-color: var(--color-surface);
-}
-
 .top {
   display: flex;
   flex-direction: column;
@@ -44,6 +39,11 @@
 .nav a,
 .bottom a {
   color: inherit;
+}
+
+/* The heading link is a flex item: without this its focus ring would span the whole column. */
+.nav > a {
+  align-self: flex-start;
 }
 
 .newsletter {

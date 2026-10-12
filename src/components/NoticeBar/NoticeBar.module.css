@@ -10,6 +10,7 @@
   padding: 0 calc(30px + 25px + var(--space-8));
   background-color: var(--color-primary);
   color: var(--color-on-primary);
+  --focus-color: var(--color-focus-on-dark); /* purple surface: the ring is cream */
 }
 
 /* Mobile: 14px on two lines, 213px wide; the break falls between the two sentences. */
@@ -24,21 +25,27 @@
 /* Figma: cream circle at 20% opacity, a 1px pale-yellow cross inside. */
 .close {
   position: absolute;
-  top: 50%;
+  inset-block: 0;
   right: 30px;
+  margin-block: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 25px;
   height: 25px;
-  transform: translateY(-50%);
   border-radius: 50%;
   background-color: color-mix(in srgb, var(--color-surface) 20%, transparent);
+  transition: background-color var(--duration-fast) ease;
 }
 
-/* The base focus ring is purple, invisible on this bar. */
-.close:focus-visible {
-  outline-color: var(--color-surface);
+.close:active {
+  translate: 0 var(--press-offset);
+}
+
+@media (hover: hover) {
+  .close:hover {
+    background-color: var(--color-hover-surface-on-dark);
+  }
 }
 
 @media (min-width: 960px) {

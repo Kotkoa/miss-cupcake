@@ -15,17 +15,20 @@
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: opacity 0.15s ease;
+  transition: background-color var(--duration-fast) ease;
 }
 
+/* A link styled as a button never gets the text-link underline. */
 .button:hover {
-  /* Hover is not drawn in Figma; opacity change is the minimal affordance. */
-  opacity: 0.85;
   text-decoration: none;
 }
 
+.button:active:not(:disabled) {
+  translate: 0 var(--press-offset);
+}
+
 .button:disabled {
-  opacity: 0.5; /* Disabled is not drawn in Figma. */
+  opacity: var(--opacity-disabled);
   cursor: not-allowed;
 }
 
@@ -45,9 +48,21 @@
   color: var(--color-primary);
 }
 
-/* The base focus ring is purple (base.css), so the light variant, which sits on purple, uses cream. */
-.light:focus-visible {
-  outline-color: var(--color-surface);
+/* Hover is not drawn in Figma: a fill one step darker, no opacity (it would fade the label too). */
+@media (hover: hover) {
+  .filled:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+  }
+
+  .light:hover:not(:disabled) {
+    background-color: var(--color-surface-hover);
+  }
+
+  .text:hover:not(:disabled) {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
 }
 
 .fullWidth {

@@ -88,6 +88,34 @@
   /* Confirmed popup lower band and exported cupcake artwork (s7): #EBB0CD. */
   --color-confirmed-pink: #ebb0cd;
 
+  /* ---------- Interaction states ----------
+     Not drawn in Figma: one small system for every interactive element (task 6.2). */
+
+  /* Hover of a filled button (purple fill) and of a light button (cream fill on purple): one step darker. */
+  --color-primary-hover: #4e2277;
+  --color-surface-hover: #fce6b6;
+
+  /* Soft background behind an icon button on hover: on light surfaces, and on the purple notice bar. */
+  --color-hover-surface: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  --color-hover-surface-on-dark: color-mix(in srgb, var(--color-surface) 35%, transparent);
+
+  /* Focus ring: purple on every light surface (4.9:1 or better on all bands), cream on purple (7.8:1). */
+  --color-focus: var(--color-primary);
+  --color-focus-on-dark: var(--color-surface);
+  /* What base.css draws. A purple surface (Band, NoticeBar) sets it to --color-focus-on-dark for its content. */
+  --focus-color: var(--color-focus);
+  --focus-width: 2px;
+  --focus-offset: 2px;
+
+  /* Pressed button: moves down by this much. */
+  --press-offset: 1px;
+
+  /* Disabled and aria-disabled controls. */
+  --opacity-disabled: 0.5;
+
+  /* Color and background transitions; 0 under prefers-reduced-motion (see the end of this block). */
+  --duration-fast: 150ms;
+
   /* ---------- Font families ---------- */
 
   /* Headings, prices, form labels, brand. Weight 400 only. */
@@ -258,5 +286,11 @@
 
     --container-padding-x: 121px;
     --container-max-width: 1440px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
   }
 }

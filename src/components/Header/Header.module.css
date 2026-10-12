@@ -8,8 +8,10 @@
 }
 
 .menuButton {
+  --hover-halo: var(--space-8);
   display: flex;
   order: 1;
+  border-radius: 50%;
 }
 
 .cartWrap {
@@ -59,17 +61,12 @@
   font-weight: var(--font-weight-black);
 }
 
-.link:hover,
-.current:hover,
-.cart:hover {
-  text-decoration: none;
-  opacity: 0.7; /* Hover is not drawn in Figma; a fade is the minimal affordance. */
-}
-
 /* Figma cart: Mobile 34.45 x 35, Tablet/Desktop 52 x 44.5 (icon + badge).
    Icon and badge offsets and sizes below are the exported Figma geometry (nodes 940:2, 944:55). */
 .cart {
+  --hover-halo: var(--space-4);
   position: relative;
+  border-radius: 50%;
   display: block;
   width: 34.45px;
   height: 35px;

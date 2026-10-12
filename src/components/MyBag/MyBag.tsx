@@ -3,6 +3,7 @@ import closeIcon from '../../assets/icons/close.svg'
 import { formatPrice } from '../../features/cart'
 import type { CartLine } from '../../features/cart'
 import { Button } from '../Button/Button'
+import interaction from '../../styles/interaction.module.css'
 import styles from './MyBag.module.css'
 
 type MyBagProps = {
@@ -28,7 +29,7 @@ export function MyBag({ id, lines, subtotalCents, onClose, onNavigate, closeRef,
         <h2 id={titleId} className={styles.title}>
           My Bag
         </h2>
-        <button ref={closeRef} type="button" className={styles.close} aria-label="Close My Bag" onClick={onClose}>
+        <button ref={closeRef} type="button" className={`${styles.close} ${interaction.iconButton}`} aria-label="Close My Bag" onClick={onClose}>
           <img src={closeIcon} alt="" width={17} height={17} />
         </button>
       </header>

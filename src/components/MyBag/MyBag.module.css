@@ -29,6 +29,7 @@
 }
 
 .close {
+  --hover-halo: var(--space-4);
   position: absolute;
   top: 21px; /* Figma: icon top 83, card top 62. */
   right: -2px; /* Figma: icon right edge 11px from the card edge, content padding 13. */
@@ -36,6 +37,7 @@
   place-items: center;
   width: 20px; /* the hit area is bigger than the 8px icon */
   height: 20px;
+  border-radius: 50%;
 }
 
 .close img {

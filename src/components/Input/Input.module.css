@@ -72,10 +72,6 @@
   line-height: var(--line-height-field-label);
 }
 
-.light .control:focus-visible {
-  outline-color: var(--color-surface);
-}
-
 /* The error note is drawn in Figma (screen 6), the field error state is not: an extra inner ring
    in the text color, visible at every breakpoint and tone, plus the note text. No new colors. */
 .control[aria-invalid='true'] {

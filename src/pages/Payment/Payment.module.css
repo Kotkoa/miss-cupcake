@@ -12,7 +12,8 @@
 .content legend { padding: 0; }
 .packages { margin-top: 44px; display: grid; gap: 39px; }
 .package { display: grid; grid-template-columns: 16px 1fr auto; column-gap: var(--space-20); cursor: pointer; align-items: center; }
-.package input { appearance: none; width: 16px; height: 16px; background: url('../../assets/icons/radio-empty.svg') center / contain no-repeat; border: 0; margin: 0; }
+.package input { appearance: none; width: 16px; height: 16px; background: url('../../assets/icons/radio-empty.svg') center / contain no-repeat; border: 0; border-radius: 50%; margin: 0; transition: background-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease; }
+@media (hover: hover) { .package:hover input { background-color: var(--color-hover-surface); box-shadow: 0 0 0 var(--space-4) var(--color-hover-surface); } }
 .package input:checked { background-image: url('../../assets/icons/radio-filled.svg'); }
 .packageName, .packagePrice { font-family: var(--font-display); font-size: var(--font-size-label); line-height: var(--line-height-label); }
 .packageDescription { grid-column: 1 / -1; margin-top: 23px; font-size: var(--font-size-body); line-height: var(--line-height-body); }

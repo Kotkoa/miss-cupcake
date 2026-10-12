@@ -12,6 +12,8 @@
   overflow: hidden;
   border-radius: var(--radius-md);
   background-color: var(--color-placeholder); /* shows only while the image loads */
+  /* The map is light even on a purple band: a cream ring would vanish on it. */
+  --focus-color: var(--color-focus);
 }
 
 .image,
@@ -57,7 +59,7 @@
 /* The box clips its content for the rounded corners, so the focus ring is drawn inside it. */
 .frame:focus-visible,
 .attribution:focus-visible {
-  outline-offset: calc(-1 * var(--border-width-md));
+  outline-offset: calc(-1 * var(--focus-width));
 }
 
 .link {
@@ -65,8 +67,4 @@
   color: inherit; /* the page decides: the link sits under the map, on any band */
   font-weight: var(--font-weight-bold);
   text-decoration: underline;
-}
-
-.link:focus-visible {
-  outline-color: currentColor; /* the base ring is purple and would vanish on a purple band */
 }

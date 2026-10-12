@@ -1,5 +1,6 @@
 import minusIcon from '../../assets/icons/minus.svg'
 import plusIcon from '../../assets/icons/plus.svg'
+import interaction from '../../styles/interaction.module.css'
 import styles from './QuantityStepper.module.css'
 
 type QuantityStepperProps = {
@@ -29,7 +30,7 @@ export function QuantityStepper({
     >
       <button
         type="button"
-        className={styles.control}
+        className={`${styles.control} ${interaction.iconButton}`}
         aria-label={`Decrease quantity of ${itemLabel}`}
         aria-disabled={value <= min}
         onClick={() => value > min && onChange(value - 1)}
@@ -41,7 +42,7 @@ export function QuantityStepper({
       </output>
       <button
         type="button"
-        className={styles.control}
+        className={`${styles.control} ${interaction.iconButton}`}
         aria-label={`Increase quantity of ${itemLabel}`}
         aria-disabled={value >= max}
         onClick={() => value < max && onChange(value + 1)}

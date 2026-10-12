@@ -21,13 +21,13 @@
   border-radius: var(--radius-md);
 }
 
-.control:hover:not([aria-disabled='true']) {
-  opacity: 0.6; /* Hover is not drawn in Figma. */
+/* Fade only the icon: opacity on the button would fade its focus ring too (it stays focusable). */
+.control[aria-disabled='true'] {
+  cursor: not-allowed;
 }
 
-.control[aria-disabled='true'] {
-  opacity: 0.35; /* Disabled is not drawn in Figma. */
-  cursor: not-allowed;
+.control[aria-disabled='true'] > img {
+  opacity: var(--opacity-disabled);
 }
 
 .count {

@@ -35,6 +35,12 @@
   place-items: center;
   width: var(--space-40);
   height: var(--space-40);
+  border-radius: 50%;
+}
+
+/* The panel clips at the top edge, where this button sits: draw its ring inside. */
+.close:focus-visible {
+  outline-offset: calc(-1 * var(--focus-width));
 }
 
 .close img {
