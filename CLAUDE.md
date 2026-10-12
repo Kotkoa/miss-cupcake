@@ -47,7 +47,7 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Footer
 - [x] Product card
 
-### 4. Homepage (mobile-first, see [tasks/04-homepage.md](tasks/04-homepage.md)) (see [tasks/04-homepage.md](tasks/04-homepage.md))
+### 4. Homepage (mobile-first, see [tasks/04-homepage.md](tasks/04-homepage.md))
 - [x] Mobile
 - [x] Tablet (`@media`)
 - [x] Desktop (`@media`)
