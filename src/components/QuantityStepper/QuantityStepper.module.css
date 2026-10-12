@@ -21,11 +21,11 @@
   border-radius: var(--radius-md);
 }
 
-.control:hover:not(:disabled) {
+.control:hover:not([aria-disabled='true']) {
   opacity: 0.6; /* Hover is not drawn in Figma. */
 }
 
-.control:disabled {
+.control[aria-disabled='true'] {
   opacity: 0.35; /* Disabled is not drawn in Figma. */
   cursor: not-allowed;
 }

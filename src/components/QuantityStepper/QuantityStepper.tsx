@@ -20,6 +20,7 @@ export function QuantityStepper({
   itemLabel,
   className,
 }: QuantityStepperProps) {
+  // aria-disabled (not `disabled`) keeps keyboard focus on the button when a limit is reached.
   return (
     <div
       className={[styles.stepper, className].filter(Boolean).join(' ')}
@@ -30,8 +31,8 @@ export function QuantityStepper({
         type="button"
         className={styles.control}
         aria-label={`Decrease quantity of ${itemLabel}`}
-        disabled={value <= min}
-        onClick={() => onChange(Math.max(min, value - 1))}
+        aria-disabled={value <= min}
+        onClick={() => value > min && onChange(value - 1)}
       >
         <img src={minusIcon} alt="" width={9} height={2} />
       </button>
@@ -42,8 +43,8 @@ export function QuantityStepper({
         type="button"
         className={styles.control}
         aria-label={`Increase quantity of ${itemLabel}`}
-        disabled={value >= max}
-        onClick={() => onChange(Math.min(max, value + 1))}
+        aria-disabled={value >= max}
+        onClick={() => value < max && onChange(value + 1)}
       >
         <img src={plusIcon} alt="" width={9} height={10} />
       </button>

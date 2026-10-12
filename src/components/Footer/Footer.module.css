@@ -90,7 +90,7 @@
 
 .copyright {
   font-size: var(--font-size-copyright);
-  line-height: var(--line-height-footer-link);
+  line-height: var(--line-height-copyright);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
 }

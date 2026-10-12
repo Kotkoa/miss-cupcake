@@ -1,4 +1,4 @@
-import { useId, useState } from 'react'
+import { useId, useRef, useState } from 'react'
 import cartIcon from '../../assets/icons/cart.svg'
 import cartBadge from '../../assets/icons/cart-badge.svg'
 import menuIcon from '../../assets/icons/menu.svg'
@@ -20,11 +20,19 @@ type HeaderProps = {
 export function Header({ navLinks, cartCount, cartHref }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const navId = useId()
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
   const cartLabel = cartCount > 0 ? `Cart, ${cartCount} ${cartCount === 1 ? 'item' : 'items'}` : 'Cart, empty'
 
   return (
-    <header className={styles.header} onKeyDown={(event) => event.key === 'Escape' && setMenuOpen(false)}>
+    <header className={styles.header} onKeyDown={(event) => {
+        if (event.key === 'Escape' && menuOpen) {
+          setMenuOpen(false)
+          menuButtonRef.current?.focus() // the focused link is about to be hidden
+        }
+      }}
+    >
       <button
+        ref={menuButtonRef}
         type="button"
         className={styles.menuButton}
         aria-label="Menu"

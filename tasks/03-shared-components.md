@@ -72,8 +72,9 @@ Date: 2026-10-12. Widths checked in Chrome (DevTools MCP emulation): 375, 960, 1
 Figma reference: after the MCP call limit was hit, node JSON and PNG renders were read through the Figma REST API (token in `.env.local`, git-ignored). "Compared" below means measured DOM geometry vs Figma node geometry, not pixel overlays.
 
 **Passed**
-- Footer vs Figma (944:54 Mobile, 944:21 Tablet, 940:8 Desktop): Tablet and Desktop within 0-4px for brand, title, field (394 x 43), send (106 x 43), link columns and the © row; Mobile within 2-8px (drift from 52px link pitch vs 51-53px in Figma).
+- Footer vs Figma (944:54 Mobile, 944:21 Tablet, 940:8 Desktop): Tablet and Desktop within 0-4px for brand, title, field (394 x 43), send (106 x 43), link columns and the © row; Mobile was within 2-8px when measured here; the Mobile footer geometry (gaps, send width, button padding) was tuned afterwards, see the Homepage report in `tasks/04-homepage.md` for the later numbers.
 - ProductCard vs 7:278: 336 x 470 exactly; image 223 x 235, name y 281, description y 349, stepper y 427 all match.
+- Button and QuantityStepper vs the CTA and Tab groups inside 7:278 and 940:8: CTA height 43 (width 206 inside the card, 106 for "send"), stepper 100 x 43 with a 2px outline. Compared by size only; the same at all three widths, since neither has breakpoint-specific rules.
 - Input (checkout) vs 148:184 and the Mobile checkout frame: Desktop 449 x 60, 2px outline, label gap 20, text inset 24; Mobile 334 x 39, 1px outline, gap 24.
 - Header: Desktop/Tablet cart 52 x 45 at y 16, links start at x 40 (Figma 39-43), cart ends 40px from the edge (Figma 38); Mobile burger 30 x 18 at x = 20, menu opens and closes (aria-expanded, Escape).
 - Keyboard: every focusable element shows a visible `:focus-visible` outline (cream in the footer, purple elsewhere); Enter and Space on `+` changed the count 1 -> 3; disabled `-` at 0 is skipped by Tab.
@@ -87,7 +88,8 @@ Figma reference: after the MCP call limit was hit, node JSON and PNG renders wer
 - Tablet cart node (944:17) is an 82 x 82 frame with a pink circle behind the icon; the circle has the page background colour and is not rendered.
 - No outlined Button exists in the design (CTAs are purple-filled or cream-filled "send"), so `variant` is `"filled" | "light"`.
 - ProductCard has no price in the design, so none is rendered.
-- Input error state, hover and disabled states are not drawn in Figma: error = thicker outline + note text; hover = opacity 0.85 (Button) / 0.7 (cart, nav links).
+- Input error: Figma draws only the note ("* Most be 10 or more…", screen 6; the demo corrects "Most" to "Must"), not an error state of the field. The field gets an extra inner ring in the text color (visible at every breakpoint and tone) plus the note. Hover and disabled are not drawn either: hover = opacity 0.85 (Button) / 0.7 (cart, nav links), disabled = 0.5.
+- Stepper limits use `aria-disabled` instead of `disabled`, so keyboard focus stays on the button when the count hits the minimum.
 - ProductCard description wraps to 2 lines where Figma shows 3: Fontsource Lato is slightly narrower than Figma's Lato. `min-height` keeps the 3-line height.
 - Cart badge SVG keeps Figma's `#FCEFD2` (merged into `--color-surface` in tokens, but the exported file is untouched).
 - Radio icons (`radio-empty.svg`, `radio-filled.svg`) and `arrow-left.svg` are exported but no shared component uses them yet.

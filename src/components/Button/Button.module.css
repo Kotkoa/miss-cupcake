@@ -39,11 +39,7 @@
   color: var(--color-primary);
 }
 
-/* Default outline is purple: invisible on the purple fill, so offset it outward. */
-.filled:focus-visible {
-  outline-color: var(--color-primary);
-}
-
+/* The base focus ring is purple (base.css), so the light variant, which sits on purple, uses cream. */
 .light:focus-visible {
   outline-color: var(--color-surface);
 }

@@ -36,6 +36,7 @@ const navLinks = [
 ]
 
 export function UiKit() {
+  const [zero, setZero] = useState(0)
   const [one, setOne] = useState(1)
   const [many, setMany] = useState(12)
   const [card, setCard] = useState(2)
@@ -67,8 +68,8 @@ export function UiKit() {
       </Block>
 
       <Block title="QuantityStepper" nodeId="7:278">
-        <Row label="count 0 (min, minus disabled)">
-          <QuantityStepper value={0} onChange={() => {}} itemLabel="Carrot" />
+        <Row label="count 0 at start (minus is aria-disabled)">
+          <QuantityStepper value={zero} onChange={setZero} itemLabel="Carrot" />
         </Row>
         <Row label="count 1">
           <QuantityStepper value={one} onChange={setOne} itemLabel="Red Velvet" />

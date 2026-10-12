@@ -139,9 +139,9 @@
   /* Bold. Footer links "Our story", "Privacy policy" (s1-s6). */
   --font-size-footer-link: 18px;
   --line-height-footer-link: 48px;
-  /* Bold UPPERCASE. "©" mark in footer (s1-s6). */
+  /* Bold UPPERCASE. "MISS CUPCAKES 2020" row in the footer (s1-s6). */
   --font-size-copyright: 18px;
-  --line-height-copyright: normal;
+  --line-height-copyright: 48px;
   /* Regular UPPERCASE. Button labels "send", "Place order", "add to cart" (s1-s7).
      "SHOP NOW" (s1,s3,s4) is Regular 16 in original case. */
   --font-size-button: 16px;
@@ -198,7 +198,7 @@
   --border-width-sm: 1px;
   /* CTA / qty-tab outlines, minus/plus icon strokes (s1-s6). */
   --border-width-md: 2px;
-  /* Icon strokes of 1.5px (cart, radio, arrows) live inside the SVG assets. */
+  /* Icon strokes live inside the SVG assets: 1.5px for the cart and arrows, 2px for minus/plus and radios. */
 
   /* ---------- Layout: Mobile base (375) ---------- */
 

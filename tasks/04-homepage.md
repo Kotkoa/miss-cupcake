@@ -82,7 +82,7 @@ Figma reference: node JSON and PNG renders of frames `9:651`, `9:434`, `1:2` thr
 - No horizontal scroll at 320, 375, 600, 960, 1200, 1440, 1920; no overlapping sections at 600 and 1200; at 1920 the content column is centered at 1440 and the hero image stays with the text.
 - Semantics: one `<h1>`, four `<h2>` (each in a `<section aria-labelledby>`), eleven `<h3>` card names; "Our story" and the other CTAs are `<a>` links.
 - Images: all 41 `<img>` have `width` and `height`; hero is eager with `fetchpriority="high"`, 15 below-the-fold images are `loading="lazy"`; largest file is `hero-d.webp` at 117 KB, total 836 KB for all variants.
-- Keyboard: Tab order follows the page (header links, cart, hero CTA, each stepper and CTA, footer field and links); every one of the 40 focusable elements shows a visible outline.
+- Keyboard: Tab order follows the page (header links, cart, hero CTA, each stepper and CTA, footer field and links); on Desktop the footer is the exception: the signup form comes before the link column in the DOM but sits to its right (CSS `order`); every one of the 40 focusable elements shows a visible outline.
 - Mobile burger opens and closes the menu, Escape closes it; stepper "+" and "add to cart" update local state (cart 8 -> 10, stepper resets to 0).
 - Console (production build): no errors, warnings or issues. Network: no failed requests (a missing favicon returned 404, fixed with an empty icon link).
 - `yarn build` and `yarn lint` pass.

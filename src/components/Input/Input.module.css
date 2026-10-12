@@ -76,9 +76,10 @@
   outline-color: var(--color-surface);
 }
 
-/* Error styling is not drawn in Figma: thicker outline + note text, no new colors. */
+/* The error note is drawn in Figma (screen 6), the field error state is not: an extra inner ring
+   in the text color, visible at every breakpoint and tone, plus the note text. No new colors. */
 .control[aria-invalid='true'] {
-  border-width: var(--border-width-md);
+  box-shadow: inset 0 0 0 var(--border-width-md) currentColor;
 }
 
 .error {
