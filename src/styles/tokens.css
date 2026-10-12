@@ -25,7 +25,6 @@
  *     `normal` at ~1.5, so Wendy tokens use the unitless 1.055 instead of `normal`.
  *
  * SINGLE-USE VALUES (deliberately NOT tokenized):
- *   #F7CDBF   Mobile Our Story decorative ellipse
  *   #1E1427@50%  Homepage Registered completed: modal scrim rectangle (Desktop)
  *   Wendy One 16        "My Bag" (Mobile s4)
  *   Wendy One 36        "$27.92" (Mobile s5; Mobile s6 uses 26 = --font-size-h2)
@@ -78,6 +77,10 @@
 
   /* Purple band: footer. Measured #5E3295, merged with the overlay base #5D3394. */
   --color-band-purple: #5d3394;
+
+  /* Blush band: the middle band of Why Miss Cupcake (below the exploded cupcake), measured #F7CDBF.
+     Same value as the Mobile Our Story decorative ellipse. */
+  --color-band-blush: #f7cdbf;
 
   /* Modal scrim behind the order-confirmed popup (s7, all breakpoints). */
   --color-overlay: #5d3394;

@@ -1,0 +1,129 @@
+/* Wave above the blush band: 73 / 106 / 106px high (peak to trough, measured). */
+.band {
+  --wave-height: 73px;
+}
+
+/* Mobile (31:842): band top 763, title top 1937, band end 2499. */
+.roasted {
+  padding-top: 1174px; /* the exploded cupcake above hangs into this space */
+  padding-bottom: 119px; /* Figma: CTA bottom 2379. */
+}
+
+.content {
+  position: relative;
+}
+
+.title {
+  max-width: 294px; /* Figma text box: wraps to "Roasted / with / happiness". */
+  /* "happiness" is about 4.9em wide: shrink the title below 335px screens so it stays on one line
+     (the reset would break it inside the word). */
+  font-size: min(var(--font-size-display), calc((100vw - 2 * var(--container-padding-x)) / 4.9));
+  line-height: var(--line-height-display);
+}
+
+.lead {
+  max-width: 342px; /* Figma text box width. */
+  margin-top: 66px; /* Figma: title bottom 2126, text top 2192. */
+}
+
+.cta {
+  display: flex;
+  width: 206px; /* Figma CTA width. */
+  margin-top: var(--space-40); /* Figma: text bottom 2296, CTA top 2336. */
+}
+
+/* Decorations sit in the free space around the letters, never on them. In Figma they overlap the title
+   (unicorn on "with", cupcake on "happiness"); the task asks for no overlap, so they moved off the text. */
+.unicorn,
+.cupcake {
+  position: absolute;
+}
+
+.unicorn {
+  top: 63px; /* Beside "with" (line 2); Figma: y = 1976, on "Roasted". */
+  right: 0;
+}
+
+.cupcake {
+  top: 70px; /* Beside "with"; Figma: y = 2098, on "happiness". */
+  left: 142px; /* 8px right of "with" */
+}
+
+/* Tablet (30:231): band top 958, title top 1821. */
+@media (min-width: 960px) {
+  .band {
+    --wave-height: 106px;
+  }
+
+  .roasted {
+    padding-top: 863px; /* Figma: band top 958, title top 1821. */
+    padding-bottom: 237px; /* Figma: CTA bottom 2198, next band 2435. */
+  }
+
+  .title,
+  .lead {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .title {
+    max-width: 770px;
+  }
+
+  .lead {
+    max-width: 567px; /* Figma text box width. */
+    margin-top: 30px; /* Figma: title bottom 2032, text top 2062. */
+  }
+
+  .cta {
+    margin: 41px auto 0; /* Figma: text bottom 2114, CTA top 2155. */
+  }
+
+  .unicorn {
+    top: -46px; /* Above the letters (they start 12px below the title top); Figma: y = 1799. */
+    right: auto;
+    left: calc(50% + 53px); /* Figma: x = 628, title centre 480. */
+  }
+
+  .cupcake {
+    top: 130px; /* Left of "happiness" (line 2 starts 140px inside the title box); Figma: y = 1987. */
+    left: calc(50% - 335px);
+    width: 52px; /* Figma Tablet: 52 x 49. */
+    height: auto;
+  }
+
+  .unicorn img {
+    width: 43px; /* Figma Tablet: 43 x 56. */
+  }
+}
+
+/* Desktop (6:6): band top 1116, title top 2014. */
+@media (min-width: 1440px) {
+  .roasted {
+    padding-top: 898px; /* Figma: band top 1116, title top 2014. */
+    padding-bottom: 222px; /* Figma: CTA bottom 2443, next band 2665. */
+  }
+
+  .lead {
+    margin-top: 39px; /* Figma: title bottom 2268, text top 2306. */
+  }
+
+  .cta {
+    margin-top: 42px; /* Figma: text bottom 2358, CTA top 2400. */
+  }
+
+  .unicorn {
+    top: -50px; /* Above the letters (they start 14px below the title top); Figma: y = 1994. */
+    left: calc(50% + 185px); /* Figma: x = 905, title centre 720. */
+  }
+
+  .unicorn img {
+    width: 46px;
+  }
+
+  .cupcake {
+    top: 165px; /* Left of "happiness" (line 2 starts 91px inside the title box); Figma: y = 2216. */
+    left: calc(50% - 368px);
+    width: 59px;
+  }
+}

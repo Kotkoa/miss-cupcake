@@ -3,6 +3,14 @@
   background-color: var(--band-color);
 }
 
+.peach {
+  --band-color: var(--color-bg);
+}
+
+.blush {
+  --band-color: var(--color-band-blush);
+}
+
 .pink {
   --band-color: var(--color-bg-home);
 }

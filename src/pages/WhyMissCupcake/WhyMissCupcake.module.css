@@ -1,0 +1,37 @@
+/* Peach is the page color: it shows behind the header and above the first band. */
+.page {
+  background-color: var(--color-bg);
+  /* Decorations may stick out past the viewport on narrow screens; they must not add a scrollbar. */
+  overflow-x: clip;
+}
+
+/* Purple footer band. Wave above it: 67 / 109 / 109px high (peak to trough, measured). */
+.footerBand {
+  --wave-height: 67px;
+}
+
+/* Figma: band top 2499 / 2435 / 2665, footer top 2591 / 2549 / 2919, page end 3366 / 3030 / 3260. */
+.footerWrap {
+  padding-top: 92px;
+  padding-bottom: 68px;
+}
+
+@media (min-width: 960px) {
+  .footerBand {
+    --wave-height: 109px;
+  }
+
+  .footerWrap {
+    padding-top: 114px;
+    padding-bottom: 69px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .footerWrap {
+    padding-top: 254px;
+    padding-bottom: 91px;
+    /* Figma: footer block starts at x = 102, i.e. 19px left of the 121px side padding. */
+    padding-inline-start: calc(var(--container-padding-x) - 19px);
+  }
+}

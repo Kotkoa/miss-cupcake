@@ -1,0 +1,151 @@
+/* Above the next band's container (z-index 1 from Band, later in the DOM), which reserves this space as
+   padding and would otherwise catch the pointer: text could not be selected. The doubled class beats
+   Band's `.band > *` whatever the stylesheet order. */
+.features.features {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile (31:842): exploded picture 650 to 964, features 1015 to 1782, stacked and centered.
+   The block hangs 1019px below the peach band into the blush one (band ends at y = 763). */
+.features {
+  margin-top: -5px; /* Figma: the picture starts 5px above the end of the decoration picture. */
+  margin-bottom: -1019px;
+}
+
+.exploded {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 281px; /* Figma: 281 x 314. */
+  height: auto;
+  max-width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px; /* Figma: text bottom to the next icon. */
+  margin-top: 51px; /* Figma: picture bottom 964, first icon 1015. */
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 29px; /* Figma: icon bottom 1115, text top 1144. */
+  max-width: 339px; /* Figma: widest Mobile text box. */
+  text-align: center;
+}
+
+.icon {
+  width: 100px; /* Mobile icons are 100 x 100. */
+  height: 100px;
+}
+
+.text {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Tablet (30:231): picture 561 wide, features around it. Box 880 wide, picture at the top centre.
+   Columns / rows are the Figma gaps: picture top 714, icons at 1105 / 1213 / 1409, band end 958. */
+@media (min-width: 960px) {
+  .features {
+    margin-top: 119px; /* Figma: CTA bottom 595, picture top 714. */
+    margin-bottom: -677px; /* Figma: box ends at 1635, band at 958. */
+  }
+
+  .exploded {
+    display: block;
+    position: relative;
+    width: 880px;
+    margin-inline: calc((100% - 880px) / 2); /* centred on the container, which can be narrower on Desktop */
+  }
+
+  .image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 561px; /* Figma: 561 x 642. */
+  }
+
+  .list {
+    position: relative; /* paints above the picture, so text can run over its edge as in Figma */
+    display: grid;
+    grid-template-columns: 227px 349px 304px;
+    grid-template-rows: 391px 108px 196px 226px;
+    gap: 0;
+    margin-top: 0;
+    align-items: start;
+    justify-items: start;
+  }
+
+  .feature {
+    align-items: flex-start;
+    max-width: none;
+    gap: 29px;
+    text-align: left;
+  }
+
+  .icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .handmade {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    width: 332px; /* Figma text boxes: 332 / 298 / 382 wide. */
+  }
+
+  .recipes {
+    grid-column: 3;
+    grid-row: 3 / 5;
+    width: 298px;
+  }
+
+  .swirl {
+    grid-column: 2;
+    grid-row: 4;
+    width: 382px;
+  }
+}
+
+/* Desktop (6:6): picture 802 wide, box 1227 wide; Tablet's right and bottom items swap places. */
+@media (min-width: 1440px) {
+  .features {
+    margin-top: 161px; /* Figma: CTA bottom 637, picture top 798. */
+    margin-bottom: -689px; /* Figma: box ends at 1805, band at 1116. */
+  }
+
+  .exploded {
+    width: 1227px;
+    margin-inline: calc((100% - 1227px) / 2 + 9px); /* Figma: the group is centred on x = 729, 9px right of the page centre. */
+  }
+
+  .image {
+    width: 802px;
+  }
+
+  .list {
+    grid-template-columns: 277px 613px 337px;
+    grid-template-rows: 424px 94px 264px 225px;
+  }
+
+  .swirl {
+    grid-column: 3;
+    grid-row: 3 / 5;
+    width: 336px;
+  }
+
+  .recipes {
+    grid-column: 2;
+    grid-row: 4;
+    width: 298px;
+  }
+}

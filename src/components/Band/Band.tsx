@@ -1,7 +1,7 @@
 import type { ElementType, HTMLAttributes } from 'react'
 import styles from './Band.module.css'
 
-type BandColor = 'pink' | 'yellow' | 'mint' | 'cream' | 'purple'
+type BandColor = 'peach' | 'blush' | 'pink' | 'yellow' | 'mint' | 'cream' | 'purple'
 
 type BandProps = HTMLAttributes<HTMLElement> & {
   as?: ElementType

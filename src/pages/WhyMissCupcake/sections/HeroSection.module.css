@@ -1,0 +1,114 @@
+/* Mobile (31:842): title top 128 under a 47px header. */
+.hero {
+  padding-top: 81px;
+}
+
+.content {
+  position: relative;
+}
+
+.title {
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+}
+
+.lead {
+  max-width: 330px; /* Figma text box width. */
+  margin-top: 27px; /* Figma: title bottom 255, text top 282 (the title renders 0.4px taller). */
+  margin-inline: auto;
+  text-align: center;
+}
+
+.cta {
+  display: flex; /* centered block of fixed width */
+  width: 206px; /* Figma CTA width. */
+  margin: 39px auto 0; /* Figma: text bottom 360, CTA top 399. */
+}
+
+.decorCupcake,
+.decorPair {
+  display: none;
+}
+
+.decorMobile {
+  display: block;
+  max-width: calc(100% + 2px); /* shrinks on 320px screens */
+  height: auto;
+  margin: 52px 0 0 -2px; /* Figma: CTA bottom 442, picture top 494, picture starts at x = 18. */
+}
+
+/* Tablet (30:231): title top 218 under a 64px header, text and CTA centered. */
+@media (min-width: 960px) {
+  .hero {
+    padding-top: 154px;
+  }
+
+  .title {
+    max-width: 770px; /* Figma text box: wraps to "The Simple, / Sweet Life". */
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .lead {
+    max-width: 476px; /* Figma text box width. */
+    margin-top: 31px; /* Figma: title bottom 429, text top 460. */
+    text-align: left;
+  }
+
+  .cta {
+    margin-top: var(--space-40); /* Figma: text bottom 512, CTA top 552. */
+  }
+
+  .decorMobile {
+    display: none;
+  }
+
+  .decorCupcake,
+  .decorPair {
+    display: block;
+    position: absolute;
+    height: auto;
+  }
+
+  .decorCupcake {
+    top: 278px; /* Figma: y = 496, title top 218. */
+    left: 1px; /* Figma: x = 41. */
+    width: 170px;
+  }
+
+  .decorPair {
+    top: 288px; /* Figma: y = 506, title top 218. */
+    right: 55px; /* Figma: right edge 865, content ends at 920. */
+    width: 111px;
+  }
+}
+
+/* Desktop (6:6): title top 182. */
+@media (min-width: 1440px) {
+  .hero {
+    padding-top: 118px;
+  }
+
+  .lead {
+    max-width: 519px;
+    min-height: 78px; /* The Figma Desktop text is a longer sentence (3 lines); the shared copy has 2, keep the height. */
+    margin-top: 39px; /* Figma: title bottom 436, text top 474. */
+    text-align: center;
+  }
+
+  .cta {
+    margin-top: 42px; /* Figma: text bottom 552, CTA top 594. */
+  }
+
+  .decorCupcake {
+    top: 329px; /* Figma: y = 511. */
+    left: -19px; /* Figma: x = 102, content starts at 121. */
+    width: 246px;
+  }
+
+  .decorPair {
+    top: 358px; /* Figma: y = 540, title top 182. */
+    right: 56px; /* Figma: right edge 1263, content ends at 1319. */
+    width: 193px;
+  }
+}
