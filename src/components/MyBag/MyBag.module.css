@@ -6,8 +6,9 @@
   flex-direction: column;
   width: 230px;
   max-width: calc(100vw - 2 * var(--space-12));
-  /* Never taller than the space under the header; the list of lines scrolls inside. */
+  /* Never taller than the space under the header; the whole summary stays reachable by scrolling. */
   max-height: calc(100dvh - 90px);
+  overflow-y: auto;
   padding: 0 13px 20px;
   border-radius: 6px; /* Figma card radius, half of the Tablet value. */
   background-color: var(--color-surface);
@@ -43,9 +44,7 @@
 }
 
 .lines {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
+  flex: 0 0 auto;
   padding-block: 20px; /* Figma: separator 59, first thumb 80; last thumb 266, separator 225 + ... */
   display: flex;
   flex-direction: column;

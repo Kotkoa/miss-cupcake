@@ -1,14 +1,14 @@
 import type { NavLink } from '../components/Header/Header'
 
 const links = [
-  { label: 'Shop', href: '/' },
+  { label: 'Shop', href: '/#cupcakes' },
   { label: 'Our story', href: '/our-story' },
   { label: 'Why Miss cupcake', href: '/why-miss-cupcake' },
 ]
 
 /** Header navigation; the entry for the page the visitor is on gets `current`. */
 export function getNavLinks(currentHref: string): NavLink[] {
-  return links.map((link) => ({ ...link, current: link.href === currentHref }))
+  return links.map((link) => ({ ...link, current: link.href.split('#', 1)[0] === currentHref }))
 }
 
 export const footerNavLinks = links

@@ -14,17 +14,23 @@ describe('addItem', () => {
     ])
   })
 
-  it('ignores zero, negative and fractional quantities', () => {
+  it('ignores zero, negative, fractional and unsafe quantities', () => {
     const items = [{ id: 'carrot', qty: 1 }]
     expect(addItem(items, 'carrot', 0)).toBe(items)
     expect(addItem(items, 'carrot', -2)).toBe(items)
     expect(addItem(items, 'carrot', 1.5)).toBe(items)
+    expect(addItem(items, 'carrot', Number.MAX_SAFE_INTEGER)).toBe(items)
   })
 
   it('does not change the array it was given', () => {
     const items = [{ id: 'carrot', qty: 1 }]
     addItem(items, 'carrot', 5)
     expect(items).toEqual([{ id: 'carrot', qty: 1 }])
+  })
+
+  it('rejects a merge above the configured maximum', () => {
+    const items = [{ id: 'carrot', qty: 4 }]
+    expect(addItem(items, 'carrot', 2, 5)).toBe(items)
   })
 })
 
@@ -42,6 +48,12 @@ describe('setItemQty', () => {
   it('never creates a line that is not in the cart', () => {
     const items = [{ id: 'carrot', qty: 1 }]
     expect(setItemQty(items, 'mint-chip', 4)).toBe(items)
+  })
+
+  it('does not set an unsafe or out-of-range quantity', () => {
+    const items = [{ id: 'carrot', qty: 1 }]
+    expect(setItemQty(items, 'carrot', Number.MAX_SAFE_INTEGER + 1)).toBe(items)
+    expect(setItemQty(items, 'carrot', 6, 5)).toBe(items)
   })
 })
 
@@ -76,6 +88,17 @@ describe('sanitizeItems', () => {
       'carrot',
     ]
     expect(sanitizeItems(raw, known)).toEqual([{ id: 'carrot', qty: 3 }])
+  })
+
+  it('drops additions that would exceed the configured maximum', () => {
+    expect(sanitizeItems([{ id: 'carrot', qty: 4 }, { id: 'carrot', qty: 2 }], known, 5)).toEqual([
+      { id: 'carrot', qty: 4 },
+    ])
+  })
+
+  it('removes extra stored fields instead of returning the source object', () => {
+    const raw = [{ id: 'carrot', qty: 2, name: 'Carrot', price: 349 }]
+    expect(sanitizeItems(raw, known)).toEqual([{ id: 'carrot', qty: 2 }])
   })
 
   it('gives an empty cart for anything that is not an array', () => {

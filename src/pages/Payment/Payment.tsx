@@ -13,6 +13,7 @@ import { formatPrice, useCartActions, useCartCount, useCartSubtotal } from '../.
 import { clearCheckout, loadCheckout, saveCheckout } from '../../features/checkout/storage'
 import { emptyValues, validateField, validateForm } from '../../features/checkout/validation'
 import type { FieldName } from '../../features/checkout/validation'
+import { formatCardNumber } from './cardNumber'
 import decorDesktop from '../../assets/images/payment/decor-d.webp'
 import decorTablet from '../../assets/images/payment/decor-t.webp'
 import decorMobile from '../../assets/images/payment/decor-m.webp'
@@ -47,17 +48,11 @@ export function Payment() {
   function changeField(name: FieldName, input: HTMLInputElement) {
     const value = input.value
     // Keep formatting cosmetic: invalid letters remain visible and are rejected by validation.
-    const formatted = name === 'cardNumber' && /^[\d ]*$/.test(value)
-      ? value.replace(/ /g, '').match(/.{1,4}/g)?.join(' ') ?? ''
-      : value
-    if (name === 'cardNumber' && formatted !== value) {
-      const position = (offset: number) => {
-        const digits = value.slice(0, offset).replace(/ /g, '').length
-        return Math.min(formatted.length, digits + Math.max(0, Math.floor((digits - 1) / 4)))
-      }
-      // Regrouping changes the DOM value; preserve the digit offset instead of jumping to its end.
-      cardSelection.current = { start: position(input.selectionStart ?? value.length), end: position(input.selectionEnd ?? value.length) }
-    }
+    const cardNumber = name === 'cardNumber'
+      ? formatCardNumber(value, input.selectionStart, input.selectionEnd)
+      : null
+    const formatted = cardNumber?.value ?? value
+    cardSelection.current = cardNumber?.selection ?? null
     const next = { ...draft, values: { ...draft.values, [name]: formatted } }
     setDraft(next)
     saveCheckout(next.values, next.delivery)

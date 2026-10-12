@@ -46,9 +46,10 @@ describe('cart storage', () => {
     expect(createCartStorage(known, () => raw).getItem(KEY, [])).toEqual([{ id: 'carrot', qty: 1 }])
   })
 
-  it('writes only { id, qty } lines', () => {
+  it('writes only canonical { id, qty } lines', () => {
     const raw = fakeStorage()
-    createCartStorage(known, () => raw).setItem(KEY, [{ id: 'carrot', qty: 2 }])
+    const value = [{ id: 'carrot', qty: 2, name: 'Carrot', price: 349 }]
+    createCartStorage(known, () => raw).setItem(KEY, value)
     expect(raw.getItem(KEY)).toBe('[{"id":"carrot","qty":2}]')
   })
 

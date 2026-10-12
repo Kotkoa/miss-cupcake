@@ -15,15 +15,19 @@ type StringStorage = {
  * `storage` event from another tab), so damaged or edited data can never reach the app.
  * `getStringStorage` is a parameter only so tests can pass a fake.
  */
-export function createCartStorage(isKnownId: (id: string) => boolean, getStringStorage?: () => StringStorage) {
+export function createCartStorage(
+  isKnownId: (id: string) => boolean,
+  getStringStorage?: () => StringStorage,
+  maxQuantity = Number.MAX_SAFE_INTEGER,
+) {
   const base = getStringStorage ? createJSONStorage<unknown>(getStringStorage) : createJSONStorage<unknown>()
   return {
-    getItem: (key: string, initialValue: CartItem[]) => sanitizeItems(base.getItem(key, initialValue), isKnownId),
-    setItem: (key: string, value: CartItem[]) => base.setItem(key, value),
+    getItem: (key: string, initialValue: CartItem[]) => sanitizeItems(base.getItem(key, initialValue), isKnownId, maxQuantity),
+    setItem: (key: string, value: CartItem[]) => base.setItem(key, sanitizeItems(value, isKnownId, maxQuantity)),
     removeItem: (key: string) => base.removeItem(key),
     subscribe: base.subscribe
       ? (key: string, callback: (value: CartItem[]) => void, initialValue: CartItem[]) =>
-          base.subscribe?.(key, (value) => callback(sanitizeItems(value, isKnownId)), initialValue)
+          base.subscribe?.(key, (value) => callback(sanitizeItems(value, isKnownId, maxQuantity)), initialValue)
       : undefined,
   }
 }
