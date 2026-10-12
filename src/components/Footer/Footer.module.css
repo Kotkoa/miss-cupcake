@@ -49,7 +49,7 @@
 .newsletter {
   display: flex;
   flex-direction: column;
-  gap: 27px; /* Figma: 27px from the title to the field. */
+  gap: 29px; /* Figma Mobile: 29px from the title to the field (Tablet 27, Desktop 30). */
 }
 
 .signup {
@@ -58,11 +58,15 @@
   gap: var(--space-32);
 }
 
+.send {
+  width: 100%; /* Figma Mobile: the button spans the 335px column. */
+}
+
 /* Mobile: the link list continues straight into the legal list (Figma y 357 ... 607). */
 .nav {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  gap: var(--space-12); /* Figma Mobile: 51px from the heading to the first link. */
   margin-top: var(--space-16);
 }
 
@@ -128,8 +132,14 @@
     flex: 1;
   }
 
+  .send {
+    flex: none;
+    width: 106px; /* Figma: send button 106 x 43. */
+  }
+
   /* Figma: row 2 starts 59px below the input; "Shop" heading sits 7px lower than the legal list. */
   .nav {
+    gap: var(--space-8);
     grid-area: nav;
     margin-top: 66px;
   }

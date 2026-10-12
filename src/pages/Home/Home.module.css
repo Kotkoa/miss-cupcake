@@ -1,0 +1,14 @@
+/* One tall background image per breakpoint (pink -> yellow -> green -> cream -> purple bands
+   with wavy edges). Stretched to the page height so the bands keep their relative position. */
+.page {
+  background-color: var(--color-bg-home);
+  background-image: url('../../assets/images/home/bg-m.webp');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Figma gap between the last section and the footer: 54 / 95 / 174. */
+.footerWrap {
+  margin-top: 54px;
+  padding-bottom: var(--space-64);
+}

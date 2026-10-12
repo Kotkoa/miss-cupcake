@@ -4,7 +4,8 @@
   justify-content: center;
   /* Figma CTA height: 43px (not on the spacing scale). */
   min-height: 43px;
-  padding: 0 var(--space-32);
+  padding: 0 var(--space-16);
+  white-space: nowrap;
   border: 0;
   border-radius: var(--radius-md);
   font-family: var(--font-body);

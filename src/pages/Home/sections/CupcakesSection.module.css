@@ -1,0 +1,24 @@
+/* Mobile (Figma 944:51): title top at y = 1850, first card 120px below the title. */
+.cupcakes {
+  padding-top: var(--space-120);
+}
+
+.title {
+  max-width: 351px; /* Figma text box: wraps to three lines on Mobile. */
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* minmax(0, ...) lets the 336px cards shrink on 320px screens */
+  /* Cards share their bottom edge (images differ in height), so align to the end. */
+  align-items: end;
+  justify-items: start;
+  gap: 84px; /* Figma: average gap between stacked cards. */
+  margin-top: var(--space-120);
+}
+
+/* Tablet (944:22): 2 columns of 336px, 146px apart, centered; cards ~96px apart. */
+
+/* Desktop (2:78 + cards): 3 columns of 336px, 90px apart, 176px between rows. */

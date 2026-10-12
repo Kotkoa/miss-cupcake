@@ -1,0 +1,36 @@
+/* Mobile (Figma 9:651): title top at y = 128, 47px between the CTA and the image. */
+.hero {
+  position: relative;
+  padding-top: 83px; /* Figma: title top at y = 128 (header is 47px, + 81). */
+}
+
+.title {
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+}
+
+.lead {
+  margin-top: var(--space-24);
+  text-align: justify;
+}
+
+.cta {
+  margin-top: var(--space-40);
+  width: 206px; /* Figma CTA width (the label is narrower, so no padding is needed). */
+}
+
+.picture {
+  display: block;
+  margin-top: 47px; /* Figma: CTA bottom to image top. */
+  margin-left: 62px; /* Figma: image starts at x = 82, container at 20. */
+  max-width: calc(100% - 62px); /* shrinks on 320px screens */
+}
+
+.image {
+  width: 266px;
+  height: auto; /* keeps the ratio when the picture shrinks */
+}
+
+/* Tablet (9:434): 908px tall from the header to the "Simple Life" row. Text 519px wide. */
+
+/* Desktop (1:2). */

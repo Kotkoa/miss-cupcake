@@ -1,0 +1,40 @@
+/* Mobile (Figma 944:52): title top at y = 8020, image 74px below the CTA. */
+.once {
+  padding-top: 212px; /* Figma: gap after the last card (background wave). */
+}
+
+.content {
+  position: relative;
+}
+
+.title {
+  max-width: 280px; /* Figma text box: wraps to "once upon / a time..". */
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+}
+
+.lead {
+  margin-top: 29px; /* Figma: title bottom to text top. */
+  text-align: justify;
+}
+
+.cta {
+  margin-top: var(--space-40);
+  width: 206px; /* Figma CTA width (the label is narrower, so no padding is needed). */
+}
+
+.picture {
+  display: block;
+  margin-top: 74px; /* Figma: CTA bottom to image top. */
+  margin-left: 55px; /* Figma: image starts at x = 75, container at 20. */
+  max-width: calc(100% - 55px); /* shrinks on 320px screens */
+}
+
+.image {
+  width: 248px;
+  height: auto; /* keeps the ratio when the picture shrinks */
+}
+
+/* Tablet (944:20): text at x = 71 (31px inside the side padding), image 364 x 500 at the right. */
+
+/* Desktop (940:7): text at the container edge, image 494 x 679. */

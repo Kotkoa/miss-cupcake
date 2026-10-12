@@ -11,8 +11,16 @@
 
 .image {
   /* Image is decorative: the name below carries the meaning. */
-  width: auto;
+  /* --image-width / --image-mobile-width are set inline from the Figma sizes (files are 2x). */
+  width: var(--image-mobile-width, var(--image-width));
+  height: auto;
   max-width: 100%;
+}
+
+@media (min-width: 960px) {
+  .image {
+    width: var(--image-width);
+  }
 }
 
 /* Raw gaps below are the measured Figma distances (46 / 34 / 6), not on the spacing scale. */

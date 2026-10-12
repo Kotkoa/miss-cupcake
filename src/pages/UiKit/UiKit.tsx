@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { ReactNode } from 'react'
-import mintChip from '../../assets/images/cupcake-mint-chip.png'
+import mintChip from '../../assets/images/home/cupcakes/mint-chip.webp'
 import { Button } from '../../components/Button/Button'
 import { Footer } from '../../components/Footer/Footer'
 import { Header } from '../../components/Header/Header'

@@ -1,0 +1,40 @@
+/* Mobile (Figma 944:50): title top at y = 920, image 70px below the CTA. */
+.simple {
+  display: grid;
+  padding-top: var(--space-80);
+}
+
+.title {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+}
+
+.lead {
+  margin-top: var(--space-24);
+  text-align: justify;
+}
+
+.cta {
+  margin-top: var(--space-40);
+  width: 206px; /* Figma CTA width (the label is narrower, so no padding is needed). */
+}
+
+.picture {
+  display: block;
+  margin-top: 70px; /* Figma: CTA bottom to image top. */
+  margin-left: 23px; /* Figma: image starts at x = 43, container at 20. */
+  max-width: calc(100% - 23px); /* shrinks on 320px screens */
+}
+
+.image {
+  width: 301px;
+  height: auto; /* keeps the ratio when the picture shrinks */
+}
+
+.desktopImages {
+  display: none;
+}
+
+/* Tablet (944:19): image 322 x 399 on the left, text column starts at x = 420. */
+
+/* Desktop (940:4): two stacked images (430 x 240, 396 x 253), text column at x = 733. */

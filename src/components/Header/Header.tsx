@@ -50,10 +50,10 @@ export function Header({ navLinks, cartCount, cartHref }: HeaderProps) {
         </ul>
       </nav>
       <a href={cartHref} className={styles.cart} aria-label={cartLabel}>
-        <img src={cartIcon} alt="" className={styles.cartIcon} />
+        <img src={cartIcon} alt="" width={39} height={40} className={styles.cartIcon} />
         {cartCount > 0 ? (
           <span className={styles.badge} aria-hidden="true">
-            <img src={cartBadge} alt="" className={styles.badgeCircle} />
+            <img src={cartBadge} alt="" width={26} height={26} className={styles.badgeCircle} />
             <span className={styles.count}>{cartCount}</span>
           </span>
         ) : null}
