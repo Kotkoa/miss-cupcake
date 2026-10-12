@@ -69,6 +69,16 @@
   /* Grey placeholders for video and map on Our Story Mobile (Rectangle 27/28). */
   --color-placeholder: #c4c4c4;
 
+  /* Homepage background bands (Band component), measured from the exported page backgrounds.
+     Yellow band: Simple sweet life. Measured #FBF9CA / #FBF9CC, merged into one value. */
+  --color-band-yellow: #fbf9ca;
+
+  /* Mint band: Cupcakes. Measured #EEFBE2 (Desktop) and #F0FAE2 (Tablet, Mobile), merged into #EEFBE2. */
+  --color-band-mint: #eefbe2;
+
+  /* Purple band: footer. Measured #5E3295, merged with the overlay base #5D3394. */
+  --color-band-purple: #5d3394;
+
   /* Modal scrim behind the order-confirmed popup (s7, all breakpoints). */
   --color-overlay: #5d3394;
 

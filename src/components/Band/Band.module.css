@@ -1,0 +1,50 @@
+.band {
+  position: relative;
+  background-color: var(--band-color);
+}
+
+.pink {
+  --band-color: var(--color-bg-home);
+}
+
+.yellow {
+  --band-color: var(--color-band-yellow);
+}
+
+.mint {
+  --band-color: var(--color-band-mint);
+}
+
+.cream {
+  --band-color: var(--color-surface);
+}
+
+.purple {
+  --band-color: var(--color-band-purple);
+}
+
+/* Content sits above the wave layers (its own and the next band's, which overlaps this band). */
+.band > * {
+  position: relative;
+  z-index: 1;
+}
+
+.wave::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 100%;
+  z-index: 0;
+  height: var(--wave-height, 110px);
+  background-color: var(--band-color);
+  pointer-events: none;
+  /* One 1440 x 110 shape, scaled to --wave-height and tiled: its ends meet at the same height,
+     so wide screens repeat the wave instead of stretching it. */
+  --wave-width: calc(var(--wave-height, 110px) * 1440 / 110);
+  -webkit-mask: url('../../assets/waves/wave.svg') center bottom / var(--wave-width) 100% repeat-x;
+  mask: url('../../assets/waves/wave.svg') center bottom / var(--wave-width) 100% repeat-x;
+}
+
+.flip::before {
+  transform: scaleX(-1);
+}

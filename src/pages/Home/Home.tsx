@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Band } from '../../components/Band/Band'
 import { Container } from '../../components/Container/Container'
 import { Footer } from '../../components/Footer/Footer'
 import { Header } from '../../components/Header/Header'
@@ -52,17 +53,19 @@ export function Home() {
         <CupcakesSection quantities={quantities} onQuantityChange={changeQuantity} onAddToCart={addToCart} />
         <OnceUponSection />
       </main>
-      <Container className={styles.footerWrap}>
-        <Footer
-          brand={['Miss', 'cupcake']}
-          navLinks={footerNavLinks}
-          newsletterTitle="Suger up your Inbox"
-          emailLabel="Email address"
-          submitLabel="send"
-          legalLinks={legalLinks}
-          copyright="Miss cupcakes 2020"
-        />
-      </Container>
+      <Band color="purple" wave flip className={styles.footerBand}>
+        <Container className={styles.footerWrap}>
+          <Footer
+            brand={['Miss', 'cupcake']}
+            navLinks={footerNavLinks}
+            newsletterTitle="Suger up your Inbox"
+            emailLabel="Email address"
+            submitLabel="send"
+            legalLinks={legalLinks}
+            copyright="Miss cupcakes 2020"
+          />
+        </Container>
+      </Band>
     </div>
   )
 }

@@ -1,6 +1,11 @@
-/* Mobile (Figma 944:52): title top at y = 8020, image 74px below the CTA. */
+/* Wave above the cream band: 88 / 124 / 124px high (peak to trough, measured). */
+.band {
+  --wave-height: 88px;
+}
+
+/* Mobile (Figma 944:52): band top at y = 7964, title top at 8020, image 74px below the CTA. */
 .once {
-  padding-top: 212px; /* Figma: gap after the last card (background wave). */
+  padding-top: 56px;
 }
 
 .content {
@@ -26,6 +31,7 @@
 .picture {
   display: block;
   margin-top: 74px; /* Figma: CTA bottom to image top. */
+  margin-bottom: -115px; /* Figma: the image hangs 115px into the purple band. */
   margin-left: 55px; /* Figma: image starts at x = 75, container at 20. */
   max-width: calc(100% - 55px); /* shrinks on 320px screens */
 }
@@ -38,11 +44,15 @@
 /* Tablet (944:20): text at x = 71 (31px inside the side padding), image 364 x 500 at the right. */
 @media (min-width: 960px) {
   .once {
-    padding-top: 337px;
+    padding-top: 137px; /* Figma: band top 5499, title top 5636. */
   }
 
   .content {
-    min-height: 747px; /* Figma: title top to image bottom. */
+    min-height: 731px; /* Figma: band height 868 minus the padding; the image hangs 16px into the purple band. */
+  }
+
+  .band {
+    --wave-height: 124px;
   }
 
   .text {
@@ -75,11 +85,11 @@
 /* Desktop (940:7): text at the container edge, image 494 x 679. */
 @media (min-width: 1440px) {
   .once {
-    padding-top: 454px;
+    padding-top: 184px; /* Figma: band top 5042, title top 5226. */
   }
 
   .content {
-    min-height: 762px;
+    min-height: 683px; /* Figma: band height 867 minus the padding; the image hangs 79px into the purple band. */
   }
 
   .text {

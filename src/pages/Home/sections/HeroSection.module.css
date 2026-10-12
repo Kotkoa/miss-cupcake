@@ -1,4 +1,4 @@
-/* Mobile (Figma 9:651): title top at y = 128, 47px between the CTA and the image. */
+/* Mobile (Figma 9:651): the pink band ends at y = 738 and the image overlaps the next band. */
 .hero {
   position: relative;
   padding-top: 83px; /* Figma: title top at y = 128 (header is 47px, + 81). */
@@ -24,6 +24,7 @@
   margin-top: 47px; /* Figma: CTA bottom to image top. */
   margin-left: 62px; /* Figma: image starts at x = 82, container at 20. */
   max-width: calc(100% - 62px); /* shrinks on 320px screens */
+  margin-bottom: -107px; /* Figma: the image hangs 107px into the yellow band. */
 }
 
 .image {
@@ -34,7 +35,7 @@
 /* Tablet (9:434): 908px tall from the header to the "Simple Life" row. Text 519px wide. */
 @media (min-width: 960px) {
   .hero {
-    min-height: 908px;
+    min-height: 756px; /* Figma: header bottom (64) to the yellow band (820). */
     padding-top: calc(var(--space-120) + var(--space-32));
   }
 
@@ -64,7 +65,7 @@
 /* Desktop (1:2). */
 @media (min-width: 1440px) {
   .hero {
-    min-height: 907px;
+    min-height: 755px; /* Figma: header bottom (64) to the yellow band (819). */
     padding-top: var(--space-120);
   }
 

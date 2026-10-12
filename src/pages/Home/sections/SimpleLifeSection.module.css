@@ -1,7 +1,12 @@
-/* Mobile (Figma 944:50): title top at y = 920, image 70px below the CTA. */
+/* Wave above the yellow band: 56 / 110 / 116px high (peak to trough, measured). */
+.band {
+  --wave-height: 56px;
+}
+
+/* Mobile (Figma 944:50): band top at y = 738, title top at 920, image 70px below the CTA. */
 .simple {
   display: grid;
-  padding-top: var(--space-80);
+  padding-top: 182px;
 }
 
 .title {
@@ -24,6 +29,7 @@
   margin-top: 70px; /* Figma: CTA bottom to image top. */
   margin-left: 23px; /* Figma: image starts at x = 43, container at 20. */
   max-width: calc(100% - 23px); /* shrinks on 320px screens */
+  margin-bottom: -130px; /* Figma: the image hangs 130px into the mint band. */
 }
 
 .image {
@@ -41,7 +47,8 @@
     grid-template-columns: 322px 1fr;
     grid-template-areas: 'picture text';
     column-gap: 56px; /* Figma: 420 - 42 - 322. */
-    padding-top: 0;
+    padding-top: 152px; /* Figma: band top 820, image top 972. */
+    padding-bottom: 247px; /* Figma: image bottom 1371, next band 1618. */
   }
 
   .text {
@@ -59,6 +66,10 @@
     text-align: left;
   }
 
+  .band {
+    --wave-height: 110px;
+  }
+
   .picture {
     grid-area: picture;
     margin: 0;
@@ -73,8 +84,14 @@
 /* Desktop (940:4): two stacked images (430 x 240, 396 x 253), text column at x = 733. */
 @media (min-width: 1440px) {
   .simple {
+    padding-top: 152px; /* Figma: band top 819, first image top 971. */
+    padding-bottom: 294px; /* Figma: last image bottom 1500, next band 1794. */
     grid-template-columns: 612px 1fr; /* Figma: 733 - 121. */
     column-gap: 0;
+  }
+
+  .band {
+    --wave-height: 116px;
   }
 
   .picture {

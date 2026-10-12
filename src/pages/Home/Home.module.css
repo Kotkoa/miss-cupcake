@@ -1,38 +1,41 @@
-/* One tall background image per breakpoint (pink -> yellow -> green -> cream -> purple bands
-   with wavy edges). Stretched to the page height so the bands keep their relative position. */
+/* The page itself has no background image: every section paints its own band (see Band). The pink
+   page color only shows behind the header, above the first band. */
 .page {
   background-color: var(--color-bg-home);
-  background-image: url('../../assets/images/home/bg-m.webp');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
 }
 
-/* Figma gap between the last section and the footer: 54 / 95 / 174. */
+/* Purple footer band. Wave above it: 108 / 110 / 108px high (peak to trough, measured). */
+.footerBand {
+  --wave-height: 108px;
+}
+
+/* Figma: band top 8715 / 6367 / 5909, footer top 8884 / 6478 / 6162, page end 9660 / 6959 / 6502. */
 .footerWrap {
-  margin-top: 54px;
-  padding-bottom: var(--space-64);
+  padding-top: 169px;
+  padding-bottom: 67px;
 }
 
 @media (min-width: 960px) {
-  .page {
-    background-image: url('../../assets/images/home/bg-t.webp');
+  .footerBand {
+    --wave-height: 110px;
   }
 
   .footerWrap {
-    margin-top: 95px;
+    padding-top: 111px;
+    padding-bottom: 69px;
     /* Figma: footer block starts at x = 71, i.e. 31px inside the 40px side padding. */
     padding-inline-start: calc(var(--container-padding-x) + 31px);
   }
 }
 
 @media (min-width: 1440px) {
-  .page {
-    background-image: url('../../assets/images/home/bg-d.webp');
+  .footerBand {
+    --wave-height: 108px;
   }
 
   .footerWrap {
-    margin-top: 174px;
+    padding-top: 253px;
+    padding-bottom: 91px;
     padding-inline-start: var(--container-padding-x);
-    padding-bottom: var(--space-96);
   }
 }

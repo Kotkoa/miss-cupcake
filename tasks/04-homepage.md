@@ -93,7 +93,7 @@ Figma reference: node JSON and PNG renders of frames `9:651`, `9:434`, `1:2` thr
 - Mobile hero/lead text is justified as in Figma; on Tablet/Desktop it is left-aligned as in Figma.
 - Tablet footer is left-aligned in its container (Figma offsets it 31px; reproduced with extra padding).
 - Header spans the full viewport width at 1920 (nav at the left edge, cart at the right) while content is centered; Figma has no frame wider than 1440.
-- Page background is one tall WebP per breakpoint stretched with `background-size: 100% 100%`: on 1920 the wavy edges are stretched horizontally 33%, bands keep their order.
+- Page background: replaced in Task 4.1 by CSS bands with an SVG-mask wave (see `tasks/04.1-homepage-css-background.md`).
 - On Desktop the hidden mobile `<img>` inside `<picture>` of "Simple life" still downloads the Tablet source (lazy, display:none); two extra files, no layout effect.
 - "Registered completed" frames are out of scope. Cart and "add to cart" only change local state.
 - Commits: the page was built and compared in one pass, so the three commits split the final code by breakpoint (Mobile base, + Tablet `@media`, + Desktop `@media`) rather than recording three separate builds.

@@ -1,6 +1,12 @@
-/* Mobile (Figma 944:51): title top at y = 1850, first card 120px below the title. */
+/* Wave above the mint band: 40 / 104 / 108px high (peak to trough, measured). */
+.band {
+  --wave-height: 40px;
+}
+
+/* Mobile (Figma 944:51): band top at y = 1598, title top at 1850, first card 120px below the title. */
 .cupcakes {
-  padding-top: var(--space-120);
+  padding-top: 252px;
+  padding-bottom: 156px; /* Figma: last card bottom 7808, next band 7964. */
 }
 
 .title {
@@ -22,7 +28,12 @@
 /* Tablet (944:22): 2 columns of 336px, 146px apart, centered; cards ~96px apart. */
 @media (min-width: 960px) {
   .cupcakes {
-    padding-top: 340px; /* Figma: gap between "Simple Life" and this title (background wave). */
+    padding-top: 93px; /* Figma: band top 1618, title top 1711. */
+    padding-bottom: 200px; /* Figma: last card bottom 5299, next band 5499. */
+  }
+
+  .band {
+    --wave-height: 104px;
   }
 
   .title {
@@ -41,7 +52,12 @@
 /* Desktop (2:78 + cards): 3 columns of 336px, 90px apart, 176px between rows. */
 @media (min-width: 1440px) {
   .cupcakes {
-    padding-top: 455px;
+    padding-top: 161px; /* Figma: band top 1794, title top 1955. */
+    padding-bottom: 262px; /* Figma: next band at 5042; the cards sit 8px lower than in Figma (hand-placed rows), so the band keeps its position. */
+  }
+
+  .band {
+    --wave-height: 108px;
   }
 
   .title {

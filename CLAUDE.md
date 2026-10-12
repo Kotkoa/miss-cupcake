@@ -52,7 +52,7 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Tablet (`@media`)
 - [x] Desktop (`@media`)
 - [x] Compared with the Figma screenshot
-- [ ] Background in CSS instead of images (see [tasks/04.1-homepage-css-background.md](tasks/04.1-homepage-css-background.md))
+- [x] Background in CSS instead of images (see [tasks/04.1-homepage-css-background.md](tasks/04.1-homepage-css-background.md))
 
 ### 5. Remaining screens (simple to complex)
 - [ ] Our Story (video & map)
