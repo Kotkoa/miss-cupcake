@@ -18,8 +18,8 @@
  *   #5D3394 (Our Story rectangles x3)                                 -> #642C99  --color-primary
  *   #FDE0CE (Our Story ellipses x2)                                   -> #FAE0CF  --color-bg
  *   Overlay on screen 7: #7C59A0@70% (Tablet), #5D3394@70% (Mobile),
- *     #FAE0CF@70% (Desktop, under a baked screenshot) -> #5D3394 at 100% opacity
- *     (project decision: the 70% alpha is not confirmed by the design)  --color-overlay
+ *     #FAE0CF@70% (Desktop, under a baked screenshot) -> opaque #5D3394 base token.
+ *     The Confirmed dialog applies 70% alpha in CSS as specified in task 5.6.
  *   Line height "auto" in Figma is the font's intrinsic height, measured via the REST API:
  *     Wendy One 1.055, Avenir 1.366, Lato 1.2 (= browser `normal`). Browsers render Wendy One
  *     `normal` at ~1.5, so Wendy tokens use the unitless 1.055 instead of `normal`.
@@ -84,6 +84,9 @@
 
   /* Modal scrim behind the order-confirmed popup (s7, all breakpoints). */
   --color-overlay: #5d3394;
+
+  /* Confirmed popup lower band and exported cupcake artwork (s7): #EBB0CD. */
+  --color-confirmed-pink: #ebb0cd;
 
   /* ---------- Font families ---------- */
 

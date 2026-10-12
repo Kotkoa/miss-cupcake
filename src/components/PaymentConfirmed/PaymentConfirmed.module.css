@@ -1,0 +1,143 @@
+.dialog {
+  position: fixed;
+  inset: var(--space-20) 0 auto;
+  width: 300px;
+  max-width: calc(100vw - 2 * var(--space-20));
+  max-height: calc(100dvh - 2 * var(--space-20));
+  margin-inline: auto;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 11px;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.dialog::backdrop {
+  background-color: color-mix(in srgb, var(--color-overlay) 70%, transparent);
+}
+
+.panel {
+  position: relative;
+  min-height: 371px;
+  overflow: hidden;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: var(--space-8);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: var(--space-40);
+  height: var(--space-40);
+}
+
+.close img {
+  width: 10px;
+  height: 10px;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding-top: 41px;
+  text-align: center;
+}
+
+.title {
+  max-width: 227px;
+  margin-inline: auto;
+  font-size: var(--font-size-confirm-title);
+  line-height: var(--line-height-confirm-title);
+}
+
+.description {
+  max-width: 185px;
+  margin: 23px auto 0;
+  font-size: 15px;
+  line-height: var(--line-height-body-lg);
+}
+
+.done {
+  width: 113px;
+  min-height: var(--space-24);
+  margin-top: 35px;
+  font-size: var(--font-size-body-sm);
+}
+
+.dialog .illustrationBand {
+  --band-color: var(--color-confirmed-pink);
+  --wave-height: 40px;
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 130px;
+}
+
+.illustration {
+  width: 126px;
+  height: auto;
+}
+
+@media (min-width: 960px) {
+  .dialog {
+    top: 36px;
+    width: 545px;
+    border-radius: var(--space-20);
+  }
+
+  .panel {
+    min-height: 674px;
+  }
+
+  .close {
+    top: var(--space-12);
+    right: var(--space-24);
+  }
+
+  .close img {
+    width: 19px;
+    height: 19px;
+  }
+
+  .content {
+    padding-top: 75px;
+  }
+
+  .title {
+    max-width: 412px;
+  }
+
+  .description {
+    max-width: 338px;
+    margin-top: 13px;
+    font-size: var(--font-size-body-lg);
+  }
+
+  .done {
+    width: 206px;
+    min-height: 43px;
+    margin-top: 28px;
+    font-size: var(--font-size-button);
+  }
+
+  .dialog .illustrationBand {
+    --wave-height: 72px;
+    height: 237px;
+  }
+
+  .illustration {
+    width: 229px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .dialog {
+    top: var(--space-64);
+  }
+}

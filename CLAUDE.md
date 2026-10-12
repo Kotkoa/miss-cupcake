@@ -60,8 +60,8 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Why Miss Cupcake ([tasks/05.2-why-miss-cupcake.md](tasks/05.2-why-miss-cupcake.md))
 - [x] Cart / My Bag ([tasks/05.3-cart.md](tasks/05.3-cart.md))
 - [x] Check out ([tasks/05.4-checkout.md](tasks/05.4-checkout.md))
-- [ ] Payment ([tasks/05.5-payment.md](tasks/05.5-payment.md))
-- [ ] Payment confirmed ([tasks/05.6-payment-confirmed.md](tasks/05.6-payment-confirmed.md))
+- [x] Payment ([tasks/05.5-payment.md](tasks/05.5-payment.md))
+- [x] Payment confirmed ([tasks/05.6-payment-confirmed.md](tasks/05.6-payment-confirmed.md))
 
 ### 6. States and polish
 - [ ] Registered completed state

@@ -1,0 +1,99 @@
+/* Measured from Payment frames 31:845 / 30:234 / 148:184. Off-scale dimensions below are Figma coordinates. */
+.page { background: var(--color-bg); overflow-x: clip; }
+.hero { padding-top: 81px; padding-bottom: 213px; }
+.heroContent { position: relative; }
+.title { max-width: 278px; font-size: var(--font-size-display); line-height: var(--line-height-display); text-align: center; }
+.lead { max-width: 281px; margin-top: 30px; }
+.decor { position: absolute; top: 139px; right: calc(-1 * var(--container-padding-x)); pointer-events: none; }
+.decor img { width: 207px; height: auto; }
+.content { padding-bottom: 223px; }
+.back { display: none; }
+.content fieldset { border: 0; padding: 0; min-width: 0; }
+.content legend { padding: 0; }
+.packages { margin-top: 44px; display: grid; gap: 39px; }
+.package { display: grid; grid-template-columns: 16px 1fr auto; column-gap: var(--space-20); cursor: pointer; align-items: center; }
+.package input { appearance: none; width: 16px; height: 16px; background: url('../../assets/icons/radio-empty.svg') center / contain no-repeat; border: 0; margin: 0; }
+.package input:checked { background-image: url('../../assets/icons/radio-filled.svg'); }
+.packageName, .packagePrice { font-family: var(--font-display); font-size: var(--font-size-label); line-height: var(--line-height-label); }
+.packageDescription { grid-column: 1 / -1; margin-top: 23px; font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.deliveryTotal, .summary { border-top: var(--border-width-md) solid var(--color-primary); margin-top: var(--space-40); padding-top: 46px; }
+.deliveryTotal, .summaryInner { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+.deliveryTotal > span, .summaryInner > span { font-size: var(--font-size-total-label); font-weight: var(--font-weight-bold); }
+.deliveryTotal output, .summary output { font-family: var(--font-display); font-size: var(--font-size-h2); line-height: var(--line-height-h2); }
+.recipient { margin-top: 82px; /* Figma: total bottom1045 to legend1127. */ }
+.fields { display: grid; gap: 42px; margin-top: 57px; }
+.fields > div { min-width: 0; }
+.fields > div > p { margin-top: -11px; /* Hint starts 13px under the input, not the 24px label gap. */ }
+.address { margin-top: 76px; }
+.address .fields { margin-top: 61px; }
+.contact, .payment { margin-top: 78px; /* Figma: input bottom2322 / 2690 to legend2401 / 2769. */ }
+.payment .fields { margin-top: 58px; }
+.expiryTitle { font-family: var(--font-display); font-size: var(--font-size-label); line-height: var(--line-height-label); }
+.expiryFields { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: var(--space-8); align-items: start; margin-top: var(--space-24); }
+.expiryFields > span { padding-top: var(--space-8); font-size: 26px; /* Figma mobile slash 26 / 26. */ }
+.expiryInput > label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.expiryInput { gap: var(--space-8); }
+.expiryInput input { text-align: center; }
+.cvv { max-width: 150px; /* Figma Mobile CVV is narrower than the other fields. */ }
+.summary { margin-top: 61px; }
+.placeOrder { grid-column: 1 / -1; min-height: 59px; margin-top: 77px; }
+.footerBand { --wave-height: 66px; }
+.footerWrap { padding-top: 47px; padding-bottom: 68px; }
+
+/* Tablet: delivery y753, form headings 1567 / 2106 / 2645 / 2998; two 417px field columns. */
+@media (min-width: 960px) {
+  .hero { padding-top: 153px; padding-bottom: 255px; }
+  .title { max-width: 462px; }
+  .lead { max-width: 400px; margin-top: 32px; text-align: center; }
+  .decor { top: -13px; right: 50px; }
+  .decor img { width: 382px; }
+  .content { padding-bottom: 237px; }
+  .back { display: flex; align-items: center; gap: var(--space-12); width: fit-content; margin-bottom: 92px; }
+  .back img { width: 6px; height: 13px; }
+  .packages { margin-top: 98px; gap: 47px; /* Figma: package titles 124px apart. */ }
+  .package { grid-template-columns: 25px 1fr auto; column-gap: 51px; align-items: start; }
+  .package input { width: 25px; height: 25px; margin-top: var(--space-4); }
+  .packageName { font-size: var(--font-size-h3); line-height: var(--line-height-h3); }
+  .packagePrice { font-size: var(--font-size-price); line-height: var(--line-height-price); }
+  .packageDescription { grid-column: 2; max-width: 580px; margin-top: 13px; font-size: var(--font-size-body-lg); line-height: var(--line-height-body-lg); }
+  .deliveryTotal { margin-top: 82px; padding-top: 64px; grid-template-columns: 1fr auto; justify-content: end; column-gap: var(--space-64); }
+  .deliveryTotal > span { justify-self: end; }
+  .deliveryTotal output, .summary output { font-size: var(--font-size-price); line-height: var(--line-height-price); }
+  .recipient { margin-top: 128px; /* Figma delivered heading y1567. */ }
+  .fields { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 42px; row-gap: 79px; margin-top: 92px; }
+  .fields > div > p { margin-top: -5px; /* Hint y2015 below input bottom1999. */ }
+  .address { margin-top: 66px; }
+  .address .fields { margin-top: 92px; }
+  .contact { margin-top: 107px; }
+  .payment { margin-top: 106px; }
+  .payment .fields { margin-top: 93px; }
+  .expiryFields { margin-top: var(--space-20); }
+  .expiryFields > span { font-size: 36px; padding-top: var(--space-16); /* Figma Tablet/Desktop slash 36 / 26. */ }
+  .cvv { max-width: none; }
+  .summary { margin-top: 119px; padding-top: 64px; /* Figma separator y3554. */ }
+  .summaryInner { width: 322px; margin-left: auto; }
+  .placeOrder { margin-top: 42px; }
+  .footerBand { --wave-height: 105px; }
+  .footerWrap { padding-top: 113px; padding-bottom: 33px; }
+}
+
+/* Desktop: inner form x211..1247 (449px fields); footer wave bottom4034, footer top4209. */
+@media (min-width: 1440px) {
+  .hero { padding-top: 118px; padding-bottom: 271px; }
+  .title { max-width: 742px; text-align: left; }
+  .lead { margin-top: 29px; }
+  .decor { top: -27px; right: 11px; }
+  .decor img { width: 476px; }
+  .content { padding-inline: calc(var(--container-padding-x) + 90px) calc(var(--container-padding-x) + 72px); padding-bottom: 258px; }
+  .back { margin-bottom: 94px; }
+  .fields { column-gap: 136px; margin-top: 91px; }
+  .recipient { margin-top: 151px; /* Figma delivered heading y1591. */ }
+  .address { margin-top: var(--space-64); }
+  .address .fields { margin-top: 92px; }
+  .contact { margin-top: 106px; }
+  .payment { margin-top: 108px; }
+  .payment .fields { margin-top: 91px; }
+  .summary { margin-top: 118px; /* Figma separator y3571. */ }
+  .footerBand { --wave-height: 107px; }
+  .footerWrap { padding-top: 175px; padding-bottom: 91px; padding-inline-start: calc(var(--container-padding-x) - 22px); }
+}
