@@ -1,0 +1,243 @@
+/* Peach is the page color: it shows behind the header and the hero. */
+.page {
+  background-color: var(--color-bg);
+  overflow-x: clip; /* the decoration may bleed past the right edge on Mobile */
+}
+
+/* Mobile (31:844): title top 128 under a 47px header; the cream band's wave bottoms out at y = 420. */
+.hero {
+  padding-top: 81px;
+  padding-bottom: 147px; /* Figma: subtitle bottom 273, band 420. */
+}
+
+.heroContent {
+  position: relative;
+}
+
+.title {
+  max-width: 278px; /* Figma text box width. */
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+  text-align: center;
+}
+
+.lead {
+  max-width: 281px; /* Figma text box: wraps to two lines. */
+  margin-top: 30px; /* Figma: title bottom 191, text top 221. */
+}
+
+.decor {
+  position: absolute;
+  top: 154px; /* Figma: y = 282, title top 128. */
+  right: -20px; /* Figma: the picture ends at the screen edge. */
+}
+
+.decor img {
+  width: 178px;
+  height: auto;
+}
+
+/* Wave above the cream band: 71 / 108 / 114px high (peak to trough, measured). */
+.band {
+  --wave-height: 71px;
+}
+
+.order {
+  padding-top: 153px; /* Figma: band 420, first name 573. */
+  padding-bottom: 223px; /* Figma: button bottom 1480, next band 1703. */
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 66px; /* Figma: rows 183px apart, a row is 117px high. */
+}
+
+/* Total block: a separator, then label and price on one line, the button below. */
+.summary {
+  margin-top: 58px; /* Figma: last stepper bottom 1240, separator 1298. */
+  padding-top: 44px; /* Figma: separator 1298, price top 1342. */
+  border-top: var(--border-width-sm) solid var(--color-primary);
+}
+
+.summaryInner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.totalLabel {
+  font-size: var(--font-size-total-label);
+  font-weight: var(--font-weight-bold);
+  line-height: 24px; /* Figma: Lato 20 / 24. */
+}
+
+.total {
+  font-family: var(--font-display);
+  font-size: var(--font-size-price);
+  line-height: var(--line-height-price);
+}
+
+.placeOrder {
+  grid-column: 1 / -1;
+  min-height: 59px; /* Figma: button 334 x 59. */
+  margin-top: 41px; /* Figma: price bottom 1380, button 1421. */
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-32);
+  padding-block: var(--space-48);
+  text-align: center;
+}
+
+.emptyTitle {
+  outline: none; /* focused from code after the last line is removed; it is not a control */
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+}
+
+/* Purple footer band. Wave above it: 66 / 108 / 108px high. Figma: band 1703 / 1806 / 1994,
+   footer top 1749 / 1919 / 2248, page end 2526 / 2401 / 2589. */
+.footerBand {
+  --wave-height: 66px;
+}
+
+.footerWrap {
+  padding-top: 46px;
+  padding-bottom: 68px;
+}
+
+/* Tablet (30:233): title top 217, rows from 654, the wave bottoms out at y = 557. */
+@media (min-width: 960px) {
+  .hero {
+    padding-top: 153px;
+    padding-bottom: 177px; /* Figma: subtitle bottom 380, band 557. */
+  }
+
+  .title {
+    max-width: 462px;
+    text-align: center;
+  }
+
+  .lead {
+    max-width: 400px;
+    margin-top: 32px; /* Figma: title bottom 322, text top 354. */
+    text-align: center;
+  }
+
+  .decor {
+    top: -217px; /* Figma: y = 0. */
+    right: 75px; /* Figma: right edge 845, content ends at 920. */
+  }
+
+  .decor img {
+    width: 274px;
+  }
+
+  .band {
+    --wave-height: 108px;
+  }
+
+  .order {
+    padding-top: 91px; /* Figma: band 557, first row top 651 (the stepper sits 3px lower in its row). */
+    padding-bottom: 227px; /* Figma: button bottom 1579, next band 1806. */
+  }
+
+  .rows {
+    gap: 52px; /* Figma: rows 174px apart, a row is 122px high. */
+  }
+
+  .summary {
+    margin-top: 81px; /* Figma: last row bottom 1293, separator 1374. */
+    padding-top: 66px; /* Figma: separator 1374, price top 1440. */
+    border-top-width: var(--border-width-md);
+  }
+
+  /* Label, price and button sit in a 322px block at the right edge of the rows. */
+  .summaryInner {
+    width: 322px;
+    max-width: 100%;
+    margin-left: auto;
+  }
+
+  .placeOrder {
+    margin-top: 42px; /* Figma: price bottom 1478, button 1520. */
+  }
+
+  .footerBand {
+    --wave-height: 108px;
+  }
+
+  .footerWrap {
+    padding-top: 113px;
+    padding-bottom: 70px;
+  }
+}
+
+/* Desktop (7:400): title top 182, rows from 729 at x = 221. */
+@media (min-width: 1440px) {
+  .hero {
+    padding-top: 118px;
+    padding-bottom: 163px; /* Figma: subtitle bottom 364, band 527. */
+  }
+
+  .title {
+    max-width: 713px;
+    margin-inline-start: 14px; /* Figma: hero text starts at x = 135, 14px right of the side padding. */
+    text-align: left;
+  }
+
+  .lead {
+    max-width: 494px;
+    margin-inline-start: 14px;
+    margin-top: 29px; /* Figma: title bottom 309, text top 338. */
+    text-align: left;
+  }
+
+  .decor {
+    top: -182px;
+    right: 14px; /* Figma: right edge 1305, content ends at 1319. */
+  }
+
+  .decor img {
+    width: 457px;
+  }
+
+  .band {
+    --wave-height: 114px;
+  }
+
+  .order {
+    padding-top: 198px; /* Figma: band 527, first row top 725. */
+    padding-bottom: 339px; /* Figma: button bottom 1654, next band 1994. */
+    padding-inline-start: calc(var(--container-padding-x) + 100px); /* Figma: rows start at x = 221. */
+    padding-inline-end: calc(var(--container-padding-x) + 60px); /* ... and end at x = 1259. */
+  }
+
+  .summary {
+    margin-top: 80px; /* Figma: last row bottom 1369, separator 1449. */
+  }
+
+  /* The block is 338px wide here and the button 322px, flush right. */
+  .summaryInner {
+    width: 338px;
+  }
+
+  .placeOrder {
+    width: 322px;
+    margin-left: auto;
+  }
+
+  .footerBand {
+    --wave-height: 108px;
+  }
+
+  .footerWrap {
+    padding-top: 254px;
+    padding-bottom: 91px;
+    padding-inline-start: calc(var(--container-padding-x) - 10px); /* Figma: footer starts at x = 111. */
+  }
+}

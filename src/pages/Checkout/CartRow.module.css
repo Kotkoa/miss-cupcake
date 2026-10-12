@@ -1,0 +1,111 @@
+/* Mobile (31:844): picture 67 wide on the left; on the right the name, a separator, then stepper and price.
+   The picture starts about 25px above the name. */
+.row {
+  display: grid;
+  grid-template-columns: 67px minmax(0, 1fr);
+  grid-template-areas:
+    'thumb name'
+    'thumb line'
+    'thumb controls';
+  column-gap: 23px; /* Figma: picture right 86, name left 109. */
+  align-items: center;
+}
+
+.thumb {
+  grid-area: thumb;
+  align-self: start;
+  display: grid;
+  place-items: center;
+  width: 67px;
+  height: 80px; /* Figma: pictures are 65-68 x 70-80. */
+  margin-top: -25px; /* Figma: picture top 548, name top 573. */
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.name {
+  grid-area: name;
+  font-size: var(--font-size-h2); /* Figma Mobile: Wendy One 26 / 27. */
+  line-height: var(--line-height-h2);
+}
+
+/* Separator under the name (1px on Mobile). */
+.row::after {
+  content: '';
+  grid-area: line;
+  align-self: start;
+  margin-block: 17px 29px; /* Figma: name bottom 600, line 618, stepper 647 (the line itself is 1px). */
+  border-top: var(--border-width-sm) solid var(--color-primary);
+}
+
+/* Stepper left, price right; a long price drops under the stepper instead of overflowing at 320px. */
+.controls {
+  grid-area: controls;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+}
+
+.price {
+  margin-inline-start: auto;
+  font-family: var(--font-display);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+}
+
+/* Tablet (30:233) and Desktop (7:400): picture, name, stepper and price in one line.
+   Columns from the frames: name starts 161px from the row edge, stepper ends 82px before the price column. */
+@media (min-width: 960px) {
+  .row {
+    grid-template-columns: 161px 1fr 100px 188px; /* the last track is the 82px gap plus the 106px price column */
+    grid-template-areas: 'thumb name stepper price';
+    column-gap: 0;
+    min-height: 122px; /* Figma: tallest picture, rows are 174px apart. */
+  }
+
+  .row::after {
+    display: none;
+  }
+
+  /* The wrapper disappears: stepper and price become grid items of the row. */
+  .controls {
+    display: contents;
+  }
+
+  .stepper {
+    grid-area: stepper;
+  }
+
+  .thumb {
+    align-self: center;
+    justify-self: start;
+    width: 104px;
+    height: 122px;
+    margin-top: 0;
+  }
+
+  .name {
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+  }
+
+  .stepper.stepper {
+    height: 40px; /* Figma Tab: 100 x 40 here (43 on the Homepage). */
+  }
+
+  .price {
+    grid-area: price;
+    justify-self: end;
+    margin-inline-start: 0;
+    width: 106px; /* Figma: prices are centred in a column about 106px wide. */
+    text-align: center;
+    font-size: var(--font-size-price);
+    line-height: var(--line-height-price);
+  }
+}
