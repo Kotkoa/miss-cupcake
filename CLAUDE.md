@@ -55,10 +55,10 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Background in CSS instead of images (see [tasks/04.1-homepage-css-background.md](tasks/04.1-homepage-css-background.md))
 
 ### 5. Remaining screens (simple to complex)
-- [ ] Architecture decisions: cart state, routes, modals, forms (see [tasks/05.0-architecture.md](tasks/05.0-architecture.md))
+- [x] Architecture decisions: cart state, routes, modals, forms (see [tasks/05.0-architecture.md](tasks/05.0-architecture.md))
 - [x] Our Story (video & map) ([tasks/05.1-our-story.md](tasks/05.1-our-story.md))
 - [x] Why Miss Cupcake ([tasks/05.2-why-miss-cupcake.md](tasks/05.2-why-miss-cupcake.md))
-- [ ] Cart / My Bag ([tasks/05.3-cart.md](tasks/05.3-cart.md))
+- [x] Cart / My Bag ([tasks/05.3-cart.md](tasks/05.3-cart.md))
 - [ ] Check out ([tasks/05.4-checkout.md](tasks/05.4-checkout.md))
 - [ ] Payment ([tasks/05.5-payment.md](tasks/05.5-payment.md))
 - [ ] Payment confirmed ([tasks/05.6-payment-confirmed.md](tasks/05.6-payment-confirmed.md))

@@ -1,0 +1,13 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+  padding: var(--space-96) var(--container-padding-x);
+  text-align: center;
+}
+
+.title {
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+}

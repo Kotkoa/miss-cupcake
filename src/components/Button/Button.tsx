@@ -1,10 +1,10 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
 import styles from './Button.module.css'
 
-type ButtonVariant = 'filled' | 'light'
+type ButtonVariant = 'filled' | 'light' | 'text'
 
 type CommonProps = {
-  /** filled: purple fill, yellow label ("add to cart", "Place order"). light: cream fill, purple label (footer "send"). */
+  /** filled: purple fill, yellow label ("add to cart", "Place order"). light: cream fill, purple label (footer "send"). text: no fill, purple label ("view cart"). */
   variant?: ButtonVariant
   fullWidth?: boolean
   children: ReactNode

@@ -6,11 +6,13 @@ import styles from './CupcakesSection.module.css'
 
 type CupcakesSectionProps = {
   quantities: Record<string, number>
+  /** Card whose "add to cart" was just pressed. */
+  addedId: string | null
   onQuantityChange: (id: string, next: number) => void
   onAddToCart: (id: string) => void
 }
 
-export function CupcakesSection({ quantities, onQuantityChange, onAddToCart }: CupcakesSectionProps) {
+export function CupcakesSection({ quantities, addedId, onQuantityChange, onAddToCart }: CupcakesSectionProps) {
   return (
     <Band as="section" color="mint" wave flip id="cupcakes" aria-labelledby="cupcakes-title" className={styles.band}>
       <Container className={styles.cupcakes}>
@@ -28,9 +30,11 @@ export function CupcakesSection({ quantities, onQuantityChange, onAddToCart }: C
               imageHeight={cupcake.image.height}
               imageMobileWidth={cupcake.image.mobileWidth}
               quantity={quantities[cupcake.id]}
+              minQuantity={1}
               onQuantityChange={(next) => onQuantityChange(cupcake.id, next)}
               addToCartLabel="add to cart"
               onAddToCart={() => onAddToCart(cupcake.id)}
+              statusMessage={addedId === cupcake.id ? 'Added to cart' : ''}
             />
           ))}
         </div>

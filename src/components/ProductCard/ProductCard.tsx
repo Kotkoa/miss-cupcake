@@ -12,9 +12,13 @@ type ProductCardProps = {
   /** Display width below 960px, when the Figma image is smaller; omit to keep imageWidth. */
   imageMobileWidth?: number
   quantity: number
+  /** Lowest quantity the stepper allows (1 when the card adds to a cart). */
+  minQuantity?: number
   onQuantityChange: (next: number) => void
   addToCartLabel: string
   onAddToCart: () => void
+  /** Announced to screen readers ("Added to cart"); empty most of the time. */
+  statusMessage?: string
 }
 
 export function ProductCard({
@@ -25,9 +29,11 @@ export function ProductCard({
   imageHeight,
   imageMobileWidth,
   quantity,
+  minQuantity = 0,
   onQuantityChange,
   addToCartLabel,
   onAddToCart,
+  statusMessage = '',
 }: ProductCardProps) {
   return (
     <article className={styles.card}>
@@ -49,11 +55,14 @@ export function ProductCard({
       <h3 className={styles.name}>{name}</h3>
       <p className={styles.description}>{description}</p>
       <div className={styles.actions}>
-        <QuantityStepper value={quantity} onChange={onQuantityChange} itemLabel={name} />
+        <QuantityStepper value={quantity} min={minQuantity} onChange={onQuantityChange} itemLabel={name} />
         <Button className={styles.add} onClick={onAddToCart}>
           {addToCartLabel}
         </Button>
       </div>
+      <p role="status" className={styles.visuallyHidden}>
+        {statusMessage}
+      </p>
     </article>
   )
 }

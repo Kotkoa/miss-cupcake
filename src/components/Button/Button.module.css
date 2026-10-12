@@ -34,6 +34,12 @@
   color: var(--color-on-primary);
 }
 
+/* "view cart" in My Bag: a plain purple label, no box (Figma has no fill behind it). */
+.text {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
 .light {
   background-color: var(--color-surface);
   color: var(--color-primary);

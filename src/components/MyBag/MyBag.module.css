@@ -1,0 +1,219 @@
+/* Figma "My Bag" card (Mobile 31:843, Tablet 30:232, Desktop 7:40). Tablet and Desktop are identical
+   (460 wide, 25px side padding); Mobile is the same card at half size. Measured from the card, which
+   sits 12px inside the exported frame (the frame includes a baked shadow). */
+.bag {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  max-width: calc(100vw - 2 * var(--space-12));
+  /* Never taller than the space under the header; the list of lines scrolls inside. */
+  max-height: calc(100dvh - 90px);
+  padding: 0 13px 20px;
+  border-radius: 6px; /* Figma card radius, half of the Tablet value. */
+  background-color: var(--color-surface);
+  box-shadow: 0 1px 6px rgb(0 0 0 / 15%); /* the shadow is baked into the Figma card image: approximated */
+  color: var(--color-primary);
+}
+
+.head {
+  position: relative;
+  flex-shrink: 0;
+  padding: 24px 0 18px; /* Figma: title top 24, separator at 59. */
+  border-bottom: var(--border-width-sm) solid var(--color-primary);
+}
+
+.title {
+  font-size: 16px; /* Figma Mobile "My Bag": Wendy One 16 / 17 (single use, see tokens.css). */
+  line-height: 17px;
+}
+
+.close {
+  position: absolute;
+  top: 21px; /* Figma: icon top 83, card top 62. */
+  right: -2px; /* Figma: icon right edge 11px from the card edge, content padding 13. */
+  display: grid;
+  place-items: center;
+  width: 20px; /* the hit area is bigger than the 8px icon */
+  height: 20px;
+}
+
+.close img {
+  width: 8px;
+  height: 9px;
+}
+
+.lines {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-block: 20px; /* Figma: separator 59, first thumb 80; last thumb 266, separator 225 + ... */
+  display: flex;
+  flex-direction: column;
+  gap: 11px; /* Figma: thumb rows are 33px apart, thumbs 22px high. */
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 9px; /* Figma: thumb right 158, name 167. */
+}
+
+.thumb {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 20px;
+  height: 22px;
+}
+
+.thumbImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--font-size-cart-item-name);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-cart-item-name);
+}
+
+.price {
+  flex-shrink: 0;
+  font-size: var(--font-size-cart-item-price);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-cart-item-price);
+}
+
+.total {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px; /* Figma: separator 225, label 243. */
+  border-top: var(--border-width-sm) solid var(--color-primary);
+}
+
+.totalLabel {
+  font-size: var(--font-size-cart-item-name); /* Mobile label is 10, same as the line names */
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-cart-item-name);
+}
+
+.totalPrice {
+  font-size: var(--font-size-cart-item-price);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-cart-item-price);
+}
+
+.actions {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px; /* Figma: total price bottom 321, button top 344 (the line is 16px high, 4px of it sit in the gap). */
+}
+
+/* Mobile buttons: Lato 8 labels; "Check out" is 206 x 30. */
+.checkout,
+.viewCart {
+  font-size: var(--font-size-micro);
+  line-height: var(--line-height-micro);
+}
+
+.checkout {
+  min-height: 30px;
+}
+
+.viewCart {
+  min-height: 0;
+  margin-top: 12px; /* Figma: button bottom 374, text top 386. */
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-20);
+  padding-block: var(--space-32) 0;
+}
+
+.emptyText {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Tablet (30:232) and Desktop (7:40): 460 x 706 card. */
+@media (min-width: 960px) {
+  .bag {
+    width: 460px;
+    padding: 0 25px 38px; /* Figma: contents 25px from the sides, view cart text ends 38px above the bottom. */
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgb(0 0 0 / 12%);
+  }
+
+  .head {
+    padding: 50px 0 35px; /* Figma: title top 50, separator at 119. */
+    border-bottom-width: var(--border-width-md);
+  }
+
+  .title {
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+  }
+
+  .close {
+    top: 42px; /* Figma: icon top 42 below the card top. */
+    right: -3px;
+    width: 29px;
+    height: 29px;
+  }
+
+  .close img {
+    width: 17px;
+    height: 17px;
+  }
+
+  .lines {
+    padding-block: 41px; /* Figma: separator 119, first thumb 160; last thumb bottom 407, separator 449. */
+    gap: 23px; /* Figma: thumb rows 66-71px apart, thumbs 44px high. */
+  }
+
+  .line {
+    gap: 20px; /* Figma: thumb right 1005, name 1025. */
+  }
+
+  .thumb {
+    width: 40px;
+    height: 44px;
+  }
+
+  .total {
+    padding-top: 37px; /* Figma: separator 449, price top 486. */
+    border-top-width: var(--border-width-md);
+  }
+
+  .totalLabel {
+    font-size: var(--font-size-total-label);
+    line-height: 24px; /* Figma: Lato 20 / 24. */
+  }
+
+  .actions {
+    margin-top: 47px; /* Figma: total bottom 517, button top 564. */
+  }
+
+  .checkout,
+  .viewCart {
+    font-size: var(--font-size-button);
+    line-height: var(--line-height-button);
+  }
+
+  .checkout {
+    min-height: 59px; /* Figma: button 411 x 59. */
+  }
+
+  .viewCart {
+    margin-top: 26px; /* Figma: button bottom 623, text top 649. */
+  }
+}

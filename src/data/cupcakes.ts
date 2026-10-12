@@ -22,9 +22,10 @@ export type Cupcake = {
     /** Display width on Mobile (Figma px); height follows the aspect ratio. */
     mobileWidth: number
   }
-  /** Quantity shown in the stepper on first render (Figma Homepage). */
-  initialQuantity: number
 }
+
+/** Every cupcake costs the same: all line totals in Figma are multiples of 3.49. Integer cents. */
+export const UNIT_PRICE_CENTS = 349
 
 /** Same order as the Figma Homepage grid (left to right, top to bottom). */
 export const cupcakes: Cupcake[] = [
@@ -33,76 +34,65 @@ export const cupcakes: Cupcake[] = [
     name: 'Carrot',
     description: 'Walnut-studded carrot cake with cinnamon cream cheese frosting',
     image: { src: carrot, width: 201, height: 230, mobileWidth: 182 },
-    initialQuantity: 1,
   },
   {
     id: 'red-velvet',
     name: 'Red Velvet',
     description: 'A chocolate sponge, coloured naturally with beetroot and topped off with cream cheese.',
     image: { src: redVelvet, width: 223, height: 229, mobileWidth: 180 },
-    initialQuantity: 3,
   },
   {
     id: 'mint-chip',
     name: 'Mint Chip',
     description: 'Homemade chocolate cupcakes topped with thick & creamy mint chocolate chip frosting.',
     image: { src: mintChip, width: 223, height: 235, mobileWidth: 179 },
-    initialQuantity: 2,
   },
   {
     id: 'pink-strawberry',
     name: 'Pink strawberry',
     description: 'A fluffy strawberry cupcake with strawberry buttercream frosting and chocolate syrup.',
     image: { src: pinkStrawberry, width: 203, height: 244, mobileWidth: 179 },
-    initialQuantity: 0,
   },
   {
     id: 'marshmallow',
     name: 'Marshmallow',
     description: 'A super chocolatey cupcake base with a soft marshmallowy buttercream topping.',
     image: { src: marshmallow, width: 217, height: 244, mobileWidth: 180 },
-    initialQuantity: 0,
   },
   {
     id: 'dark-chocolate',
     name: 'Dark Chocolate',
     description: 'Belgian chocolate cake with sweet chocolate frosting and cheery.',
     image: { src: darkChocolate, width: 192, height: 244, mobileWidth: 166 },
-    initialQuantity: 0,
   },
   {
     id: 'salty-caramel',
     name: 'Salty Caramel',
     description: 'Caramel cake with a buttery caramel cream cheese frosting topped with fleur de sel.',
     image: { src: saltyCaramel, width: 202, height: 244, mobileWidth: 167 },
-    initialQuantity: 0,
   },
   {
     id: 'gluten-free-velvet',
     name: 'Gluten Free Velvet',
     description: 'A gluten free twist on our classic red velvet, topped off with cream cheese.',
     image: { src: glutenFreeVelvet, width: 203, height: 244, mobileWidth: 166 },
-    initialQuantity: 0,
   },
   {
     id: 'cinnamon',
     name: 'Cinnamon',
     description: 'Lightly spiced buttermilk cake with cinnamon cream cheese frosting with cinnamon sugar.',
     image: { src: cinnamon, width: 218, height: 243, mobileWidth: 181 },
-    initialQuantity: 0,
   },
   {
     id: 'totally-nuts',
     name: 'Totally nuts',
     description: 'A sweet hazelnut paste with nutella butter cream and chopped hazelnuts on the top.',
     image: { src: totallyNuts, width: 200, height: 244, mobileWidth: 167 },
-    initialQuantity: 0,
   },
   {
     id: 'pink-vanilla',
     name: 'Pink Vanilla',
     description: 'Soft, fluffy, and extra moist creamy vanilla buttercream with extra sprinkles',
     image: { src: pinkVanilla, width: 197, height: 244, mobileWidth: 163 },
-    initialQuantity: 0,
   },
 ]

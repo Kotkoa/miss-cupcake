@@ -5,9 +5,12 @@ import { Button } from '../../components/Button/Button'
 import { Footer } from '../../components/Footer/Footer'
 import { Header } from '../../components/Header/Header'
 import { Input } from '../../components/Input/Input'
+import { MyBag } from '../../components/MyBag/MyBag'
 import { MapFacade } from '../../components/MapFacade/MapFacade'
 import { ProductCard } from '../../components/ProductCard/ProductCard'
 import { QuantityStepper } from '../../components/QuantityStepper/QuantityStepper'
+import { cupcakes, UNIT_PRICE_CENTS } from '../../data/cupcakes'
+import type { CartLine } from '../../features/cart'
 import { storeMap } from '../../data/store'
 import styles from './UiKit.module.css'
 
@@ -30,6 +33,20 @@ function Row({ label, children }: { label: string; children: ReactNode }) {
     </div>
   )
 }
+
+/** The Figma "My Bag" scenario: Carrot x1, Red Velvet x3, Mint Chip x2, Pink strawberry x2. */
+const bagScenario: [string, number][] = [
+  ['carrot', 1],
+  ['red-velvet', 3],
+  ['mint-chip', 2],
+  ['pink-strawberry', 2],
+]
+
+const bagLines: CartLine[] = bagScenario.flatMap(([id, qty]) => {
+  const cupcake = cupcakes.find((item) => item.id === id)
+  if (!cupcake) return []
+  return [{ id, name: cupcake.name, image: cupcake.image.src, qty, unitCents: UNIT_PRICE_CENTS, totalCents: qty * UNIT_PRICE_CENTS }]
+})
 
 const navLinks = [
   { label: 'Shop', href: '#shop', current: true },
@@ -105,12 +122,12 @@ export function UiKit() {
       <Block title="Header" nodeId="148:362 / 940:2">
         <Row label="empty cart">
           <div className={styles.frame}>
-            <Header navLinks={navLinks} cartCount={0} cartHref="#cart" />
+            <Header navLinks={navLinks} cartCount={0} cartOpen={false} onCartToggle={() => {}} cartPanelId="ui-bag-empty" />
           </div>
         </Row>
         <Row label="cart with 8">
           <div className={styles.frame}>
-            <Header navLinks={navLinks} cartCount={8} cartHref="#cart" />
+            <Header navLinks={navLinks} cartCount={8} cartOpen={false} onCartToggle={() => {}} cartPanelId="ui-bag-full" />
           </div>
         </Row>
       </Block>
@@ -127,6 +144,15 @@ export function UiKit() {
           addToCartLabel="add to cart"
           onAddToCart={() => {}}
         />
+      </Block>
+
+      <Block title="MyBag" nodeId="7:40 / 30:232 / 31:843">
+        <Row label="with lines">
+          <MyBag id="ui-bag" lines={bagLines} subtotalCents={8 * UNIT_PRICE_CENTS} onClose={() => {}} onNavigate={() => {}} checkoutHref="#checkout" shopHref="#shop" />
+        </Row>
+        <Row label="empty">
+          <MyBag id="ui-bag-empty-state" lines={[]} subtotalCents={0} onClose={() => {}} onNavigate={() => {}} checkoutHref="#checkout" shopHref="#shop" />
+        </Row>
       </Block>
 
       <Block title="MapFacade" nodeId="148:301">

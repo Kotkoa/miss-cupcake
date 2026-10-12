@@ -1,4 +1,5 @@
 import { useId, useRef, useState } from 'react'
+import type { ReactNode, Ref } from 'react'
 import cartIcon from '../../assets/icons/cart.svg'
 import cartBadge from '../../assets/icons/cart-badge.svg'
 import menuIcon from '../../assets/icons/menu.svg'
@@ -14,10 +15,17 @@ export type NavLink = {
 type HeaderProps = {
   navLinks: NavLink[]
   cartCount: number
-  cartHref: string
+  /** The cart button toggles a panel (My Bag); the page decides what it shows and when it is open. */
+  cartOpen: boolean
+  onCartToggle: () => void
+  /** `id` of the panel the cart button controls. */
+  cartPanelId: string
+  cartButtonRef?: Ref<HTMLButtonElement>
+  /** The open panel; it is placed under the cart button. */
+  cartPanel?: ReactNode
 }
 
-export function Header({ navLinks, cartCount, cartHref }: HeaderProps) {
+export function Header({ navLinks, cartCount, cartOpen, onCartToggle, cartPanelId, cartButtonRef, cartPanel }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const navId = useId()
   const menuButtonRef = useRef<HTMLButtonElement>(null)
@@ -57,15 +65,30 @@ export function Header({ navLinks, cartCount, cartHref }: HeaderProps) {
           ))}
         </ul>
       </nav>
-      <a href={cartHref} className={styles.cart} aria-label={cartLabel}>
-        <img src={cartIcon} alt="" width={39} height={40} className={styles.cartIcon} />
-        {cartCount > 0 ? (
-          <span className={styles.badge} aria-hidden="true">
-            <img src={cartBadge} alt="" width={26} height={26} className={styles.badgeCircle} />
-            <span className={styles.count}>{cartCount}</span>
-          </span>
-        ) : null}
-      </a>
+      <div className={styles.cartWrap}>
+        <button
+          ref={cartButtonRef}
+          type="button"
+          className={styles.cart}
+          aria-label={cartLabel}
+          aria-haspopup="dialog"
+          aria-expanded={cartOpen}
+          aria-controls={cartPanelId}
+          onClick={() => {
+            setMenuOpen(false) // the open menu would sit under the panel
+            onCartToggle()
+          }}
+        >
+          <img src={cartIcon} alt="" width={39} height={40} className={styles.cartIcon} />
+          {cartCount > 0 ? (
+            <span className={styles.badge} aria-hidden="true">
+              <img src={cartBadge} alt="" width={26} height={26} className={styles.badgeCircle} />
+              <span className={styles.count}>{cartCount}</span>
+            </span>
+          ) : null}
+        </button>
+        {cartOpen ? <div className={styles.cartPanel}>{cartPanel}</div> : null}
+      </div>
     </header>
   )
 }
