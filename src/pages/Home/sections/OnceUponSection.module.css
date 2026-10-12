@@ -73,3 +73,41 @@
 }
 
 /* Desktop (940:7): text at the container edge, image 494 x 679. */
+@media (min-width: 1440px) {
+  .once {
+    padding-top: 454px;
+  }
+
+  .content {
+    min-height: 762px;
+  }
+
+  .text {
+    margin-left: 0;
+  }
+
+  .title {
+    max-width: 584px;
+    font-size: var(--font-size-display);
+    line-height: var(--line-height-display);
+  }
+
+  .lead {
+    max-width: 606px;
+    margin-top: var(--space-40);
+  }
+
+  .cta {
+    margin-top: 52px; /* Figma: CTA top is 129px below the text top (text is 3 lines = 78px). */
+  }
+
+  .picture {
+    top: 83px;
+    right: -26px; /* Figma: image right edge at x = 1345 of 1440; content ends at 1319. */
+  }
+
+  .image {
+    width: 494px;
+    height: 679px;
+  }
+}

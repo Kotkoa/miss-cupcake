@@ -39,3 +39,20 @@
 }
 
 /* Desktop (2:78 + cards): 3 columns of 336px, 90px apart, 176px between rows. */
+@media (min-width: 1440px) {
+  .cupcakes {
+    padding-top: 455px;
+  }
+
+  .title {
+    max-width: 661px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 336px);
+    justify-content: start;
+    gap: 180px 90px; /* Figma: 656-657px between row tops. */
+    margin-top: 189px;
+    margin-left: 34px; /* Figma: first card at x = 155, container at 121. */
+  }
+}

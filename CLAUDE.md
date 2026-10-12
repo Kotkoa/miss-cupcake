@@ -36,7 +36,7 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 
 ### 2. Styles foundation
 - [x] Extract tokens from Figma into `src/styles/tokens.css` (see [tasks/02-tokens.md](tasks/02-tokens.md))
-- [ ] Add reset and global typography
+- [x] Add reset and global typography
 - [x] Define breakpoints from the Tablet/Desktop frames
 
 ### 3. Shared components (see [tasks/03-shared-components.md](tasks/03-shared-components.md))
@@ -47,11 +47,11 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Footer
 - [x] Product card
 
-### 4. Homepage (mobile-first)
-- [ ] Mobile
-- [ ] Tablet (`@media`)
-- [ ] Desktop (`@media`)
-- [ ] Compared with the Figma screenshot
+### 4. Homepage (mobile-first, see [tasks/04-homepage.md](tasks/04-homepage.md)) (see [tasks/04-homepage.md](tasks/04-homepage.md))
+- [x] Mobile
+- [x] Tablet (`@media`)
+- [x] Desktop (`@media`)
+- [x] Compared with the Figma screenshot
 
 ### 5. Remaining screens (simple to complex)
 - [ ] Our Story (video & map)

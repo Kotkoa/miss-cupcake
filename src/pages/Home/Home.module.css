@@ -24,3 +24,15 @@
     padding-inline-start: calc(var(--container-padding-x) + 31px);
   }
 }
+
+@media (min-width: 1440px) {
+  .page {
+    background-image: url('../../assets/images/home/bg-d.webp');
+  }
+
+  .footerWrap {
+    margin-top: 174px;
+    padding-inline-start: var(--container-padding-x);
+    padding-bottom: var(--space-96);
+  }
+}

@@ -62,3 +62,27 @@
 }
 
 /* Desktop (1:2). */
+@media (min-width: 1440px) {
+  .hero {
+    min-height: 907px;
+    padding-top: var(--space-120);
+  }
+
+  .title {
+    max-width: 632px;
+  }
+
+  .lead {
+    margin-top: var(--space-40);
+  }
+
+  .picture {
+    top: 57px;
+    right: 38px; /* Figma: image right edge at x = 1402 of 1440. */
+  }
+
+  .image {
+    width: 532px;
+    height: 711px;
+  }
+}

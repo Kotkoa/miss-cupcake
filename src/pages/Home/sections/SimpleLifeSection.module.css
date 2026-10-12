@@ -71,3 +71,43 @@
 }
 
 /* Desktop (940:4): two stacked images (430 x 240, 396 x 253), text column at x = 733. */
+@media (min-width: 1440px) {
+  .simple {
+    grid-template-columns: 612px 1fr; /* Figma: 733 - 121. */
+    column-gap: 0;
+  }
+
+  .picture {
+    display: none;
+  }
+
+  .desktopImages {
+    display: block;
+    grid-area: picture;
+  }
+
+  .desktopTop {
+    width: 430px;
+    height: 240px;
+    margin-left: 3px; /* Figma: x = 124, container at 121. */
+  }
+
+  .desktopBottom {
+    width: 396px;
+    height: 253px;
+    margin-top: 36px; /* Figma: second image starts 36px below the first. */
+    margin-left: 26px; /* Figma: x = 147, container at 121. */
+  }
+
+  .text {
+    margin-top: 100px;
+  }
+
+  .title {
+    max-width: 640px;
+  }
+
+  .lead {
+    max-width: 517px;
+  }
+}
