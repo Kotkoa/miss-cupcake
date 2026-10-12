@@ -73,7 +73,7 @@ export function Header({ navLinks, cartCount, cartOpen, onCartToggle, cartPanelI
           aria-label={cartLabel}
           aria-haspopup="dialog"
           aria-expanded={cartOpen}
-          aria-controls={cartPanelId}
+          aria-controls={cartOpen ? cartPanelId : undefined}
           onClick={() => {
             setMenuOpen(false) // the open menu would sit under the panel
             onCartToggle()

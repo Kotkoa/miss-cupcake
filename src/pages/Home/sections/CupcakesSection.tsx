@@ -2,6 +2,7 @@ import { Band } from '../../../components/Band/Band'
 import { Container } from '../../../components/Container/Container'
 import { ProductCard } from '../../../components/ProductCard/ProductCard'
 import { cupcakes } from '../../../data/cupcakes'
+import { MAX_LINE_QTY } from '../../../features/cart'
 import styles from './CupcakesSection.module.css'
 
 type CupcakesSectionProps = {
@@ -31,6 +32,7 @@ export function CupcakesSection({ quantities, addedId, onQuantityChange, onAddTo
               imageMobileWidth={cupcake.image.mobileWidth}
               quantity={quantities[cupcake.id]}
               minQuantity={1}
+              maxQuantity={MAX_LINE_QTY}
               onQuantityChange={(next) => onQuantityChange(cupcake.id, next)}
               addToCartLabel="add to cart"
               onAddToCart={() => onAddToCart(cupcake.id)}

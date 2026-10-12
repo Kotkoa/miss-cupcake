@@ -48,7 +48,7 @@ export function Home() {
 
   return (
     <div className={styles.page}>
-      <SiteHeader currentHref="/" />
+      <SiteHeader />
       <main>
         <HeroSection />
         <SimpleLifeSection />

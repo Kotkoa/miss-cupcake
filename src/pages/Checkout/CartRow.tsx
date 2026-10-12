@@ -1,5 +1,5 @@
 import type { CartLine } from '../../features/cart'
-import { formatPrice } from '../../features/cart'
+import { formatPrice, MAX_LINE_QTY } from '../../features/cart'
 import { QuantityStepper } from '../../components/QuantityStepper/QuantityStepper'
 import styles from './CartRow.module.css'
 
@@ -18,7 +18,7 @@ export function CartRow({ line, onQuantityChange }: CartRowProps) {
       </span>
       <h2 className={styles.name}>{line.name}</h2>
       <div className={styles.controls}>
-        <QuantityStepper value={line.qty} onChange={onQuantityChange} itemLabel={line.name} className={styles.stepper} />
+        <QuantityStepper value={line.qty} max={MAX_LINE_QTY} onChange={onQuantityChange} itemLabel={line.name} className={styles.stepper} />
         <p className={styles.price}>{formatPrice(line.totalCents)}</p>
       </div>
     </li>

@@ -6,8 +6,6 @@ import type { CartItem } from './cart'
 import { createCartStorage } from './storage'
 
 export const CART_STORAGE_KEY = 'miss-cupcake:cart'
-// Each line has this cap, so every possible catalogue combination stays within safe integer cents.
-export const MAX_CART_QUANTITY = Math.floor(Number.MAX_SAFE_INTEGER / (UNIT_PRICE_CENTS * cupcakes.length))
 
 const catalogue = new Map(cupcakes.map((cupcake) => [cupcake.id, cupcake]))
 
@@ -15,7 +13,7 @@ const catalogue = new Map(cupcakes.map((cupcake) => [cupcake.id, cupcake]))
 export const cartItemsAtom = atomWithStorage<CartItem[]>(
   CART_STORAGE_KEY,
   [],
-  createCartStorage((id) => catalogue.has(id), undefined, MAX_CART_QUANTITY),
+  createCartStorage((id) => catalogue.has(id)),
   { getOnInit: true },
 )
 
@@ -52,11 +50,11 @@ export const cartSubtotalAtom = atom((get) => get(cartLinesAtom).reduce((sum, li
 
 export const addToCartAtom = atom(null, (get, set, { id, qty }: { id: string; qty: number }) => {
   if (!catalogue.has(id)) return
-  set(cartItemsAtom, addItem(get(cartItemsAtom), id, qty, MAX_CART_QUANTITY))
+  set(cartItemsAtom, addItem(get(cartItemsAtom), id, qty))
 })
 
 export const setQtyAtom = atom(null, (get, set, { id, qty }: { id: string; qty: number }) => {
-  set(cartItemsAtom, setItemQty(get(cartItemsAtom), id, qty, MAX_CART_QUANTITY))
+  set(cartItemsAtom, setItemQty(get(cartItemsAtom), id, qty))
 })
 
 export const removeFromCartAtom = atom(null, (get, set, id: string) => {

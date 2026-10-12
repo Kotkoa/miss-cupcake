@@ -14,6 +14,8 @@ type ProductCardProps = {
   quantity: number
   /** Lowest quantity the stepper allows (1 when the card adds to a cart). */
   minQuantity?: number
+  /** Highest quantity the stepper allows. */
+  maxQuantity?: number
   onQuantityChange: (next: number) => void
   addToCartLabel: string
   onAddToCart: () => void
@@ -30,6 +32,7 @@ export function ProductCard({
   imageMobileWidth,
   quantity,
   minQuantity = 0,
+  maxQuantity,
   onQuantityChange,
   addToCartLabel,
   onAddToCart,
@@ -55,7 +58,7 @@ export function ProductCard({
       <h3 className={styles.name}>{name}</h3>
       <p className={styles.description}>{description}</p>
       <div className={styles.actions}>
-        <QuantityStepper value={quantity} min={minQuantity} onChange={onQuantityChange} itemLabel={name} />
+        <QuantityStepper value={quantity} min={minQuantity} max={maxQuantity} onChange={onQuantityChange} itemLabel={name} />
         <Button className={styles.add} onClick={onAddToCart}>
           {addToCartLabel}
         </Button>

@@ -12,7 +12,7 @@ import { VisitSection } from './sections/VisitSection'
 export function OurStory() {
   return (
     <div className={styles.page}>
-      <SiteHeader currentHref="/our-story" />
+      <SiteHeader />
       <main>
         <HeroSection />
         <CelebratingSection />

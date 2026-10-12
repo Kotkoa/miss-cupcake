@@ -7,8 +7,9 @@ const links = [
 ]
 
 /** Header navigation; the entry for the page the visitor is on gets `current`. */
-export function getNavLinks(currentHref: string): NavLink[] {
-  return links.map((link) => ({ ...link, current: link.href.split('#', 1)[0] === currentHref }))
+export function getNavLinks(pathname: string): NavLink[] {
+  const path = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname // the router also matches '/our-story/'
+  return links.map((link) => ({ ...link, current: link.href.split('#', 1)[0] === path }))
 }
 
 export const footerNavLinks = links

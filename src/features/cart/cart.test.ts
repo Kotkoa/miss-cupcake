@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { addItem, countItems, removeItem, sanitizeItems, setItemQty } from './cart'
+import { addItem, countItems, MAX_LINE_QTY, removeItem, sanitizeItems, setItemQty } from './cart'
 
 const known = (id: string) => ['carrot', 'mint-chip'].includes(id)
 
@@ -20,6 +20,7 @@ describe('addItem', () => {
     expect(addItem(items, 'carrot', -2)).toBe(items)
     expect(addItem(items, 'carrot', 1.5)).toBe(items)
     expect(addItem(items, 'carrot', Number.MAX_SAFE_INTEGER)).toBe(items)
+    expect(addItem(items, 'carrot', MAX_LINE_QTY + 1)).toBe(items)
   })
 
   it('does not change the array it was given', () => {
@@ -28,9 +29,10 @@ describe('addItem', () => {
     expect(items).toEqual([{ id: 'carrot', qty: 1 }])
   })
 
-  it('rejects a merge above the configured maximum', () => {
-    const items = [{ id: 'carrot', qty: 4 }]
-    expect(addItem(items, 'carrot', 2, 5)).toBe(items)
+  it('allows a line up to the maximum and rejects a merge above it', () => {
+    const items = [{ id: 'carrot', qty: MAX_LINE_QTY - 1 }]
+    expect(addItem(items, 'carrot', 1)).toEqual([{ id: 'carrot', qty: MAX_LINE_QTY }])
+    expect(addItem(items, 'carrot', 2)).toBe(items)
   })
 })
 
@@ -53,7 +55,8 @@ describe('setItemQty', () => {
   it('does not set an unsafe or out-of-range quantity', () => {
     const items = [{ id: 'carrot', qty: 1 }]
     expect(setItemQty(items, 'carrot', Number.MAX_SAFE_INTEGER + 1)).toBe(items)
-    expect(setItemQty(items, 'carrot', 6, 5)).toBe(items)
+    expect(setItemQty(items, 'carrot', MAX_LINE_QTY)).toEqual([{ id: 'carrot', qty: MAX_LINE_QTY }])
+    expect(setItemQty(items, 'carrot', MAX_LINE_QTY + 1)).toBe(items)
   })
 })
 
@@ -70,9 +73,8 @@ describe('removeItem and countItems', () => {
 })
 
 describe('sanitizeItems', () => {
-  it('keeps valid data as it is (same array)', () => {
-    const items = [{ id: 'carrot', qty: 2 }]
-    expect(sanitizeItems(items, known)).toBe(items)
+  it('keeps valid data', () => {
+    expect(sanitizeItems([{ id: 'carrot', qty: 2 }], known)).toEqual([{ id: 'carrot', qty: 2 }])
   })
 
   it('drops unknown ids and bad quantities, merges repeated ids', () => {
@@ -90,13 +92,14 @@ describe('sanitizeItems', () => {
     expect(sanitizeItems(raw, known)).toEqual([{ id: 'carrot', qty: 3 }])
   })
 
-  it('drops additions that would exceed the configured maximum', () => {
-    expect(sanitizeItems([{ id: 'carrot', qty: 4 }, { id: 'carrot', qty: 2 }], known, 5)).toEqual([
-      { id: 'carrot', qty: 4 },
-    ])
+  it('drops lines above the maximum and additions that would exceed it', () => {
+    expect(sanitizeItems([{ id: 'carrot', qty: MAX_LINE_QTY + 1 }], known)).toEqual([])
+    expect(
+      sanitizeItems([{ id: 'carrot', qty: MAX_LINE_QTY - 1 }, { id: 'carrot', qty: 2 }], known),
+    ).toEqual([{ id: 'carrot', qty: MAX_LINE_QTY - 1 }])
   })
 
-  it('removes extra stored fields instead of returning the source object', () => {
+  it('removes extra stored fields', () => {
     const raw = [{ id: 'carrot', qty: 2, name: 'Carrot', price: 349 }]
     expect(sanitizeItems(raw, known)).toEqual([{ id: 'carrot', qty: 2 }])
   })

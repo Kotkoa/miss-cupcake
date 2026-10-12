@@ -11,7 +11,7 @@ import { RoastedSection } from './sections/RoastedSection'
 export function WhyMissCupcake() {
   return (
     <div className={styles.page}>
-      <SiteHeader currentHref="/why-miss-cupcake" />
+      <SiteHeader />
       <main>
         {/* The exploded cupcake hangs from the peach band into the blush one, so both sections live in it. */}
         <Band color="peach">

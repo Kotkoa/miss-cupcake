@@ -8,6 +8,7 @@ import { Footer } from '../../components/Footer/Footer'
 import { Input } from '../../components/Input/Input'
 import { PaymentConfirmed } from '../../components/PaymentConfirmed/PaymentConfirmed'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
+import { deliveryOptions } from '../../data/delivery'
 import { footerNavLinks, footerText, legalLinks } from '../../data/navigation'
 import { formatPrice, useCartActions, useCartCount, useCartSubtotal } from '../../features/cart'
 import { clearCheckout, loadCheckout, saveCheckout } from '../../features/checkout/storage'
@@ -19,12 +20,6 @@ import decorTablet from '../../assets/images/payment/decor-t.webp'
 import decorMobile from '../../assets/images/payment/decor-m.webp'
 import arrow from '../../assets/icons/arrow-left.svg'
 import styles from './Payment.module.css'
-
-const deliveryOptions = [
-  { id: 'regular', name: 'Regular Package', cents: 0, description: "Complete your order and we'll bring it to your door." },
-  { id: 'birthday', name: 'Birthday Package', cents: 990, description: 'Fun birthday cupcake packages with candles and assorted party favors.' },
-  { id: 'valentine', name: "Valentine's day Package", cents: 1290, description: "The perfect delectable treat on the year's most romantic day with flowers and chocolate covered strawberries." },
-] as const
 
 export function Payment() {
   const count = useCartCount()
@@ -94,7 +89,7 @@ export function Payment() {
 
   return (
     <div className={styles.page}>
-      <SiteHeader currentHref="/checkout/payment" />
+      <SiteHeader />
       <main>
         <Container as="section" aria-labelledby="payment-title" className={styles.hero}>
           <div className={styles.heroContent}>

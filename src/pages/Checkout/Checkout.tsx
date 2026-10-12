@@ -41,7 +41,7 @@ export function Checkout() {
 
   return (
     <div className={styles.page}>
-      <SiteHeader currentHref="/checkout" />
+      <SiteHeader />
       <main>
         <Band color="peach">
           <Container as="section" aria-labelledby="checkout-title" className={styles.hero}>

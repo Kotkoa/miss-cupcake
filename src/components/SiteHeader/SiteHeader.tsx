@@ -5,13 +5,8 @@ import { useCartCount, useCartLines, useCartSubtotal } from '../../features/cart
 import { Header } from '../Header/Header'
 import { MyBag } from '../MyBag/MyBag'
 
-type SiteHeaderProps = {
-  /** Path of the current page, for the active nav link. */
-  currentHref: string
-}
-
 /** The header every page uses: nav, the live cart badge and the My Bag popover behind the cart button. */
-export function SiteHeader({ currentHref }: SiteHeaderProps) {
+export function SiteHeader() {
   const count = useCartCount()
   const lines = useCartLines()
   const subtotalCents = useCartSubtotal()
@@ -54,7 +49,7 @@ export function SiteHeader({ currentHref }: SiteHeaderProps) {
 
   return (
     <Header
-      navLinks={getNavLinks(currentHref)}
+      navLinks={getNavLinks(location.pathname)}
       cartCount={count}
       cartOpen={open}
       onCartToggle={() => setOpenedAt(open ? null : location.key)}

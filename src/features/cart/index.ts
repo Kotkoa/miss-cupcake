@@ -1,4 +1,5 @@
 export { useCartActions, useCartCount, useCartLines, useCartSubtotal } from './hooks'
+export { MAX_LINE_QTY } from './cart'
 export type { CartLine } from './atoms'
 export { formatPrice } from './price'
 export { store } from './store'

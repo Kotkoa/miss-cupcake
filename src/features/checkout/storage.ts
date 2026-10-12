@@ -1,3 +1,5 @@
+import { deliveryOptions } from '../../data/delivery'
+import type { Delivery } from '../../data/delivery'
 import { emptyValues } from './validation'
 import type { CheckoutValues } from './validation'
 
@@ -15,8 +17,6 @@ const savedFields = [
   'phone',
 ] as const
 
-type Delivery = 'regular' | 'birthday' | 'valentine'
-
 export function loadCheckout(): { values: CheckoutValues; delivery: Delivery } {
   const result: { values: CheckoutValues; delivery: Delivery } = {
     values: { ...emptyValues },
@@ -28,9 +28,8 @@ export function loadCheckout(): { values: CheckoutValues; delivery: Delivery } {
     const saved: unknown = JSON.parse(raw)
     if (!saved || typeof saved !== 'object' || Array.isArray(saved)) return result
     const data = saved as Record<string, unknown>
-    if (data.delivery === 'regular' || data.delivery === 'birthday' || data.delivery === 'valentine') {
-      result.delivery = data.delivery
-    }
+    const delivery = deliveryOptions.find((option) => option.id === data.delivery)
+    if (delivery) result.delivery = delivery.id
     if (data.values && typeof data.values === 'object' && !Array.isArray(data.values)) {
       const values = data.values as Record<string, unknown>
       for (const field of savedFields) {

@@ -1,6 +1,7 @@
 import { createStore } from 'jotai'
 import { describe, expect, it } from 'vitest'
-import { addToCartAtom, cartCountAtom, cartItemsAtom, cartLinesAtom, cartSubtotalAtom, clearCartAtom, MAX_CART_QUANTITY, removeFromCartAtom, setQtyAtom } from './atoms'
+import { MAX_LINE_QTY } from './cart'
+import { addToCartAtom, cartCountAtom, cartItemsAtom, cartLinesAtom, cartSubtotalAtom, clearCartAtom, removeFromCartAtom, setQtyAtom } from './atoms'
 
 /** The Figma scenario: Carrot x1, Red Velvet x3, Mint Chip x2, Pink strawberry x2. */
 function fillFigmaCart(store: ReturnType<typeof createStore>) {
@@ -36,13 +37,13 @@ describe('cart atoms', () => {
     store.set(addToCartAtom, { id: 'carrot', qty: 2 })
     expect(store.get(cartItemsAtom)).toEqual([{ id: 'carrot', qty: 3 }])
   })
-  it('rejects a quantity that would make cents unsafe', () => {
+
+  it('never lets a line go above the maximum', () => {
     const store = createStore()
-    store.set(addToCartAtom, { id: 'carrot', qty: MAX_CART_QUANTITY })
-    expect(store.get(cartItemsAtom)).toEqual([{ id: 'carrot', qty: MAX_CART_QUANTITY }])
+    store.set(addToCartAtom, { id: 'carrot', qty: MAX_LINE_QTY })
     store.set(addToCartAtom, { id: 'carrot', qty: 1 })
-    expect(store.get(cartItemsAtom)).toEqual([{ id: 'carrot', qty: MAX_CART_QUANTITY }])
-    expect(store.get(cartSubtotalAtom)).toBeLessThanOrEqual(Number.MAX_SAFE_INTEGER)
+    store.set(setQtyAtom, { id: 'carrot', qty: MAX_LINE_QTY + 1 })
+    expect(store.get(cartItemsAtom)).toEqual([{ id: 'carrot', qty: MAX_LINE_QTY }])
   })
 
   it('ignores ids that are not in the catalogue', () => {

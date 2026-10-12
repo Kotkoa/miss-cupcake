@@ -6,7 +6,6 @@ import { NotFound } from './pages/NotFound/NotFound'
 import { OurStory } from './pages/OurStory/OurStory'
 import { Payment } from './pages/Payment/Payment'
 import { WhyMissCupcake } from './pages/WhyMissCupcake/WhyMissCupcake'
-import { UiKit } from './pages/UiKit/UiKit'
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <Route path="/why-miss-cupcake" element={<WhyMissCupcake />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/checkout/payment" element={<Payment />} />
-        <Route path="/ui" element={<UiKit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

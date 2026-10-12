@@ -64,11 +64,12 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Payment confirmed ([tasks/05.6-payment-confirmed.md](tasks/05.6-payment-confirmed.md))
 
 ### 6. States and polish
-- [ ] Registered completed state
-- [ ] Hover and focus states
-- [ ] Form errors
-- [ ] Accessibility check
-- [ ] Lighthouse check
+- [ ] Clean-up from the 5.x code review ([tasks/06.0-review-cleanup.md](tasks/06.0-review-cleanup.md))
+- [ ] Registered completed state: newsletter banner ([tasks/06.1-registered-banner.md](tasks/06.1-registered-banner.md))
+- [ ] Hover and focus states ([tasks/06.2-hover-focus.md](tasks/06.2-hover-focus.md))
+- [ ] Form errors ([tasks/06.3-form-errors.md](tasks/06.3-form-errors.md))
+- [ ] Accessibility check ([tasks/06.4-accessibility.md](tasks/06.4-accessibility.md))
+- [ ] Lighthouse check ([tasks/06.5-lighthouse.md](tasks/06.5-lighthouse.md))
 
 ### 7. Publish
 - [ ] Push to GitHub

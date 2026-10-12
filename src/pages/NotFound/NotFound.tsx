@@ -5,7 +5,7 @@ import styles from './NotFound.module.css'
 export function NotFound() {
   return (
     <>
-      <SiteHeader currentHref="" />
+      <SiteHeader />
       <main className={styles.page}>
         <h1 className={styles.title}>Page not found</h1>
         <p>We could not find the page you are looking for.</p>
