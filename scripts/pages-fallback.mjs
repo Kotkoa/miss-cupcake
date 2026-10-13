@@ -2,10 +2,12 @@
 // HTTP 404 (and Lighthouse and search engines treat that as a broken page). After the build this copies the
 // app shell to a folder per route: /checkout/ then exists as a real file and answers 200, and Pages redirects
 // /checkout to /checkout/. Unknown paths still get 404.html, which is the right status for them.
-// Keep the list in step with the routes in src/App.tsx.
-import { copyFileSync, mkdirSync } from 'node:fs'
+// The routes are read from src/App.tsx (`<Route path="/x">`, not the home and not the `*` catch-all), so a new
+// route cannot be forgotten.
+import { copyFileSync, mkdirSync, readFileSync } from 'node:fs'
 
-const routes = ['our-story', 'why-miss-cupcake', 'checkout', 'checkout/payment']
+const routes = [...readFileSync('src/App.tsx', 'utf8').matchAll(/<Route path="\/([^"*]+)"/g)].map((match) => match[1])
+if (routes.length === 0) throw new Error('no routes found in src/App.tsx')
 
 copyFileSync('dist/index.html', 'dist/404.html')
 for (const route of routes) {

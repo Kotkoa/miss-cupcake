@@ -15,7 +15,15 @@ describe('appHref', () => {
     expect(appHref('/', '/miss-cupcake/')).toBe('/miss-cupcake/')
   })
 
+  it('keeps query strings and existing slashes, and does not add a slash to a file', () => {
+    expect(appHref('/?a=1', '/miss-cupcake/')).toBe('/miss-cupcake/?a=1')
+    expect(appHref('/our-story/', '/miss-cupcake/')).toBe('/miss-cupcake/our-story/')
+    expect(appHref('/files/menu.pdf', '/miss-cupcake/')).toBe('/miss-cupcake/files/menu.pdf')
+  })
+
   it('does not touch anchors or other sites', () => {
+    expect(appHref('//cdn.example.com/x', '/miss-cupcake/')).toBe('//cdn.example.com/x')
+    expect(appHref('mailto:a@example.com', '/miss-cupcake/')).toBe('mailto:a@example.com')
     expect(appHref('#cupcakes', '/miss-cupcake/')).toBe('#cupcakes')
     expect(appHref('https://example.com/a', '/miss-cupcake/')).toBe('https://example.com/a')
   })

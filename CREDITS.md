@@ -1,5 +1,9 @@
 # Credits
 
+## Design and pictures
+
+- The layout, colours, type scale and the cupcake and decoration pictures come from the Figma file "Miss Cupcake Prototype (Copy)", a copy of an existing prototype. The copy does not name the original author or a licence, and the source was not found. Not covered by any code licence of this repository; credit or removal on request (open an issue).
+
 ## Video: `public/media/our-story.mp4`
 
 - "Cupcake, Cake, Food" by AmatusSamiTahera, Pixabay: https://pixabay.com/videos/cupcake-cake-food-dessert-102743/

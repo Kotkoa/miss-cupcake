@@ -64,7 +64,7 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Payment confirmed ([tasks/05.6-payment-confirmed.md](tasks/05.6-payment-confirmed.md))
 
 ### 6. States and polish
-- [ ] Clean-up from the 5.x code review ([tasks/06.0-review-cleanup.md](tasks/06.0-review-cleanup.md))
+- [x] Clean-up from the 5.x code review ([tasks/06.0-review-cleanup.md](tasks/06.0-review-cleanup.md))
 - [x] Registered completed state: newsletter banner ([tasks/06.1-registered-banner.md](tasks/06.1-registered-banner.md))
 - [x] Hover and focus states ([tasks/06.2-hover-focus.md](tasks/06.2-hover-focus.md))
 - [x] Form errors ([tasks/06.3-form-errors.md](tasks/06.3-form-errors.md))
