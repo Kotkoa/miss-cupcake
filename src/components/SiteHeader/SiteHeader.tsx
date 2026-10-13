@@ -6,6 +6,7 @@ import { useNewsletterNotice } from '../../features/newsletter'
 import { Header } from '../Header/Header'
 import { MyBag } from '../MyBag/MyBag'
 import { NoticeBar } from '../NoticeBar/NoticeBar'
+import { SkipLink } from '../SkipLink/SkipLink'
 
 const newsletterMessage = "Registered completed successfully. We'll keep you up to date"
 
@@ -55,16 +56,25 @@ export function SiteHeader() {
       if (panelRef.current?.contains(target) || cartButtonRef.current?.contains(target)) return
       close(false) // the pointer already moved focus where the user wanted it
     }
+    // Tabbing out of the bag (or the skip link moving focus into <main>) must not leave it covering the page.
+    function handleFocusIn(event: FocusEvent) {
+      const target = event.target as Node
+      if (panelRef.current?.contains(target) || cartButtonRef.current?.contains(target)) return
+      close(false)
+    }
     document.addEventListener('keydown', handleKeyDown)
     document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('focusin', handleFocusIn)
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('focusin', handleFocusIn)
     }
   }, [open])
 
   return (
     <>
+      <SkipLink />
       {notice.visible && location.pathname === '/' ? <NoticeBar message={newsletterMessage} onClose={closeNotice} /> : null}
       <Header
         headerRef={headerRef}

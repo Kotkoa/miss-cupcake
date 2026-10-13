@@ -10,7 +10,9 @@
 .menuButton {
   --hover-halo: var(--space-8);
   display: flex;
+  align-items: center;
   order: 1;
+  min-height: var(--target-min); /* WCAG 2.5.8: the 30 x 18 icon alone is too short a target */
   border-radius: 50%;
 }
 
@@ -48,6 +50,9 @@
 
 .link,
 .current {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min); /* WCAG 2.5.8: 18px text with normal line height is 22px high */
   font-size: var(--font-size-nav);
   line-height: var(--line-height-nav);
   text-decoration: none;

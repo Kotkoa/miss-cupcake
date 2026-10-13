@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Band } from '../../components/Band/Band'
 import { Container } from '../../components/Container/Container'
 import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
+import { Main } from '../../components/Main/Main'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
 import { cupcakes } from '../../data/cupcakes'
 import { useCartActions } from '../../features/cart'
@@ -47,8 +48,9 @@ export function Home() {
 
   return (
     <div className={styles.page}>
+      <title>Miss Cupcake</title>
       <SiteHeader />
-      <main>
+      <Main>
         <HeroSection />
         <SimpleLifeSection />
         <CupcakesSection
@@ -58,7 +60,7 @@ export function Home() {
           onAddToCart={addToCart}
         />
         <OnceUponSection />
-      </main>
+      </Main>
       <Band color="purple" wave flip className={styles.footerBand}>
         <Container className={styles.footerWrap}>
           <SiteFooter />

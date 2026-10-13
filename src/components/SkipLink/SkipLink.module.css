@@ -1,0 +1,18 @@
+/* Visually hidden until focused (not in Figma): a cream tab with a purple label at the top left. */
+.skip {
+  position: absolute;
+  top: var(--space-8);
+  left: var(--space-8);
+  z-index: 100;
+  padding: var(--space-12) var(--space-24);
+  border: var(--border-width-md) solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  transform: translateY(calc(-100% - var(--space-16)));
+}
+
+.skip:focus {
+  transform: none; /* :focus, not :focus-visible: if assistive tech lands here it must be seen too */
+}

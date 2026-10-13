@@ -3,6 +3,7 @@ import { Band } from '../../components/Band/Band'
 import { Button } from '../../components/Button/Button'
 import { Container } from '../../components/Container/Container'
 import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
+import { Main } from '../../components/Main/Main'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
 import { formatPrice, useCartActions, useCartLines, useCartSubtotal } from '../../features/cart'
 import decorDesktop from '../../assets/images/checkout/decor-d.webp'
@@ -40,8 +41,9 @@ export function Checkout() {
 
   return (
     <div className={styles.page}>
+      <title>Check out – Miss Cupcake</title>
       <SiteHeader />
-      <main>
+      <Main>
         <Band color="peach">
           <Container as="section" aria-labelledby="checkout-title" className={styles.hero}>
             <div className={styles.heroContent}>
@@ -87,7 +89,7 @@ export function Checkout() {
             )}
           </Container>
         </Band>
-      </main>
+      </Main>
 
       <Band color="purple" wave flip className={styles.footerBand}>
         <Container className={styles.footerWrap}>

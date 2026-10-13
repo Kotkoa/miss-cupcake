@@ -31,6 +31,7 @@
 }
 
 .link {
+  display: inline-block; /* an inline link is only as high as its text (22px); the box now takes the 48px line */
   font-size: var(--font-size-footer-link);
   line-height: var(--line-height-footer-link);
   font-weight: var(--font-weight-bold);

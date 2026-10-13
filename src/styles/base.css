@@ -50,6 +50,11 @@ a {
   outline-offset: var(--focus-offset);
 }
 
+/* <main> only takes focus from code (the skip link): it is not a control, a ring around the whole page would be noise. */
+main:focus-visible {
+  outline: none;
+}
+
 /* Links have no radius of their own; buttons and inputs bring theirs. */
 a:focus-visible {
   border-radius: var(--radius-md);

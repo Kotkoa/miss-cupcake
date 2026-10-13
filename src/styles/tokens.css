@@ -107,6 +107,9 @@
   --focus-width: 2px;
   --focus-offset: 2px;
 
+  /* WCAG 2.5.8 minimum size of a target. */
+  --target-min: 24px;
+
   /* Pressed button: moves down by this much. */
   --press-offset: 1px;
 

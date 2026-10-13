@@ -7,6 +7,7 @@ import { Container } from '../../components/Container/Container'
 import { Input } from '../../components/Input/Input'
 import { PaymentConfirmed } from '../../components/PaymentConfirmed/PaymentConfirmed'
 import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
+import { Main } from '../../components/Main/Main'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
 import { deliveryOptions } from '../../data/delivery'
 import { formatPrice, useCartActions, useCartCount, useCartSubtotal } from '../../features/cart'
@@ -84,8 +85,9 @@ export function Payment() {
 
   return (
     <div className={styles.page}>
+      <title>{`${confirmed ? 'Order confirmed' : 'Payment'} – Miss Cupcake`}</title>
       <SiteHeader />
-      <main>
+      <Main>
         <Container as="section" aria-labelledby="payment-title" className={styles.hero}>
           <div className={styles.heroContent}>
             <h1 id="payment-title" className={styles.title}>Check out</h1>
@@ -168,7 +170,7 @@ export function Payment() {
             </div>
           </form>
         </Container>
-      </main>
+      </Main>
       <Band color="purple" wave flip className={styles.footerBand}>
         <Container className={styles.footerWrap}><SiteFooter /></Container>
       </Band>

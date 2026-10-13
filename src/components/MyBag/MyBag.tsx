@@ -25,14 +25,14 @@ export function MyBag({ id, lines, subtotalCents, onClose, onNavigate, closeRef,
 
   return (
     <section id={id} role="dialog" aria-modal="false" aria-labelledby={titleId} className={styles.bag}>
-      <header className={styles.head}>
+      <div className={styles.head}>
         <h2 id={titleId} className={styles.title}>
           My Bag
         </h2>
         <button ref={closeRef} type="button" className={`${styles.close} ${interaction.iconButton}`} aria-label="Close My Bag" onClick={onClose}>
           <img src={closeIcon} alt="" width={17} height={17} />
         </button>
-      </header>
+      </div>
 
       {lines.length === 0 ? (
         <div className={styles.empty}>

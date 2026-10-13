@@ -31,12 +31,12 @@
 .close {
   --hover-halo: var(--space-4);
   position: absolute;
-  top: 21px; /* Figma: icon top 83, card top 62. */
-  right: -2px; /* Figma: icon right edge 11px from the card edge, content padding 13. */
+  top: 19px; /* Figma: icon top 83, card top 62; the 24px box is centred on the icon. */
+  right: -4px; /* Figma: icon right edge 11px from the card edge, content padding 13. */
   display: grid;
   place-items: center;
-  width: 20px; /* the hit area is bigger than the 8px icon */
-  height: 20px;
+  width: var(--target-min); /* WCAG 2.5.8: the hit area is bigger than the 8px icon */
+  height: var(--target-min);
   border-radius: 50%;
 }
 
@@ -129,8 +129,9 @@
 }
 
 .viewCart {
-  min-height: 0;
-  margin-top: 12px; /* Figma: button bottom 374, text top 386. */
+  /* WCAG 2.5.8: a 24px target; the margins keep the text and the card height where Figma has them. */
+  min-height: var(--target-min);
+  margin-block: 5px -7px; /* Figma: button bottom 374, text top 386. */
 }
 
 .empty {
@@ -215,6 +216,6 @@
   }
 
   .viewCart {
-    margin-top: 26px; /* Figma: button bottom 623, text top 649. */
+    margin-block: 24px -2px; /* Figma: button bottom 623, text top 649. */
   }
 }
