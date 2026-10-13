@@ -13,7 +13,7 @@ const NotFound = lazy(() => import('./pages/NotFound/NotFound').then((m) => ({ d
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToHash />
       {/* No fallback UI: a chunk is a few kB and the page is blank only for that moment. */}
       <Suspense fallback={null}>

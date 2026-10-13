@@ -21,7 +21,7 @@ export function CelebratingSection() {
         {/* No poster: the first frame is the preview (#t=0.1 makes Safari paint it). */}
         <video
           className={styles.video}
-          src="/media/our-story.mp4#t=0.1"
+          src={`${import.meta.env.BASE_URL}media/our-story.mp4#t=0.1`}
           controls
           preload="metadata"
           playsInline

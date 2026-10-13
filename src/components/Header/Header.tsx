@@ -3,6 +3,7 @@ import type { ReactNode, Ref } from 'react'
 import cartIcon from '../../assets/icons/cart.svg'
 import cartBadge from '../../assets/icons/cart-badge.svg'
 import menuIcon from '../../assets/icons/menu.svg'
+import { appHref } from '../../routing/appHref'
 import interaction from '../../styles/interaction.module.css'
 import styles from './Header.module.css'
 
@@ -57,7 +58,7 @@ export function Header({ navLinks, cartCount, cartOpen, onCartToggle, cartPanelI
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
-                href={link.href}
+                href={appHref(link.href)}
                 className={link.current ? styles.current : styles.link}
                 aria-current={link.current ? 'page' : undefined}
               >

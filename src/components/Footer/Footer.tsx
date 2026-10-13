@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
+import { appHref } from '../../routing/appHref'
 import styles from './Footer.module.css'
 
 type FooterLink = { label: string; href: string }
@@ -95,14 +96,14 @@ export function Footer({
 
         <nav className={styles.nav} aria-label="Footer">
           {primaryLink ? (
-            <a className={styles.title} href={primaryLink.href}>
+            <a className={styles.title} href={appHref(primaryLink.href)}>
               {primaryLink.label}
             </a>
           ) : null}
           <ul className={styles.links}>
             {otherLinks.map((link) => (
               <li key={link.href}>
-                <a className={styles.link} href={link.href}>
+                <a className={styles.link} href={appHref(link.href)}>
                   {link.label}
                 </a>
               </li>
@@ -118,7 +119,7 @@ export function Footer({
         <ul className={styles.legal}>
           {legalLinks.map((link) => (
             <li key={link.href}>
-              <a className={styles.link} href={link.href}>
+              <a className={styles.link} href={appHref(link.href)}>
                 {link.label}
               </a>
             </li>

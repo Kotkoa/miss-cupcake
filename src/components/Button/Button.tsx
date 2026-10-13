@@ -1,4 +1,5 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode, Ref } from 'react'
+import { appHref } from '../../routing/appHref'
 import styles from './Button.module.css'
 
 type ButtonVariant = 'filled' | 'light' | 'text'
@@ -26,7 +27,7 @@ export function Button(props: ButtonProps) {
 
   if (rest.href !== undefined) {
     return (
-      <a {...rest} className={classes}>
+      <a {...rest} href={appHref(rest.href)} className={classes}>
         {children}
       </a>
     )
