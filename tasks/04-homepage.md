@@ -1,5 +1,7 @@
 # Task 4: Homepage
 
+> Note (7.0): the working screenshots named in this file's Test report were removed from the repository in 6.0 (commit `de67a19`). They are still in git history: `git show de67a19^:tasks/screenshots/<file>`.
+
 Build the Homepage at route `/` from the shared components, mobile-first: Mobile, then Tablet, then Desktop.
 
 ## Figma frames

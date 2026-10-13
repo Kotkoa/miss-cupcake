@@ -7,9 +7,11 @@ describe('appHref', () => {
     expect(appHref('/', '/')).toBe('/')
   })
 
-  it('puts the sub-path in front, keeping the hash and the home path', () => {
-    expect(appHref('/our-story', '/miss-cupcake/')).toBe('/miss-cupcake/our-story')
+  it('puts the sub-path in front and ends the path with a slash, keeping the hash and the home path', () => {
+    expect(appHref('/our-story', '/miss-cupcake/')).toBe('/miss-cupcake/our-story/')
+    expect(appHref('/checkout/payment', '/miss-cupcake/')).toBe('/miss-cupcake/checkout/payment/')
     expect(appHref('/#cupcakes', '/miss-cupcake/')).toBe('/miss-cupcake/#cupcakes')
+    expect(appHref('/our-story#visit', '/miss-cupcake/')).toBe('/miss-cupcake/our-story/#visit')
     expect(appHref('/', '/miss-cupcake/')).toBe('/miss-cupcake/')
   })
 
