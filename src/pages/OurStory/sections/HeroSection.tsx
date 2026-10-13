@@ -29,6 +29,7 @@ export function HeroSection() {
               width={248}
               height={340}
               className={styles.image}
+              fetchPriority="high"
             />
           </picture>
         </div>

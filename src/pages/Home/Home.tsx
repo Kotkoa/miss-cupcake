@@ -3,6 +3,7 @@ import { Band } from '../../components/Band/Band'
 import { Container } from '../../components/Container/Container'
 import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
 import { Main } from '../../components/Main/Main'
+import { PageMeta } from '../../components/PageMeta/PageMeta'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
 import { cupcakes } from '../../data/cupcakes'
 import { useCartActions } from '../../features/cart'
@@ -48,7 +49,7 @@ export function Home() {
 
   return (
     <div className={styles.page}>
-      <title>Miss Cupcake</title>
+      <PageMeta title="Miss Cupcake" description="Fresh cupcakes baked every day. Pick your flavours, add them to your bag and we'll bring them to your door." />
       <SiteHeader />
       <Main>
         <HeroSection />

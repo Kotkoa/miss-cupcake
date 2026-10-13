@@ -21,6 +21,9 @@ export type CartLine = {
   id: string
   name: string
   image: string
+  /** Intrinsic ratio of the picture (Figma display size), so the <img> reserves its space. */
+  imageWidth: number
+  imageHeight: number
   qty: number
   unitCents: number
   totalCents: number
@@ -36,6 +39,8 @@ export const cartLinesAtom = atom<CartLine[]>((get) =>
         id,
         name: cupcake.name,
         image: cupcake.image.src,
+        imageWidth: cupcake.image.width,
+        imageHeight: cupcake.image.height,
         qty,
         unitCents: UNIT_PRICE_CENTS,
         totalCents: qty * UNIT_PRICE_CENTS,

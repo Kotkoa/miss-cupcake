@@ -2,6 +2,7 @@ import { Band } from '../../components/Band/Band'
 import { Container } from '../../components/Container/Container'
 import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
 import { Main } from '../../components/Main/Main'
+import { PageMeta } from '../../components/PageMeta/PageMeta'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
 import styles from './OurStory.module.css'
 import { CelebratingSection } from './sections/CelebratingSection'
@@ -12,7 +13,7 @@ import { VisitSection } from './sections/VisitSection'
 export function OurStory() {
   return (
     <div className={styles.page}>
-      <title>Our story – Miss Cupcake</title>
+      <PageMeta title="Our story – Miss Cupcake" description="A family bakery where quality, honesty and integrity go into every cupcake. Watch how we bake and find our store in Pego." />
       <SiteHeader />
       <Main>
         <HeroSection />

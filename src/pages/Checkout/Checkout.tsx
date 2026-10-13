@@ -4,6 +4,7 @@ import { Button } from '../../components/Button/Button'
 import { Container } from '../../components/Container/Container'
 import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
 import { Main } from '../../components/Main/Main'
+import { PageMeta } from '../../components/PageMeta/PageMeta'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
 import { formatPrice, useCartActions, useCartLines, useCartSubtotal } from '../../features/cart'
 import decorDesktop from '../../assets/images/checkout/decor-d.webp'
@@ -41,7 +42,7 @@ export function Checkout() {
 
   return (
     <div className={styles.page}>
-      <title>Check out – Miss Cupcake</title>
+      <PageMeta title="Check out – Miss Cupcake" description="Review the cupcakes in your bag and change the quantities before you pay." />
       <SiteHeader />
       <Main>
         <Band color="peach">

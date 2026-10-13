@@ -45,7 +45,7 @@ export function MyBag({ id, lines, subtotalCents, onClose, onNavigate, closeRef,
             {lines.map((line) => (
               <li key={line.id} className={styles.line}>
                 <span className={styles.thumb}>
-                  <img src={line.image} alt="" className={styles.thumbImage} />
+                  <img src={line.image} alt="" width={line.imageWidth} height={line.imageHeight} className={styles.thumbImage} />
                 </span>
                 <p className={styles.name}>
                   {line.name} x {line.qty}

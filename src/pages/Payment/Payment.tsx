@@ -8,6 +8,7 @@ import { Input } from '../../components/Input/Input'
 import { PaymentConfirmed } from '../../components/PaymentConfirmed/PaymentConfirmed'
 import { SiteFooter } from '../../components/SiteFooter/SiteFooter'
 import { Main } from '../../components/Main/Main'
+import { PageMeta } from '../../components/PageMeta/PageMeta'
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader'
 import { deliveryOptions } from '../../data/delivery'
 import { formatPrice, useCartActions, useCartCount, useCartSubtotal } from '../../features/cart'
@@ -85,7 +86,10 @@ export function Payment() {
 
   return (
     <div className={styles.page}>
-      <title>{`${confirmed ? 'Order confirmed' : 'Payment'} – Miss Cupcake`}</title>
+      <PageMeta
+        title={`${confirmed ? 'Order confirmed' : 'Payment'} – Miss Cupcake`}
+        description={confirmed ? 'Your Miss Cupcake order is confirmed. Thank you!' : 'Choose a delivery type, enter your details and place your Miss Cupcake order.'}
+      />
       <SiteHeader />
       <Main>
         <Container as="section" aria-labelledby="payment-title" className={styles.hero}>

@@ -69,8 +69,9 @@ Goal: refresh layout skills from scratch. Static markup first; cart/payment logi
 - [x] Hover and focus states ([tasks/06.2-hover-focus.md](tasks/06.2-hover-focus.md))
 - [x] Form errors ([tasks/06.3-form-errors.md](tasks/06.3-form-errors.md))
 - [x] Accessibility check ([tasks/06.4-accessibility.md](tasks/06.4-accessibility.md))
-- [ ] Lighthouse check ([tasks/06.5-lighthouse.md](tasks/06.5-lighthouse.md))
+- [x] Lighthouse check ([tasks/06.5-lighthouse.md](tasks/06.5-lighthouse.md))
 
 ### 7. Publish
-- [ ] Push to GitHub
-- [ ] (Optional) Deploy to Vercel
+- [ ] Deploy (GitHub Pages, Vercel as fallback) and README with screenshots ([tasks/07.0-deploy-readme.md](tasks/07.0-deploy-readme.md))
+- [ ] Link in my-cv "More projects" ([tasks/07.1-cv-link.md](tasks/07.1-cv-link.md))
+- [ ] Second row of "Selected work" in the GitHub profile README ([tasks/07.2-profile-readme.md](tasks/07.2-profile-readme.md))

@@ -14,7 +14,7 @@ export function CartRow({ line, onQuantityChange }: CartRowProps) {
   return (
     <li className={styles.row} data-line={line.id}>
       <span className={styles.thumb}>
-        <img src={line.image} alt="" className={styles.image} />
+        <img src={line.image} alt="" width={line.imageWidth} height={line.imageHeight} className={styles.image} />
       </span>
       <h2 className={styles.name}>{line.name}</h2>
       <div className={styles.controls}>

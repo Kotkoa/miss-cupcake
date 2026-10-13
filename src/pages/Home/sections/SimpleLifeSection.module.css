@@ -73,6 +73,7 @@
   .picture {
     grid-area: picture;
     margin: 0;
+    max-width: none; /* the Mobile 100% - 23px cap would squeeze the 322px picture and stretch the image */
   }
 
   .image {
